@@ -1,0 +1,673 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1045BC082860855D005D50C1 /* FergieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC072860855D005D50C1 /* FergieApp.swift */; };
+		1045BC0A2860855D005D50C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC092860855D005D50C1 /* ContentView.swift */; };
+		1045BC0C28608560005D50C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1045BC0B28608560005D50C1 /* Assets.xcassets */; };
+		1045BC0F28608560005D50C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1045BC0E28608560005D50C1 /* Preview Assets.xcassets */; };
+		1045BC1328608560005D50C1 /* Fergie WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1045BC1228608560005D50C1 /* Fergie WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1045BC1828608561005D50C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1045BC1728608561005D50C1 /* Assets.xcassets */; };
+		1045BC1E28608562005D50C1 /* Fergie WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1045BC1D28608562005D50C1 /* Fergie WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1045BC2328608562005D50C1 /* FergieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC2228608562005D50C1 /* FergieApp.swift */; };
+		1045BC2528608562005D50C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC2428608562005D50C1 /* ContentView.swift */; };
+		1045BC2728608562005D50C1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC2628608562005D50C1 /* NotificationController.swift */; };
+		1045BC2928608562005D50C1 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC2828608562005D50C1 /* NotificationView.swift */; };
+		1045BC2B28608562005D50C1 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC2A28608562005D50C1 /* ComplicationController.swift */; };
+		1045BC2D28608563005D50C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1045BC2C28608563005D50C1 /* Assets.xcassets */; };
+		1045BC3028608563005D50C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1045BC2F28608563005D50C1 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1045BC1428608560005D50C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1045BBFC2860855C005D50C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1045BC1128608560005D50C1;
+			remoteInfo = "Fergie WatchKit App";
+		};
+		1045BC1F28608562005D50C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1045BBFC2860855C005D50C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1045BC1C28608562005D50C1;
+			remoteInfo = "Fergie WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1045BC3828608563005D50C1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1045BC1E28608562005D50C1 /* Fergie WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1045BC3C28608563005D50C1 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				1045BC1328608560005D50C1 /* Fergie WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1045BC042860855D005D50C1 /* Fergie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fergie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1045BC072860855D005D50C1 /* FergieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieApp.swift; sourceTree = "<group>"; };
+		1045BC092860855D005D50C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1045BC0B28608560005D50C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1045BC0E28608560005D50C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1045BC1228608560005D50C1 /* Fergie WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fergie WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1045BC1728608561005D50C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1045BC1D28608562005D50C1 /* Fergie WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Fergie WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1045BC2228608562005D50C1 /* FergieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieApp.swift; sourceTree = "<group>"; };
+		1045BC2428608562005D50C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1045BC2628608562005D50C1 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		1045BC2828608562005D50C1 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		1045BC2A28608562005D50C1 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		1045BC2C28608563005D50C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1045BC2F28608563005D50C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1045BC3128608563005D50C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1045BC3228608563005D50C1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1045BC012860855D005D50C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1045BC1A28608562005D50C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1045BBFB2860855C005D50C1 = {
+			isa = PBXGroup;
+			children = (
+				1045BC062860855D005D50C1 /* Fergie */,
+				1045BC1628608560005D50C1 /* Fergie WatchKit App */,
+				1045BC2128608562005D50C1 /* Fergie WatchKit Extension */,
+				1045BC052860855D005D50C1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1045BC052860855D005D50C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1045BC042860855D005D50C1 /* Fergie.app */,
+				1045BC1228608560005D50C1 /* Fergie WatchKit App.app */,
+				1045BC1D28608562005D50C1 /* Fergie WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1045BC062860855D005D50C1 /* Fergie */ = {
+			isa = PBXGroup;
+			children = (
+				1045BC072860855D005D50C1 /* FergieApp.swift */,
+				1045BC092860855D005D50C1 /* ContentView.swift */,
+				1045BC0B28608560005D50C1 /* Assets.xcassets */,
+				1045BC0D28608560005D50C1 /* Preview Content */,
+			);
+			path = Fergie;
+			sourceTree = "<group>";
+		};
+		1045BC0D28608560005D50C1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1045BC0E28608560005D50C1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1045BC1628608560005D50C1 /* Fergie WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				1045BC1728608561005D50C1 /* Assets.xcassets */,
+			);
+			path = "Fergie WatchKit App";
+			sourceTree = "<group>";
+		};
+		1045BC2128608562005D50C1 /* Fergie WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1045BC2228608562005D50C1 /* FergieApp.swift */,
+				1045BC2428608562005D50C1 /* ContentView.swift */,
+				1045BC2628608562005D50C1 /* NotificationController.swift */,
+				1045BC2828608562005D50C1 /* NotificationView.swift */,
+				1045BC2A28608562005D50C1 /* ComplicationController.swift */,
+				1045BC2C28608563005D50C1 /* Assets.xcassets */,
+				1045BC3128608563005D50C1 /* Info.plist */,
+				1045BC3228608563005D50C1 /* PushNotificationPayload.apns */,
+				1045BC2E28608563005D50C1 /* Preview Content */,
+			);
+			path = "Fergie WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		1045BC2E28608563005D50C1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1045BC2F28608563005D50C1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1045BC032860855D005D50C1 /* Fergie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1045BC3D28608563005D50C1 /* Build configuration list for PBXNativeTarget "Fergie" */;
+			buildPhases = (
+				1045BC002860855D005D50C1 /* Sources */,
+				1045BC012860855D005D50C1 /* Frameworks */,
+				1045BC022860855D005D50C1 /* Resources */,
+				1045BC3C28608563005D50C1 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1045BC1528608560005D50C1 /* PBXTargetDependency */,
+			);
+			name = Fergie;
+			productName = Fergie;
+			productReference = 1045BC042860855D005D50C1 /* Fergie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1045BC1128608560005D50C1 /* Fergie WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1045BC3928608563005D50C1 /* Build configuration list for PBXNativeTarget "Fergie WatchKit App" */;
+			buildPhases = (
+				1045BC1028608560005D50C1 /* Resources */,
+				1045BC3828608563005D50C1 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1045BC2028608562005D50C1 /* PBXTargetDependency */,
+			);
+			name = "Fergie WatchKit App";
+			productName = "Fergie WatchKit App";
+			productReference = 1045BC1228608560005D50C1 /* Fergie WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		1045BC1C28608562005D50C1 /* Fergie WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1045BC3528608563005D50C1 /* Build configuration list for PBXNativeTarget "Fergie WatchKit Extension" */;
+			buildPhases = (
+				1045BC1928608562005D50C1 /* Sources */,
+				1045BC1A28608562005D50C1 /* Frameworks */,
+				1045BC1B28608562005D50C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fergie WatchKit Extension";
+			productName = "Fergie WatchKit Extension";
+			productReference = 1045BC1D28608562005D50C1 /* Fergie WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1045BBFC2860855C005D50C1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					1045BC032860855D005D50C1 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					1045BC1128608560005D50C1 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					1045BC1C28608562005D50C1 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = 1045BBFF2860855C005D50C1 /* Build configuration list for PBXProject "Fergie" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1045BBFB2860855C005D50C1;
+			productRefGroup = 1045BC052860855D005D50C1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1045BC032860855D005D50C1 /* Fergie */,
+				1045BC1128608560005D50C1 /* Fergie WatchKit App */,
+				1045BC1C28608562005D50C1 /* Fergie WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1045BC022860855D005D50C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1045BC0F28608560005D50C1 /* Preview Assets.xcassets in Resources */,
+				1045BC0C28608560005D50C1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1045BC1028608560005D50C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1045BC1828608561005D50C1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1045BC1B28608562005D50C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1045BC3028608563005D50C1 /* Preview Assets.xcassets in Resources */,
+				1045BC2D28608563005D50C1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1045BC002860855D005D50C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1045BC0A2860855D005D50C1 /* ContentView.swift in Sources */,
+				1045BC082860855D005D50C1 /* FergieApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1045BC1928608562005D50C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1045BC2728608562005D50C1 /* NotificationController.swift in Sources */,
+				1045BC2528608562005D50C1 /* ContentView.swift in Sources */,
+				1045BC2B28608562005D50C1 /* ComplicationController.swift in Sources */,
+				1045BC2328608562005D50C1 /* FergieApp.swift in Sources */,
+				1045BC2928608562005D50C1 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1045BC1528608560005D50C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1045BC1128608560005D50C1 /* Fergie WatchKit App */;
+			targetProxy = 1045BC1428608560005D50C1 /* PBXContainerItemProxy */;
+		};
+		1045BC2028608562005D50C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1045BC1C28608562005D50C1 /* Fergie WatchKit Extension */;
+			targetProxy = 1045BC1F28608562005D50C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1045BC3328608563005D50C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1045BC3428608563005D50C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		1045BC3628608563005D50C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fergie WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = X3D8UM28XD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Fergie WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Fergie WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrall.Fergie.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		1045BC3728608563005D50C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fergie WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = X3D8UM28XD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Fergie WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Fergie WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrall.Fergie.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		1045BC3A28608563005D50C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X3D8UM28XD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Fergie_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Fergie WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.shrall.Fergie;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrall.Fergie.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		1045BC3B28608563005D50C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X3D8UM28XD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Fergie_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Fergie WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.shrall.Fergie;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrall.Fergie.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		1045BC3E28608563005D50C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fergie/Preview Content\"";
+				DEVELOPMENT_TEAM = X3D8UM28XD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrall.Fergie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1045BC3F28608563005D50C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fergie/Preview Content\"";
+				DEVELOPMENT_TEAM = X3D8UM28XD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrall.Fergie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1045BBFF2860855C005D50C1 /* Build configuration list for PBXProject "Fergie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1045BC3328608563005D50C1 /* Debug */,
+				1045BC3428608563005D50C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1045BC3528608563005D50C1 /* Build configuration list for PBXNativeTarget "Fergie WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1045BC3628608563005D50C1 /* Debug */,
+				1045BC3728608563005D50C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1045BC3928608563005D50C1 /* Build configuration list for PBXNativeTarget "Fergie WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1045BC3A28608563005D50C1 /* Debug */,
+				1045BC3B28608563005D50C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1045BC3D28608563005D50C1 /* Build configuration list for PBXNativeTarget "Fergie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1045BC3E28608563005D50C1 /* Debug */,
+				1045BC3F28608563005D50C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1045BBFC2860855C005D50C1 /* Project object */;
+}
