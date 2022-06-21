@@ -15,6 +15,7 @@ class TaskViewModel: ObservableObject {
     @Published var notificationType = "hour"
     @Published var repeatFrequency = 0
     @Published var title = ""
+    @Published var isDone = false
     
     @Published var tasks: [Task] = []
     
@@ -28,6 +29,7 @@ class TaskViewModel: ObservableObject {
         task.repeatFrequency = Int16(repeatFrequency)
         task.title = title
         task.createdAt = Date()
+        task.isDone = false
         save(context: context)
     }
     
@@ -40,6 +42,7 @@ class TaskViewModel: ObservableObject {
         task.repeatFrequency = Int16(repeatFrequency)
         task.title = title
         task.updatedAt = Date()
+        task.isDone = isDone
         save(context: context)
     }
     
@@ -66,6 +69,7 @@ class TaskViewModel: ObservableObject {
         notificationType = "hour"
         repeatFrequency = 0
         title = ""
+        isDone = false
     }
     
     func getTask(context:NSManagedObjectContext, id: UUID?) -> Task? {

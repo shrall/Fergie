@@ -4,6 +4,7 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isDone" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isRepeated" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="notificationFrequency" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="notificationType" optional="YES" attributeType="String"/>
@@ -12,6 +13,6 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Task" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="Task" positionX="-63" positionY="-18" width="128" height="179"/>
     </elements>
 </model>
