@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AvatarView: View {
+    @State private var coin: Int = 150
     @State private var happiness: Double = 5
     private let maxValue: Double = 10
 
@@ -59,7 +60,7 @@ struct AvatarView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Image("coin")
-                        Text("200").fontWeight(.semibold)
+                        Text(String(coin)).fontWeight(.semibold)
                     }
                 }
             }

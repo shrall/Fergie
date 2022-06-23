@@ -34,7 +34,6 @@
 		5B251F6C286458470073950C /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F6B286458470073950C /* ProgressBar.swift */; };
 		5B2C726628631DFF004F1379 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C726528631DFF004F1379 /* AvatarView.swift */; };
 		5B2C726828631E0C004F1379 /* EditAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C726728631E0C004F1379 /* EditAvatarView.swift */; };
-		5B74EC5D286315B5001782B9 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74EC5C286315B5001782B9 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +104,6 @@
 		5B251F6B286458470073950C /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		5B2C726528631DFF004F1379 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		5B2C726728631E0C004F1379 /* EditAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAvatarView.swift; sourceTree = "<group>"; };
-		5B74EC5C286315B5001782B9 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = Fergie/ViewModel/OnboardingView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +214,6 @@
 			children = (
 				5B251F68286456920073950C /* Components */,
 				5B2C726428631DE5004F1379 /* Avatar */,
-				5B74EC5C286315B5001782B9 /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,7 +390,6 @@
 				1045BC4C28609886005D50C1 /* TaskViewModel.swift in Sources */,
 				1045BC532860A35B005D50C1 /* Persistence.swift in Sources */,
 				1045BC082860855D005D50C1 /* FergieApp.swift in Sources */,
-				5B74EC5D286315B5001782B9 /* OnboardingView.swift in Sources */,
 				1045BC7628619EF4005D50C1 /* UserDefaults.swift in Sources */,
 				5B2C726628631DFF004F1379 /* AvatarView.swift in Sources */,
 				1045BC502860A022005D50C1 /* Fergie.xcdatamodeld in Sources */,
