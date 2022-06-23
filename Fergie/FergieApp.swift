@@ -11,10 +11,10 @@ import SwiftUI
 struct FergieApp: App {
     let persistenceController = PersistenceController.shared
     @StateObject var taskViewModel = TaskViewModel()
-    
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AvatarView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(taskViewModel)
         }
