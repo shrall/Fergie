@@ -18,9 +18,9 @@ struct ProgressBar: View {
     init(value: Double,
          maxValue: Double,
          backgroundEnabled: Bool = true,
-         backgroundColor: Color = Color(UIColor(red: 255/255,
-                                                green: 255/255,
-                                                blue: 255/255,
+         backgroundColor: Color = Color(UIColor(red: 241/255,
+                                                green: 242/255,
+                                                blue: 247/255,
                                                 alpha: 1.0)),
          foregroundColor: Color = Color.black)
     {

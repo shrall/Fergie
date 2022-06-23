@@ -15,6 +15,15 @@ struct AvatarView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+                HStack {
+                    Image("happinessMeter")
+                    ProgressBar(value: $happiness.wrappedValue,
+                                maxValue: self.maxValue,
+                                foregroundColor: Color.ui.yellow)
+                        .frame(height: 10)
+                        .padding(10)
+                }
+                Spacer()
                 ZStack {
                     // body
                     HStack {
@@ -27,7 +36,7 @@ struct AvatarView: View {
                     }
                 }
                 Spacer()
-                Button("Customize") {
+                Button("Customize Your Fergie!") {
                     print("Button pressed!")
                 }
                 .padding(.horizontal, 25)
@@ -36,21 +45,6 @@ struct AvatarView: View {
                 .foregroundColor(.white)
                 .clipShape(Capsule())
                 .frame(maxWidth: .infinity, alignment: .center)
-                Spacer()
-                VStack {
-                    Text("Happiness Meter").fontWeight(.bold).frame(maxWidth: .infinity, alignment: .leading)
-                    HStack {
-                        Image("happinessMeter")
-                        ProgressBar(value: $happiness.wrappedValue,
-                                    maxValue: self.maxValue,
-                                    foregroundColor: Color.ui.yellow)
-                            .frame(height: 10)
-                            .padding(10)
-                    }
-                }
-                .padding(20)
-                .background(Color.ui.gray)
-                .cornerRadius(8)
                 Spacer()
             }
             .toolbar {
