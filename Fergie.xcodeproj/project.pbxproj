@@ -35,6 +35,7 @@
 		5B251F762865AF960073950C /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F752865AF960073950C /* Accessory.swift */; };
 		5B251F782865AFF60073950C /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F772865AFF60073950C /* Clothing.swift */; };
 		5B251F7A2865B0030073950C /* Pants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F792865B0030073950C /* Pants.swift */; };
+		5B251F7C2868BF570073950C /* EditAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F7B2868BF570073950C /* EditAvatarView.swift */; };
 		5B2C726628631DFF004F1379 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C726528631DFF004F1379 /* AvatarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		5B251F752865AF960073950C /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
 		5B251F772865AFF60073950C /* Clothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
 		5B251F792865B0030073950C /* Pants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pants.swift; sourceTree = "<group>"; };
+		5B251F7B2868BF570073950C /* EditAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAvatarView.swift; sourceTree = "<group>"; };
 		5B2C726528631DFF004F1379 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				5B2C726528631DFF004F1379 /* AvatarView.swift */,
+				5B251F7B2868BF570073950C /* EditAvatarView.swift */,
 			);
 			path = Avatar;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B251F7C2868BF570073950C /* EditAvatarView.swift in Sources */,
 				5B251F7A2865B0030073950C /* Pants.swift in Sources */,
 				1045BC48286095DD005D50C1 /* DateExtension.swift in Sources */,
 				5B251F6C286458470073950C /* ProgressBar.swift in Sources */,

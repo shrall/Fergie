@@ -15,6 +15,7 @@ struct AvatarView: View {
     @State private var accessoriesIsActive: Bool = true
     @State private var clothingIsActive: Bool = false
     @State private var pantsIsActive: Bool = false
+    @State private var isEditAvatarActive: Bool = false
 
     @State private var accessories: [Accessory] = [
         Accessory(id: 0, name: "cap", imageURL: "accessoriesCap"),
@@ -66,8 +67,14 @@ struct AvatarView: View {
                     }
                 }
                 Spacer()
+
+                NavigationLink(destination: EditAvatarView(), isActive: $isEditAvatarActive) {
+                    EmptyView()
+                }
+
                 Button("Customize Your Fergie!") {
-                    showSheet.toggle()
+//                    showSheet.toggle()
+                    isEditAvatarActive = true
                 }
                 .padding(.horizontal, 25)
                 .padding(.vertical, 10)
