@@ -12,10 +12,11 @@ struct AvatarView: View {
     @State private var coin: Int = 150
     @State private var happiness: Double = 5
     @State private var maxValue: Double = 10
-    @State private var accessoriesIsActive: Bool = true
-    @State private var clothingIsActive: Bool = false
-    @State private var pantsIsActive: Bool = false
+//    @State private var accessoriesIsActive: Bool = true
+//    @State private var clothingIsActive: Bool = false
+//    @State private var pantsIsActive: Bool = false
     @State private var isEditAvatarActive: Bool = false
+    @GestureState private var isDetectingPress = false
 
     @State private var accessories: [Accessory] = [
         Accessory(id: 0, name: "cap", imageURL: "accessoriesCap"),
@@ -59,13 +60,22 @@ struct AvatarView: View {
                     // body
                     HStack {
                         Spacer()
-                        Image("fergieNeutral")
+                        Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 300, height: 300)
                         Spacer()
                     }
                 }
+                .gesture(LongPressGesture(minimumDuration: 0.1).sequenced(before: DragGesture(minimumDistance: 0))
+                    .updating($isDetectingPress) { value, state, _ in
+                        switch value {
+                            case .second(true, nil):
+                                state = true
+                            default:
+                                break
+                        }
+                    })
                 Spacer()
 
                 NavigationLink(destination: EditAvatarView(), isActive: $isEditAvatarActive) {
@@ -82,172 +92,172 @@ struct AvatarView: View {
                 .foregroundColor(.white)
                 .clipShape(Capsule())
                 .frame(maxWidth: .infinity, alignment: .center)
-                .halfSheet(showSheet: $showSheet) {
-                    // Half Sheet View
-                    ZStack {
-                        Color.ui.gray
-                            .ignoresSafeArea()
-                        VStack {
-                            HStack {
-                                Text("Customize").font(.title).fontWeight(.bold)
-                                Spacer()
-                                Button {
-                                    showSheet.toggle()
-                                } label: {
-                                    Image(systemName: "multiply")
-                                }
-                                .padding(10)
-                                .background(Color.ui.lightRed)
-                                .foregroundColor(Color.ui.red)
-                                .clipShape(Circle())
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                            }
-
-                            HStack {
-                                if accessoriesIsActive {
-                                    Button {
-                                        print("Accessories")
-                                        accessoriesIsActive = true
-                                        clothingIsActive = false
-                                        pantsIsActive = false
-                                    } label: {
-                                        Text("Accessories").font(.caption)
-                                    }
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(Color.ui.blue)
-                                    .foregroundColor(.white)
-                                    .clipShape(Capsule())
-                                    .frame(maxWidth: .infinity)
-                                } else {
-                                    Button {
-                                        print("Accessories")
-                                        accessoriesIsActive = true
-                                        clothingIsActive = false
-                                        pantsIsActive = false
-                                    } label: {
-                                        Text("Accessories").font(.caption)
-                                    }
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(.clear)
-                                    .foregroundColor(Color.ui.blue)
-                                    .clipShape(Capsule())
-                                    .frame(maxWidth: .infinity)
-                                }
-                                if clothingIsActive {
-                                    Button {
-                                        print("Clothing")
-                                        accessoriesIsActive = false
-                                        clothingIsActive = true
-                                        pantsIsActive = false
-                                    } label: {
-                                        Text("Clothing").font(.caption)
-                                    }
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(Color.ui.blue)
-                                    .foregroundColor(.white)
-                                    .clipShape(Capsule())
-                                    .frame(maxWidth: .infinity)
-                                } else {
-                                    Button {
-                                        print("Clothing")
-                                        accessoriesIsActive = false
-                                        clothingIsActive = true
-                                        pantsIsActive = false
-                                        print(clothingIsActive)
-                                    } label: {
-                                        Text("Clothing").font(.caption)
-                                    }
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(.clear)
-                                    .foregroundColor(Color.ui.blue)
-                                    .clipShape(Capsule())
-                                    .frame(maxWidth: .infinity)
-                                }
-                                if pantsIsActive {
-                                    Button {
-                                        print("Pants")
-                                        accessoriesIsActive = false
-                                        clothingIsActive = false
-                                        pantsIsActive = true
-
-                                    } label: {
-                                        Text("Pants").font(.caption)
-                                    }
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(Color.ui.blue)
-                                    .foregroundColor(.white)
-                                    .clipShape(Capsule())
-                                    .frame(maxWidth: .infinity)
-                                } else {
-                                    Button {
-                                        print("Pants")
-                                        accessoriesIsActive = false
-                                        clothingIsActive = false
-                                        pantsIsActive = true
-                                        print(pantsIsActive)
-                                    } label: {
-                                        Text("Pants").font(.caption)
-                                    }
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(.clear)
-                                    .foregroundColor(Color.ui.blue)
-                                    .clipShape(Capsule())
-                                    .frame(maxWidth: .infinity)
-                                }
-                            }
-                            Spacer()
-                                .frame(height: 20)
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                if accessoriesIsActive {
-                                    HStack {
-                                        ForEach(accessories) { accessory in
-                                            AccessoriesView(accessory: accessory)
-                                        }
-                                    }
-                                }
-                                if clothingIsActive {
-                                    HStack {
-                                        ForEach(clothing) { clothing in
-                                            ClothingView(clothing: clothing)
-                                        }
-                                    }
-                                }
-
-                                if pantsIsActive {
-                                    HStack {
-                                        ForEach(pants) { pants in
-                                            PantsView(pants: pants)
-                                        }
-                                    }
-                                }
-                            }
-                            Spacer()
-                            Button {
-                                showSheet.toggle()
-                            } label: {
-                                Text("Buy")
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                            }
-                            .padding(.horizontal, 25)
-                            .padding(.vertical, 10)
-                            .background(.gray)
-                            .foregroundColor(.white)
-                            .clipShape(Capsule())
-
-                            Spacer()
-
-                        }.padding(20)
-                    }
-
-                } onEnd: {
-                    print("Dismissed")
-                }
+//                .halfSheet(showSheet: $showSheet) {
+//                    // Half Sheet View
+//                    ZStack {
+//                        Color.ui.gray
+//                            .ignoresSafeArea()
+//                        VStack {
+//                            HStack {
+//                                Text("Customize").font(.title).fontWeight(.bold)
+//                                Spacer()
+//                                Button {
+//                                    showSheet.toggle()
+//                                } label: {
+//                                    Image(systemName: "multiply")
+//                                }
+//                                .padding(10)
+//                                .background(Color.ui.lightRed)
+//                                .foregroundColor(Color.ui.red)
+//                                .clipShape(Circle())
+//                                .frame(maxWidth: .infinity, alignment: .trailing)
+//                            }
+//
+//                            HStack {
+//                                if accessoriesIsActive {
+//                                    Button {
+//                                        print("Accessories")
+//                                        accessoriesIsActive = true
+//                                        clothingIsActive = false
+//                                        pantsIsActive = false
+//                                    } label: {
+//                                        Text("Accessories").font(.caption)
+//                                    }
+//                                    .padding(.horizontal, 20)
+//                                    .padding(.vertical, 10)
+//                                    .background(Color.ui.blue)
+//                                    .foregroundColor(.white)
+//                                    .clipShape(Capsule())
+//                                    .frame(maxWidth: .infinity)
+//                                } else {
+//                                    Button {
+//                                        print("Accessories")
+//                                        accessoriesIsActive = true
+//                                        clothingIsActive = false
+//                                        pantsIsActive = false
+//                                    } label: {
+//                                        Text("Accessories").font(.caption)
+//                                    }
+//                                    .padding(.horizontal, 20)
+//                                    .padding(.vertical, 10)
+//                                    .background(.clear)
+//                                    .foregroundColor(Color.ui.blue)
+//                                    .clipShape(Capsule())
+//                                    .frame(maxWidth: .infinity)
+//                                }
+//                                if clothingIsActive {
+//                                    Button {
+//                                        print("Clothing")
+//                                        accessoriesIsActive = false
+//                                        clothingIsActive = true
+//                                        pantsIsActive = false
+//                                    } label: {
+//                                        Text("Clothing").font(.caption)
+//                                    }
+//                                    .padding(.horizontal, 20)
+//                                    .padding(.vertical, 10)
+//                                    .background(Color.ui.blue)
+//                                    .foregroundColor(.white)
+//                                    .clipShape(Capsule())
+//                                    .frame(maxWidth: .infinity)
+//                                } else {
+//                                    Button {
+//                                        print("Clothing")
+//                                        accessoriesIsActive = false
+//                                        clothingIsActive = true
+//                                        pantsIsActive = false
+//                                        print(clothingIsActive)
+//                                    } label: {
+//                                        Text("Clothing").font(.caption)
+//                                    }
+//                                    .padding(.horizontal, 20)
+//                                    .padding(.vertical, 10)
+//                                    .background(.clear)
+//                                    .foregroundColor(Color.ui.blue)
+//                                    .clipShape(Capsule())
+//                                    .frame(maxWidth: .infinity)
+//                                }
+//                                if pantsIsActive {
+//                                    Button {
+//                                        print("Pants")
+//                                        accessoriesIsActive = false
+//                                        clothingIsActive = false
+//                                        pantsIsActive = true
+//
+//                                    } label: {
+//                                        Text("Pants").font(.caption)
+//                                    }
+//                                    .padding(.horizontal, 20)
+//                                    .padding(.vertical, 10)
+//                                    .background(Color.ui.blue)
+//                                    .foregroundColor(.white)
+//                                    .clipShape(Capsule())
+//                                    .frame(maxWidth: .infinity)
+//                                } else {
+//                                    Button {
+//                                        print("Pants")
+//                                        accessoriesIsActive = false
+//                                        clothingIsActive = false
+//                                        pantsIsActive = true
+//                                        print(pantsIsActive)
+//                                    } label: {
+//                                        Text("Pants").font(.caption)
+//                                    }
+//                                    .padding(.horizontal, 20)
+//                                    .padding(.vertical, 10)
+//                                    .background(.clear)
+//                                    .foregroundColor(Color.ui.blue)
+//                                    .clipShape(Capsule())
+//                                    .frame(maxWidth: .infinity)
+//                                }
+//                            }
+//                            Spacer()
+//                                .frame(height: 20)
+//                            ScrollView(.horizontal, showsIndicators: false) {
+//                                if accessoriesIsActive {
+//                                    HStack {
+//                                        ForEach(accessories) { accessory in
+//                                            AccessoriesView(accessory: accessory)
+//                                        }
+//                                    }
+//                                }
+//                                if clothingIsActive {
+//                                    HStack {
+//                                        ForEach(clothing) { clothing in
+//                                            ClothingView(clothing: clothing)
+//                                        }
+//                                    }
+//                                }
+//
+//                                if pantsIsActive {
+//                                    HStack {
+//                                        ForEach(pants) { pants in
+//                                            PantsView(pants: pants)
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                            Spacer()
+//                            Button {
+//                                showSheet.toggle()
+//                            } label: {
+//                                Text("Buy")
+//                                    .frame(maxWidth: .infinity, alignment: .center)
+//                            }
+//                            .padding(.horizontal, 25)
+//                            .padding(.vertical, 10)
+//                            .background(.gray)
+//                            .foregroundColor(.white)
+//                            .clipShape(Capsule())
+//
+//                            Spacer()
+//
+//                        }.padding(20)
+//                    }
+//
+//                } onEnd: {
+//                    print("Dismissed")
+//                }
                 Spacer()
             }
             .toolbar {

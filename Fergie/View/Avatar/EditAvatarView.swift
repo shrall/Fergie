@@ -14,6 +14,7 @@ struct EditAvatarView: View {
     @State private var pantsIsActive: Bool = false
     @State private var hideNavigationbar: Bool = true
     @State private var isAvatarActive: Bool = false
+   
 
     @State private var accessories: [Accessory] = [
         Accessory(id: 0, name: "cap", imageURL: "accessoriesCap"),
