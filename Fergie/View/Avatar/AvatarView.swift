@@ -264,72 +264,15 @@ struct AvatarView: View {
             .padding(20)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct AvatarView_Previews: PreviewProvider {
     static var previews: some View {
         AvatarView()
-    }
-}
-
-struct AccessoriesView: View {
-    let accessory: Accessory
-    var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Spacer()
-                    Image(accessory.imageURL)
-                        .resizable()
-                        .scaledToFit()
-                    Spacer()
-                }
-            }.frame(width: 100, height: 100)
-
-                .background(.white)
-                .cornerRadius(10)
-        }
-    }
-}
-
-struct ClothingView: View {
-    let clothing: Clothing
-    var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Spacer()
-                    Image(clothing.imageURL)
-                        .resizable()
-                        .scaledToFit()
-                    Spacer()
-                }
-            }.frame(width: 100, height: 100)
-
-                .background(.white)
-                .cornerRadius(10)
-        }
-    }
-}
-
-struct PantsView: View {
-    let pants: Pants
-    var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Spacer()
-                    Image(pants.imageURL)
-                        .resizable()
-                        .scaledToFit()
-                    Spacer()
-                }
-            }.frame(width: 100, height: 100)
-
-                .background(.white)
-                .cornerRadius(10)
-        }
     }
 }
 

@@ -13,6 +13,7 @@ struct EditAvatarView: View {
     @State private var clothingIsActive: Bool = false
     @State private var pantsIsActive: Bool = false
     @State private var hideNavigationbar: Bool = true
+    @State private var isAvatarActive: Bool = false
 
     @State private var accessories: [Accessory] = [
         Accessory(id: 0, name: "cap", imageURL: "accessoriesCap"),
@@ -69,6 +70,20 @@ struct EditAvatarView: View {
                         HStack {
                             Text("Customize").font(.title).fontWeight(.bold)
                             Spacer()
+                            NavigationLink(destination: AvatarView(), isActive: $isAvatarActive) {
+                                EmptyView()
+                            }
+
+                            Button {
+                                isAvatarActive = true
+                            } label: {
+                                Image(systemName: "checkmark")
+                            }
+                            .padding(10)
+                            .background(Color.ui.lightRed)
+                            .foregroundColor(Color.ui.red)
+                            .clipShape(Circle())
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                         }
                         .padding(.top, 20)
 
@@ -229,5 +244,77 @@ struct EditAvatarView: View {
 struct EditAvatarView_Previews: PreviewProvider {
     static var previews: some View {
         EditAvatarView()
+    }
+}
+
+struct AccessoriesView: View {
+    let accessory: Accessory
+    var body: some View {
+        VStack {
+            ZStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        print(accessory.name)
+                    } label: {
+                        Image(accessory.imageURL)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    Spacer()
+                }
+            }.frame(width: 100, height: 100)
+
+                .background(.white)
+                .cornerRadius(10)
+        }
+    }
+}
+
+struct ClothingView: View {
+    let clothing: Clothing
+    var body: some View {
+        VStack {
+            ZStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        print(clothing.name)
+                    } label: {
+                        Image(clothing.imageURL)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    Spacer()
+                }
+            }.frame(width: 100, height: 100)
+
+                .background(.white)
+                .cornerRadius(10)
+        }
+    }
+}
+
+struct PantsView: View {
+    let pants: Pants
+    var body: some View {
+        VStack {
+            ZStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        print(pants.name)
+                    } label: {
+                        Image(pants.imageURL)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    Spacer()
+                }
+            }.frame(width: 100, height: 100)
+
+                .background(.white)
+                .cornerRadius(10)
+        }
     }
 }
