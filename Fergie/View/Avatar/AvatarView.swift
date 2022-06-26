@@ -66,6 +66,43 @@ struct AvatarView: View {
                             .frame(width: 300, height: 300)
                         Spacer()
                     }
+                    HStack {
+                        Spacer()
+//                        Image("accessoriesSunhat")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 150, height: 150)
+//                            .padding(.top, -190)
+                        Image("accessoriesSunglasses")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .padding(.top, -40)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+//                        Image("clothingShirt")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 120)
+//                            .padding(.top, 150)
+                        Image("clothingTee")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150)
+                            .padding(.top, 150)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Image("pantsRed")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100)
+                            .padding(.top, 230)
+                        Spacer()
+                    }
                 }
                 .gesture(LongPressGesture(minimumDuration: 0.1).sequenced(before: DragGesture(minimumDistance: 0))
                     .updating($isDetectingPress) { value, state, _ in
