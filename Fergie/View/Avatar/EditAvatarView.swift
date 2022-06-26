@@ -14,7 +14,6 @@ struct EditAvatarView: View {
     @State private var pantsIsActive: Bool = false
     @State private var hideNavigationbar: Bool = true
     @State private var isAvatarActive: Bool = false
-   
 
     @State private var accessories: [Accessory] = [
         Accessory(id: 0, name: "cap", imageURL: "accessoriesCap"),
@@ -56,7 +55,7 @@ struct EditAvatarView: View {
                     // body
                     HStack {
                         Spacer()
-                        Image("fergieNeutral")
+                        Image("fergieHappy")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 250, height: 250)
@@ -251,23 +250,26 @@ struct EditAvatarView_Previews: PreviewProvider {
 struct AccessoriesView: View {
     let accessory: Accessory
     var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        print(accessory.name)
-                    } label: {
+        Button {
+            print(accessory.name)
+        } label: {
+            VStack {
+                ZStack {
+                    HStack {
+                        Spacer()
                         Image(accessory.imageURL)
                             .resizable()
                             .scaledToFit()
+                        Spacer()
                     }
-                    Spacer()
-                }
-            }.frame(width: 100, height: 100)
+                    Image("fergieClothingPrice")
+                        .resizable()
+                        .scaledToFit()
+                }.frame(width: 100, height: 100)
 
-                .background(.white)
-                .cornerRadius(10)
+                    .background(.white)
+                    .cornerRadius(10)
+            }
         }
     }
 }
@@ -275,23 +277,26 @@ struct AccessoriesView: View {
 struct ClothingView: View {
     let clothing: Clothing
     var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        print(clothing.name)
-                    } label: {
+        Button {
+            print(clothing.name)
+        } label: {
+            VStack {
+                ZStack {
+                    HStack {
+                        Spacer()
                         Image(clothing.imageURL)
                             .resizable()
                             .scaledToFit()
+                        Spacer()
                     }
-                    Spacer()
-                }
-            }.frame(width: 100, height: 100)
+                    Image("fergieClothingPrice")
+                        .resizable()
+                        .scaledToFit()
+                }.frame(width: 100, height: 100)
 
-                .background(.white)
-                .cornerRadius(10)
+                    .background(.white)
+                    .cornerRadius(10)
+            }
         }
     }
 }
@@ -299,23 +304,26 @@ struct ClothingView: View {
 struct PantsView: View {
     let pants: Pants
     var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        print(pants.name)
-                    } label: {
+        Button {
+            print(pants.name)
+        } label: {
+            VStack {
+                ZStack {
+                    HStack {
+                        Spacer()
                         Image(pants.imageURL)
                             .resizable()
                             .scaledToFit()
+                        Spacer()
                     }
-                    Spacer()
-                }
-            }.frame(width: 100, height: 100)
+                    Image("fergieClothingPrice")
+                        .resizable()
+                        .scaledToFit()
+                }.frame(width: 100, height: 100)
 
-                .background(.white)
-                .cornerRadius(10)
+                    .background(.white)
+                    .cornerRadius(10)
+            }
         }
     }
 }
