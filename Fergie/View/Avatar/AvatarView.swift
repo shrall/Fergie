@@ -11,7 +11,7 @@ struct AvatarView: View {
     @ObservedObject var userSettings = UserSettings()
 
     @State private var showSheet: Bool = false
-    @State private var coin: Int = 150
+    @State private var coin: Int = 0
     @State private var happiness: Double = 5
     @State private var maxValue: Double = 10
     @State private var isEditAvatarActive: Bool = false
@@ -300,6 +300,9 @@ struct AvatarView: View {
         .navigationBarTitle("")
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            coin = userSettings.coin
+        }
     }
 }
 

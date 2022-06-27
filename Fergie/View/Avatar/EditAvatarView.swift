@@ -14,6 +14,9 @@ class selected: ObservableObject {
     @Published var selectedAccessoryImage: String = ""
     @Published var selectedClothingImage: String = ""
     @Published var selectedPantsImage: String = ""
+    @Published var isOwned: Bool = false
+    @Published var isBuy: Bool = false
+    @Published var selectedBuyItem: String = ""
 }
 
 struct EditAvatarView: View {
@@ -22,7 +25,7 @@ struct EditAvatarView: View {
     @ObservedObject var userSettings = UserSettings()
 
     // Coin
-    @State private var coin: Int = 150
+    @State private var coin: Int = 0
 
     // Tabs/Categories
     @State private var accessoriesIsActive: Bool = true
@@ -53,8 +56,8 @@ struct EditAvatarView: View {
     @State private var pants: [Pants] = [
         Pants(id: 0, name: "yellow", iconURL: "pantsYellowIcon", imageURL: "pantsYellow"),
         Pants(id: 1, name: "red", iconURL: "pantsRedIcon", imageURL: "pantsRed"),
-        Pants(id: 2, name: "string", iconURL: "pantsRedIcon", imageURL: "pantsString"),
-        Pants(id: 3, name: "long", iconURL: "pantsRedIcon", imageURL: "pantsLong")
+        Pants(id: 2, name: "string", iconURL: "pantsStringIcon", imageURL: "pantsString"),
+        Pants(id: 3, name: "long", iconURL: "pantsLongIcon", imageURL: "pantsLong")
     ]
 
     var body: some View {
@@ -280,15 +283,40 @@ struct EditAvatarView: View {
                         }
                         Spacer()
                             .frame(height: 30)
-                        Button {} label: {
-                            Text("Buy")
-                                .frame(maxWidth: .infinity, alignment: .center)
+                        if selectedStuff.isOwned == false && selectedStuff.isBuy == true {
+                            Button {
+                                if accessories.contains(where: { accessory in accessory.imageURL == selectedStuff.selectedBuyItem }) {
+                                    userSettings.ownedAccessories.append(selectedStuff.selectedBuyItem)
+                                    userSettings.coin = coin - 200
+                                } else if clothing.contains(where: { clothing in clothing.imageURL == selectedStuff.selectedBuyItem }) {
+                                    userSettings.ownedTops.append(selectedStuff.selectedBuyItem)
+                                    userSettings.coin = coin - 200
+                                } else if pants.contains(where: { pants in pants.imageURL == selectedStuff.selectedBuyItem }) {
+                                    userSettings.ownedBottoms.append(selectedStuff.selectedBuyItem)
+                                    userSettings.coin = coin - 200
+                                }
+
+                            } label: {
+                                Text("Buy")
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            }
+                            .padding(.horizontal, 25)
+                            .padding(.vertical, 10)
+                            .background(Color.ui.blue)
+                            .foregroundColor(.white)
+                            .clipShape(Capsule())
+
+                        } else {
+                            Button {} label: {
+                                Text("Buy")
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            }
+                            .padding(.horizontal, 25)
+                            .padding(.vertical, 10)
+                            .background(.gray)
+                            .foregroundColor(.white)
+                            .clipShape(Capsule())
                         }
-                        .padding(.horizontal, 25)
-                        .padding(.vertical, 10)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .clipShape(Capsule())
 
                     }.padding(20)
                 }
@@ -309,6 +337,8 @@ struct EditAvatarView: View {
             selectedStuff.selectedAccessoryImage = userSettings.accessory
             selectedStuff.selectedClothingImage = userSettings.top
             selectedStuff.selectedPantsImage = userSettings.bottom
+//            userSettings.coin = 800
+            coin = userSettings.coin
         }
     }
 }
@@ -325,9 +355,19 @@ struct AccessoriesView: View {
     @ObservedObject var userSettings: UserSettings
     var body: some View {
         Button {
+            print(userSettings.ownedAccessories)
+            if userSettings.ownedAccessories.contains(accessory.imageURL) {
+                selectedStuff.isOwned = true
+                userSettings.accessory = accessory.imageURL
+            } else {
+                if userSettings.coin >= 200 {
+                    selectedStuff.isBuy = true
+                    selectedStuff.selectedBuyItem = accessory.imageURL
+                }
+            }
             selectedStuff.selectedAccessoryName = accessory.name
             selectedStuff.selectedAccessoryImage = accessory.imageURL
-            userSettings.accessory = accessory.imageURL
+
         } label: {
             VStack {
                 ZStack {
@@ -338,9 +378,13 @@ struct AccessoriesView: View {
                             .scaledToFit()
                         Spacer()
                     }
-                    Image("fergieClothingPrice")
-                        .resizable()
-                        .scaledToFit()
+                    if userSettings.ownedAccessories.contains(accessory.imageURL) {
+                        EmptyView()
+                    } else {
+                        Image("fergieClothingPrice")
+                            .resizable()
+                            .scaledToFit()
+                    }
                 }.frame(width: 100, height: 100)
 
                     .background(.white)
@@ -356,9 +400,18 @@ struct ClothingView: View {
     @ObservedObject var userSettings: UserSettings
     var body: some View {
         Button {
+            if userSettings.ownedTops.contains(clothing.imageURL) {
+                selectedStuff.isOwned = true
+                userSettings.top = clothing.imageURL
+            } else {
+                if userSettings.coin >= 200 {
+                    selectedStuff.isBuy = true
+                    selectedStuff.selectedBuyItem = clothing.imageURL
+                }
+            }
             selectedStuff.selectedClothingName = clothing.name
             selectedStuff.selectedClothingImage = clothing.imageURL
-            userSettings.top = clothing.imageURL
+
         } label: {
             VStack {
                 ZStack {
@@ -369,9 +422,13 @@ struct ClothingView: View {
                             .scaledToFit()
                         Spacer()
                     }
-                    Image("fergieClothingPrice")
-                        .resizable()
-                        .scaledToFit()
+                    if userSettings.ownedTops.contains(clothing.imageURL) {
+                        EmptyView()
+                    } else {
+                        Image("fergieClothingPrice")
+                            .resizable()
+                            .scaledToFit()
+                    }
                 }.frame(width: 100, height: 100)
 
                     .background(.white)
@@ -387,9 +444,18 @@ struct PantsView: View {
     @ObservedObject var userSettings: UserSettings
     var body: some View {
         Button {
+            if userSettings.ownedBottoms.contains(pants.imageURL) {
+                selectedStuff.isOwned = true
+                userSettings.bottom = pants.imageURL
+            } else {
+                if userSettings.coin >= 200 {
+                    selectedStuff.isBuy = true
+                    selectedStuff.selectedBuyItem = pants.imageURL
+                }
+            }
             selectedStuff.selectedPantsName = pants.name
             selectedStuff.selectedPantsImage = pants.imageURL
-            userSettings.bottom = pants.imageURL
+
         } label: {
             VStack {
                 ZStack {
@@ -400,9 +466,14 @@ struct PantsView: View {
                             .scaledToFit()
                         Spacer()
                     }
-                    Image("fergieClothingPrice")
-                        .resizable()
-                        .scaledToFit()
+                    if userSettings.ownedBottoms.contains(pants.imageURL) {
+                        EmptyView()
+                    } else {
+                        Image("fergieClothingPrice")
+                            .resizable()
+                            .scaledToFit()
+                    }
+
                 }.frame(width: 100, height: 100)
                     .background(.white)
                     .cornerRadius(10)
