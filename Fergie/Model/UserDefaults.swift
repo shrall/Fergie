@@ -15,7 +15,7 @@ class UserSettings: ObservableObject {
         }
     }
 
-    @Published var mood: Int {
+    @Published var mood: Double {
         didSet {
             UserDefaults.standard.set(mood, forKey: "mood")
         }
@@ -65,7 +65,7 @@ class UserSettings: ObservableObject {
 
     init() {
         self.coin = UserDefaults.standard.integer(forKey: "coin")
-        self.mood = UserDefaults.standard.integer(forKey: "mood")
+        self.mood = UserDefaults.standard.double(forKey: "mood")
         self.name = UserDefaults.standard.string(forKey: "name") ?? ""
         self.accessory = UserDefaults.standard.string(forKey: "accessory") ?? ""
         self.top = UserDefaults.standard.string(forKey: "top") ?? ""

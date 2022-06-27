@@ -12,7 +12,7 @@ struct AvatarView: View {
 
     @State private var showSheet: Bool = false
     @State private var coin: Int = 0
-    @State private var happiness: Double = 5
+    @State private var happiness: Double = 6
     @State private var maxValue: Double = 10
     @State private var isEditAvatarActive: Bool = false
     @GestureState private var isDetectingPress = false
@@ -38,10 +38,26 @@ struct AvatarView: View {
                     // body
                     HStack {
                         Spacer()
-                        Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300, height: 300)
+                        if happiness >= 0 && happiness <= 3 {
+                            Image(isDetectingPress == true ? "fergieTappedSad" : "fergieSad")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        } else if happiness > 3 && happiness <= 6 {
+                            Image(isDetectingPress == true ? "fergieTappedNeutral" : "fergieNeutral")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        } else {
+                            Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        }
+//                        Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 300, height: 300)
                         Spacer()
                     }
                     HStack {
@@ -302,6 +318,7 @@ struct AvatarView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear {
             coin = userSettings.coin
+            happiness = userSettings.mood
         }
     }
 }

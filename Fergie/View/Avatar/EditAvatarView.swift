@@ -78,10 +78,22 @@ struct EditAvatarView: View {
                     // Body
                     HStack {
                         Spacer()
-                        Image("fergieHappy")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 260)
+                        if userSettings.mood <= 3 {
+                            Image("fergieSad")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        } else if userSettings.mood <= 6 {
+                            Image("fergieNeutral")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        } else {
+                            Image("fergieHappy")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        }
                         Spacer()
                     }
 
