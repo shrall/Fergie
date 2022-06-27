@@ -14,6 +14,9 @@ struct EditAvatarView: View {
     @State private var pantsIsActive: Bool = false
     @State private var hideNavigationbar: Bool = true
     @State private var isAvatarActive: Bool = false
+    @State private var selectedAccessory: String = ""
+    @State private var selectedClothing: String = ""
+    @State private var selectedPants: String = ""
 
     @State private var accessories: [Accessory] = [
         Accessory(id: 0, name: "cap", imageURL: "accessoriesCap"),
@@ -58,7 +61,35 @@ struct EditAvatarView: View {
                         Image("fergieHappy")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 250, height: 250)
+                            .frame(width: 260)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Image(selectedAccessory)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200)
+                            .padding(.top, -40)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Image(selectedPants)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 205)
+                            .padding(.top, 185)
+                            .padding(.leading, -7)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Image(selectedClothing)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200)
+                            .padding(.top, 150)
                         Spacer()
                     }
                 }
@@ -249,9 +280,10 @@ struct EditAvatarView_Previews: PreviewProvider {
 
 struct AccessoriesView: View {
     let accessory: Accessory
+    @State private var selectedAccessory: String = ""
     var body: some View {
         Button {
-            print(accessory.name)
+            selectedAccessory = accessory.imageURL
         } label: {
             VStack {
                 ZStack {
@@ -276,9 +308,10 @@ struct AccessoriesView: View {
 
 struct ClothingView: View {
     let clothing: Clothing
+    @State private var selectedClothing: String = ""
     var body: some View {
         Button {
-            print(clothing.name)
+            selectedClothing = clothing.imageURL
         } label: {
             VStack {
                 ZStack {
@@ -303,9 +336,10 @@ struct ClothingView: View {
 
 struct PantsView: View {
     let pants: Pants
+    @State private var selectedPants: String = ""
     var body: some View {
         Button {
-            print(pants.name)
+            selectedPants = pants.imageURL
         } label: {
             VStack {
                 ZStack {
@@ -320,7 +354,6 @@ struct PantsView: View {
                         .resizable()
                         .scaledToFit()
                 }.frame(width: 100, height: 100)
-
                     .background(.white)
                     .cornerRadius(10)
             }

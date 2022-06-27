@@ -76,8 +76,18 @@ struct AvatarView: View {
                         Image("accessoriesSunglasses")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 150, height: 150)
+                            .frame(width: 200)
                             .padding(.top, -40)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Image("pantsRed")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200)
+                            .padding(.top, 185)
+                            .padding(.leading, -8)
                         Spacer()
                     }
                     HStack {
@@ -90,17 +100,8 @@ struct AvatarView: View {
                         Image("clothingTee")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 150)
+                            .frame(width: 200)
                             .padding(.top, 150)
-                        Spacer()
-                    }
-                    HStack {
-                        Spacer()
-                        Image("pantsRed")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100)
-                            .padding(.top, 230)
                         Spacer()
                     }
                 }
