@@ -12,8 +12,8 @@ struct NotificationView: View {
     
     var body: some View {
         VStack (alignment:.center) {
-            AnimatedImage(imageName: "fergieMood", imageFrames: 3)
-            Text("Don't forget about to '\(title ?? "sad")'! Fergie is waiting.")
+            AnimatedImage(imageName: "fergieNotification", imageFrames: 30)
+            Text("Don't forget to \(title ?? "sad")!\nFergie is waiting.")
                 .font(.headline)
                 .multilineTextAlignment(.center)
         }
