@@ -20,11 +20,11 @@ struct FergieMoodView: View {
             }.frame(width:150)
             if(progressValue < 0.33){
                 if(!fergieClicked){
-                    AnimatedImage(imageName: "fergieLempeng", imageFrames: 80).onTapGesture {
+                    AnimatedImage(imageName: "fergieSad", imageFrames: 145).onTapGesture {
                         fergieClicked = true
                     }
                 }else{
-                    Image("fergieLempengClicked").resizable().frame(width: 120, height: 100).onAppear{
+                    Image("fergieSadClicked").resizable().frame(width: 120, height: 100).onAppear{
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             fergieClicked = false
                         }
@@ -59,7 +59,7 @@ struct FergieMoodView: View {
                 Text("Fergie is now happy!")
             }
         }.onAppear{
-            UserDefaults.standard.set(9, forKey: "mood")
+            UserDefaults.standard.set(1, forKey: "mood")
             print(Double(UserDefaults.standard.integer(forKey: "mood"))/10)
         }
     }
