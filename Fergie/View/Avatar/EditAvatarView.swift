@@ -19,6 +19,7 @@ class selected: ObservableObject {
 struct EditAvatarView: View {
     // Selected
     @ObservedObject var selectedStuff: selected = .init()
+    @ObservedObject var userSettings = UserSettings()
 
     // Coin
     @State private var coin: Int = 150
@@ -257,14 +258,14 @@ struct EditAvatarView: View {
                             if accessoriesIsActive {
                                 HStack {
                                     ForEach(accessories) { accessory in
-                                        AccessoriesView(accessory: accessory, selectedStuff: selectedStuff)
+                                        AccessoriesView(accessory: accessory, selectedStuff: selectedStuff, userSettings: userSettings)
                                     }
                                 }
                             }
                             if clothingIsActive {
                                 HStack {
                                     ForEach(clothing) { clothing in
-                                        ClothingView(clothing: clothing, selectedStuff: selectedStuff)
+                                        ClothingView(clothing: clothing, selectedStuff: selectedStuff, userSettings: userSettings)
                                     }
                                 }
                             }
@@ -272,7 +273,7 @@ struct EditAvatarView: View {
                             if pantsIsActive {
                                 HStack {
                                     ForEach(pants) { pants in
-                                        PantsView(pants: pants, selectedStuff: selectedStuff)
+                                        PantsView(pants: pants, selectedStuff: selectedStuff, userSettings: userSettings)
                                     }
                                 }
                             }
@@ -304,6 +305,11 @@ struct EditAvatarView: View {
             .navigationBarHidden(hideNavigationbar)
             .navigationBarBackButtonHidden(true)
         }
+        .onAppear {
+            selectedStuff.selectedAccessoryImage = userSettings.accessory
+            selectedStuff.selectedClothingImage = userSettings.top
+            selectedStuff.selectedPantsImage = userSettings.bottom
+        }
     }
 }
 
@@ -316,10 +322,12 @@ struct EditAvatarView_Previews: PreviewProvider {
 struct AccessoriesView: View {
     let accessory: Accessory
     @ObservedObject var selectedStuff: selected
+    @ObservedObject var userSettings: UserSettings
     var body: some View {
         Button {
             selectedStuff.selectedAccessoryName = accessory.name
             selectedStuff.selectedAccessoryImage = accessory.imageURL
+            userSettings.accessory = accessory.imageURL
         } label: {
             VStack {
                 ZStack {
@@ -345,10 +353,12 @@ struct AccessoriesView: View {
 struct ClothingView: View {
     let clothing: Clothing
     @ObservedObject var selectedStuff: selected
+    @ObservedObject var userSettings: UserSettings
     var body: some View {
         Button {
             selectedStuff.selectedClothingName = clothing.name
             selectedStuff.selectedClothingImage = clothing.imageURL
+            userSettings.top = clothing.imageURL
         } label: {
             VStack {
                 ZStack {
@@ -374,10 +384,12 @@ struct ClothingView: View {
 struct PantsView: View {
     let pants: Pants
     @ObservedObject var selectedStuff: selected
+    @ObservedObject var userSettings: UserSettings
     var body: some View {
         Button {
             selectedStuff.selectedPantsName = pants.name
             selectedStuff.selectedPantsImage = pants.imageURL
+            userSettings.bottom = pants.imageURL
         } label: {
             VStack {
                 ZStack {

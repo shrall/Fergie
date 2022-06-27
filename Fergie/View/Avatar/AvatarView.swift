@@ -8,36 +8,14 @@
 import SwiftUI
 
 struct AvatarView: View {
+    @ObservedObject var userSettings = UserSettings()
+
     @State private var showSheet: Bool = false
     @State private var coin: Int = 150
     @State private var happiness: Double = 5
     @State private var maxValue: Double = 10
-//    @State private var accessoriesIsActive: Bool = true
-//    @State private var clothingIsActive: Bool = false
-//    @State private var pantsIsActive: Bool = false
     @State private var isEditAvatarActive: Bool = false
     @GestureState private var isDetectingPress = false
-
-//    @State private var accessories: [Accessory] = [
-//        Accessory(id: 0, name: "cap", iconURL: "accessoriesCapIcon", imageURL: "accessoriesCap"),
-//        Accessory(id: 1, name: "glasses", iconURL: "accessoriesGlassesIcon", imageURL: "accessoriesGlasses"),
-//        Accessory(id: 2, name: "sun", iconURL: "accessoriesSunIcon", imageURL: "accessoriesSun"),
-//        Accessory(id: 3, name: "sunhat", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunhat"),
-//        Accessory(id: 4, name: "sunglasses", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunglasses")
-//    ]
-//
-//    @State private var clothing: [Clothing] = [
-//        Clothing(id: 0, name: "shirt", iconURL: "clothingShirtIcon", imageURL: "clothingShirt"),
-//        Clothing(id: 1, name: "yellowShirt", iconURL: "clothingYellowShirtIcon", imageURL: "clothingYellowShirt"),
-//        Clothing(id: 2, name: "hoodie", iconURL: "clothingHoodieIcon", imageURL: "clothingHoodie"),
-//        Clothing(id: 3, name: "tee", iconURL: "clothingTeeIcon", imageURL: "clothingTee")
-//    ]
-//    @State private var pants: [Pants] = [
-//        Pants(id: 0, name: "yellow", iconURL: "pantsYellowIcon", imageURL: "pantsYellow"),
-//        Pants(id: 1, name: "red", iconURL: "pantsRedIcon", imageURL: "pantsRed"),
-//        Pants(id: 2, name: "string", iconURL: "pantsRedIcon", imageURL: "pantsString"),
-//        Pants(id: 3, name: "long", iconURL: "pantsRedIcon", imageURL: "pantsLong")
-//    ]
 
     var body: some View {
         NavigationView {
@@ -68,27 +46,48 @@ struct AvatarView: View {
                     }
                     HStack {
                         Spacer()
-                        Image("accessoriesSunglasses")
+                        Image(userSettings.accessory)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 300, height: 300)
                         Spacer()
                     }
-                    HStack {
-                        Spacer()
-                        Image("pantsRed")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300, height: 300)
-                        Spacer()
-                    }
-                    HStack {
-                        Spacer()
-                        Image("clothingTee")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300, height: 300)
-                        Spacer()
+
+                    if userSettings.top == "clothingYellowShirt" || userSettings.top == "clothingTee" {
+                        HStack {
+                            Spacer()
+                            Image(userSettings.top)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                            Spacer()
+                        }
+
+                        HStack {
+                            Spacer()
+                            Image(userSettings.bottom)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                            Spacer()
+                        }
+                    } else {
+                        HStack {
+                            Spacer()
+                            Image(userSettings.bottom)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                            Spacer()
+                        }
+                        HStack {
+                            Spacer()
+                            Image(userSettings.top)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                            Spacer()
+                        }
                     }
                 }
                 .gesture(LongPressGesture(minimumDuration: 0.1).sequenced(before: DragGesture(minimumDistance: 0))
