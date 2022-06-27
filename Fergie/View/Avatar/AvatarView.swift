@@ -317,7 +317,9 @@ struct AvatarView: View {
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear {
+            userSettings.coin = 1500
             coin = userSettings.coin
+            userSettings.mood = 3
             happiness = userSettings.mood
         }
     }

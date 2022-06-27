@@ -24,9 +24,6 @@ struct EditAvatarView: View {
     @ObservedObject var selectedStuff: selected = .init()
     @ObservedObject var userSettings = UserSettings()
 
-    // Coin
-    @State private var coin: Int = 0
-
     // Tabs/Categories
     @State private var accessoriesIsActive: Bool = true
     @State private var clothingIsActive: Bool = false
@@ -44,7 +41,7 @@ struct EditAvatarView: View {
         Accessory(id: 1, name: "glasses", iconURL: "accessoriesGlassesIcon", imageURL: "accessoriesGlasses"),
         Accessory(id: 2, name: "sun", iconURL: "accessoriesSunIcon", imageURL: "accessoriesSun"),
         Accessory(id: 3, name: "sunhat", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunhat"),
-        Accessory(id: 4, name: "sunglasses", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunglasses")
+        Accessory(id: 4, name: "sunglasses", iconURL: "accessoriesSunglassesIcon", imageURL: "accessoriesSunglasses")
     ]
 
     @State private var clothing: [Clothing] = [
@@ -68,7 +65,7 @@ struct EditAvatarView: View {
                     Spacer()
                     HStack {
                         Image("coin")
-                        Text(String(coin)).fontWeight(.semibold)
+                        Text(String(userSettings.coin)).fontWeight(.semibold)
                     }
                 }
                 .padding(20)
@@ -82,18 +79,22 @@ struct EditAvatarView: View {
                             Image("fergieSad")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 300, height: 300)
+                                .frame(width: 260)
                         } else if userSettings.mood <= 6 {
                             Image("fergieNeutral")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 300, height: 300)
+                                .frame(width: 260)
                         } else {
                             Image("fergieHappy")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 300, height: 300)
+                                .frame(width: 260)
                         }
+//                        Image("fergieHappy")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 300, height: 300)
                         Spacer()
                     }
 
@@ -299,13 +300,13 @@ struct EditAvatarView: View {
                             Button {
                                 if accessories.contains(where: { accessory in accessory.imageURL == selectedStuff.selectedBuyItem }) {
                                     userSettings.ownedAccessories.append(selectedStuff.selectedBuyItem)
-                                    userSettings.coin = coin - 200
+                                    userSettings.coin = userSettings.coin - 200
                                 } else if clothing.contains(where: { clothing in clothing.imageURL == selectedStuff.selectedBuyItem }) {
                                     userSettings.ownedTops.append(selectedStuff.selectedBuyItem)
-                                    userSettings.coin = coin - 200
+                                    userSettings.coin = userSettings.coin - 200
                                 } else if pants.contains(where: { pants in pants.imageURL == selectedStuff.selectedBuyItem }) {
                                     userSettings.ownedBottoms.append(selectedStuff.selectedBuyItem)
-                                    userSettings.coin = coin - 200
+                                    userSettings.coin = userSettings.coin - 200
                                 }
 
                             } label: {
@@ -349,8 +350,6 @@ struct EditAvatarView: View {
             selectedStuff.selectedAccessoryImage = userSettings.accessory
             selectedStuff.selectedClothingImage = userSettings.top
             selectedStuff.selectedPantsImage = userSettings.bottom
-//            userSettings.coin = 800
-            coin = userSettings.coin
         }
     }
 }
