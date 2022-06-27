@@ -9,13 +9,19 @@ import SwiftUI
 
 @main
 struct FergieApp: App {
+    let persistenceController = PersistenceController.shared
+    @StateObject var taskViewModel = TaskViewModel()
+    
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
                 ContentView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environmentObject(taskViewModel)
             }
         }
-
-        WKNotificationScene(controller: NotificationController.self, category: "myCategory")
+        #if os(watchOS)
+        WKNotificationScene(controller: NotificationController.self, category: "FergieTest")
+        #endif
     }
 }
