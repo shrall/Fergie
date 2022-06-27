@@ -9,5 +9,5 @@ import Foundation
 
 struct Accessory: Identifiable {
     var id: Int
-    let name, imageURL: String
+    let name, iconURL, imageURL: String
 }

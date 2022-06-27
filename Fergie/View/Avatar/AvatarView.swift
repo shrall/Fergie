@@ -18,33 +18,33 @@ struct AvatarView: View {
     @State private var isEditAvatarActive: Bool = false
     @GestureState private var isDetectingPress = false
 
-    @State private var accessories: [Accessory] = [
-        Accessory(id: 0, name: "cap", imageURL: "accessoriesCap"),
-        Accessory(id: 1, name: "glasses", imageURL: "accessoriesGlasses"),
-        Accessory(id: 2, name: "sun", imageURL: "accessoriesSun"),
-        Accessory(id: 3, name: "sunhat", imageURL: "accessoriesSunhat"),
-        Accessory(id: 4, name: "sunglasses", imageURL: "accessoriesSunglasses")
-    ]
-
-    @State private var clothing: [Clothing] = [
-        Clothing(id: 0, name: "shirt", imageURL: "clothingShirt"),
-        Clothing(id: 1, name: "yellowShirt", imageURL: "clothingYellowShirt"),
-        Clothing(id: 2, name: "hoodie", imageURL: "clothingHoodie"),
-        Clothing(id: 3, name: "tee", imageURL: "clothingTee")
-    ]
-    @State private var pants: [Pants] = [
-        Pants(id: 0, name: "yellow", imageURL: "pantsYellow"),
-        Pants(id: 1, name: "red", imageURL: "pantsRed"),
-        Pants(id: 2, name: "string", imageURL: "pantsString"),
-        Pants(id: 3, name: "long", imageURL: "pantsLong")
-    ]
+//    @State private var accessories: [Accessory] = [
+//        Accessory(id: 0, name: "cap", iconURL: "accessoriesCapIcon", imageURL: "accessoriesCap"),
+//        Accessory(id: 1, name: "glasses", iconURL: "accessoriesGlassesIcon", imageURL: "accessoriesGlasses"),
+//        Accessory(id: 2, name: "sun", iconURL: "accessoriesSunIcon", imageURL: "accessoriesSun"),
+//        Accessory(id: 3, name: "sunhat", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunhat"),
+//        Accessory(id: 4, name: "sunglasses", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunglasses")
+//    ]
+//
+//    @State private var clothing: [Clothing] = [
+//        Clothing(id: 0, name: "shirt", iconURL: "clothingShirtIcon", imageURL: "clothingShirt"),
+//        Clothing(id: 1, name: "yellowShirt", iconURL: "clothingYellowShirtIcon", imageURL: "clothingYellowShirt"),
+//        Clothing(id: 2, name: "hoodie", iconURL: "clothingHoodieIcon", imageURL: "clothingHoodie"),
+//        Clothing(id: 3, name: "tee", iconURL: "clothingTeeIcon", imageURL: "clothingTee")
+//    ]
+//    @State private var pants: [Pants] = [
+//        Pants(id: 0, name: "yellow", iconURL: "pantsYellowIcon", imageURL: "pantsYellow"),
+//        Pants(id: 1, name: "red", iconURL: "pantsRedIcon", imageURL: "pantsRed"),
+//        Pants(id: 2, name: "string", iconURL: "pantsRedIcon", imageURL: "pantsString"),
+//        Pants(id: 3, name: "long", iconURL: "pantsRedIcon", imageURL: "pantsLong")
+//    ]
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
-                    Image("happinessMeter")
+                    Image("happinessIcon")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50)
@@ -68,16 +68,10 @@ struct AvatarView: View {
                     }
                     HStack {
                         Spacer()
-//                        Image("accessoriesSunhat")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 150, height: 150)
-//                            .padding(.top, -190)
                         Image("accessoriesSunglasses")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200)
-                            .padding(.top, -40)
+                            .frame(width: 300, height: 300)
                         Spacer()
                     }
                     HStack {
@@ -85,23 +79,15 @@ struct AvatarView: View {
                         Image("pantsRed")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200)
-                            .padding(.top, 185)
-                            .padding(.leading, -8)
+                            .frame(width: 300, height: 300)
                         Spacer()
                     }
                     HStack {
                         Spacer()
-//                        Image("clothingShirt")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 120)
-//                            .padding(.top, 150)
                         Image("clothingTee")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200)
-                            .padding(.top, 150)
+                            .frame(width: 300, height: 300)
                         Spacer()
                     }
                 }

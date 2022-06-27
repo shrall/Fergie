@@ -7,36 +7,53 @@
 
 import SwiftUI
 
+class selected: ObservableObject {
+    @Published var selectedAccessoryName: String = ""
+    @Published var selectedClothingName: String = ""
+    @Published var selectedPantsName: String = ""
+    @Published var selectedAccessoryImage: String = ""
+    @Published var selectedClothingImage: String = ""
+    @Published var selectedPantsImage: String = ""
+}
+
 struct EditAvatarView: View {
+    // Selected
+    @ObservedObject var selectedStuff: selected = .init()
+
+    // Coin
     @State private var coin: Int = 150
+
+    // Tabs/Categories
     @State private var accessoriesIsActive: Bool = true
     @State private var clothingIsActive: Bool = false
     @State private var pantsIsActive: Bool = false
-    @State private var hideNavigationbar: Bool = true
-    @State private var isAvatarActive: Bool = false
-    @State private var selectedAccessory: String = ""
-    @State private var selectedClothing: String = ""
-    @State private var selectedPants: String = ""
 
+    // Navigation Bar
+    @State private var hideNavigationbar: Bool = true
+
+    // Navigation Link
+    @State private var isAvatarActive: Bool = false
+
+    // Accessories Array
     @State private var accessories: [Accessory] = [
-        Accessory(id: 0, name: "cap", imageURL: "accessoriesCap"),
-        Accessory(id: 1, name: "glasses", imageURL: "accessoriesGlasses"),
-        Accessory(id: 2, name: "sun", imageURL: "accessoriesSun"),
-        Accessory(id: 3, name: "sunhat", imageURL: "accessoriesSunhat"),
-        Accessory(id: 4, name: "sunglasses", imageURL: "accessoriesSunglasses")
+        Accessory(id: 0, name: "cap", iconURL: "accessoriesCapIcon", imageURL: "accessoriesCap"),
+        Accessory(id: 1, name: "glasses", iconURL: "accessoriesGlassesIcon", imageURL: "accessoriesGlasses"),
+        Accessory(id: 2, name: "sun", iconURL: "accessoriesSunIcon", imageURL: "accessoriesSun"),
+        Accessory(id: 3, name: "sunhat", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunhat"),
+        Accessory(id: 4, name: "sunglasses", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunglasses")
     ]
 
     @State private var clothing: [Clothing] = [
-        Clothing(id: 0, name: "shirt", imageURL: "clothingShirt"),
-        Clothing(id: 1, name: "yellowShirt", imageURL: "clothingYellowShirt"),
-        Clothing(id: 2, name: "hoodie", imageURL: "clothingHoodie"),
-        Clothing(id: 3, name: "tee", imageURL: "clothingTee")
+        Clothing(id: 0, name: "shirt", iconURL: "clothingShirtIcon", imageURL: "clothingShirt"),
+        Clothing(id: 1, name: "yellowShirt", iconURL: "clothingYellowShirtIcon", imageURL: "clothingYellowShirt"),
+        Clothing(id: 2, name: "hoodie", iconURL: "clothingHoodieIcon", imageURL: "clothingHoodie"),
+        Clothing(id: 3, name: "tee", iconURL: "clothingTeeIcon", imageURL: "clothingTee")
     ]
     @State private var pants: [Pants] = [
-        Pants(id: 0, name: "yellow", imageURL: "pantsYellow"),
-        Pants(id: 1, name: "red", imageURL: "pantsRed"),
-        Pants(id: 2, name: "string", imageURL: "pantsString"),
-        Pants(id: 3, name: "long", imageURL: "pantsLong")
+        Pants(id: 0, name: "yellow", iconURL: "pantsYellowIcon", imageURL: "pantsYellow"),
+        Pants(id: 1, name: "red", iconURL: "pantsRedIcon", imageURL: "pantsRed"),
+        Pants(id: 2, name: "string", iconURL: "pantsRedIcon", imageURL: "pantsString"),
+        Pants(id: 3, name: "long", iconURL: "pantsRedIcon", imageURL: "pantsLong")
     ]
 
     var body: some View {
@@ -52,10 +69,9 @@ struct EditAvatarView: View {
                 }
                 .padding(20)
                 .padding(.top, -70)
-//                .background(.red)
                 Spacer()
                 ZStack {
-                    // body
+                    // Body
                     HStack {
                         Spacer()
                         Image("fergieHappy")
@@ -64,33 +80,52 @@ struct EditAvatarView: View {
                             .frame(width: 260)
                         Spacer()
                     }
+
+                    // Accessories
                     HStack {
                         Spacer()
-                        Image(selectedAccessory)
+                        Image(selectedStuff.selectedAccessoryImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200)
-                            .padding(.top, -40)
+                            .frame(width: 260)
                         Spacer()
                     }
-                    HStack {
-                        Spacer()
-                        Image(selectedPants)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 205)
-                            .padding(.top, 185)
-                            .padding(.leading, -7)
-                        Spacer()
-                    }
-                    HStack {
-                        Spacer()
-                        Image(selectedClothing)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200)
-                            .padding(.top, 150)
-                        Spacer()
+                    // Clothing and Pants
+                    if selectedStuff.selectedClothingName == "yellowShirt" || selectedStuff.selectedClothingName == "tee" {
+                        HStack {
+                            Spacer()
+                            Image(selectedStuff.selectedClothingImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                            Spacer()
+                        }
+
+                        HStack {
+                            Spacer()
+                            Image(selectedStuff.selectedPantsImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                            Spacer()
+                        }
+                    } else {
+                        HStack {
+                            Spacer()
+                            Image(selectedStuff.selectedPantsImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                            Spacer()
+                        }
+                        HStack {
+                            Spacer()
+                            Image(selectedStuff.selectedClothingImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                            Spacer()
+                        }
                     }
                 }
                 Spacer()
@@ -222,14 +257,14 @@ struct EditAvatarView: View {
                             if accessoriesIsActive {
                                 HStack {
                                     ForEach(accessories) { accessory in
-                                        AccessoriesView(accessory: accessory)
+                                        AccessoriesView(accessory: accessory, selectedStuff: selectedStuff)
                                     }
                                 }
                             }
                             if clothingIsActive {
                                 HStack {
                                     ForEach(clothing) { clothing in
-                                        ClothingView(clothing: clothing)
+                                        ClothingView(clothing: clothing, selectedStuff: selectedStuff)
                                     }
                                 }
                             }
@@ -237,7 +272,7 @@ struct EditAvatarView: View {
                             if pantsIsActive {
                                 HStack {
                                     ForEach(pants) { pants in
-                                        PantsView(pants: pants)
+                                        PantsView(pants: pants, selectedStuff: selectedStuff)
                                     }
                                 }
                             }
@@ -280,16 +315,17 @@ struct EditAvatarView_Previews: PreviewProvider {
 
 struct AccessoriesView: View {
     let accessory: Accessory
-    @State private var selectedAccessory: String = ""
+    @ObservedObject var selectedStuff: selected
     var body: some View {
         Button {
-            selectedAccessory = accessory.imageURL
+            selectedStuff.selectedAccessoryName = accessory.name
+            selectedStuff.selectedAccessoryImage = accessory.imageURL
         } label: {
             VStack {
                 ZStack {
                     HStack {
                         Spacer()
-                        Image(accessory.imageURL)
+                        Image(accessory.iconURL)
                             .resizable()
                             .scaledToFit()
                         Spacer()
@@ -308,16 +344,17 @@ struct AccessoriesView: View {
 
 struct ClothingView: View {
     let clothing: Clothing
-    @State private var selectedClothing: String = ""
+    @ObservedObject var selectedStuff: selected
     var body: some View {
         Button {
-            selectedClothing = clothing.imageURL
+            selectedStuff.selectedClothingName = clothing.name
+            selectedStuff.selectedClothingImage = clothing.imageURL
         } label: {
             VStack {
                 ZStack {
                     HStack {
                         Spacer()
-                        Image(clothing.imageURL)
+                        Image(clothing.iconURL)
                             .resizable()
                             .scaledToFit()
                         Spacer()
@@ -336,16 +373,17 @@ struct ClothingView: View {
 
 struct PantsView: View {
     let pants: Pants
-    @State private var selectedPants: String = ""
+    @ObservedObject var selectedStuff: selected
     var body: some View {
         Button {
-            selectedPants = pants.imageURL
+            selectedStuff.selectedPantsName = pants.name
+            selectedStuff.selectedPantsImage = pants.imageURL
         } label: {
             VStack {
                 ZStack {
                     HStack {
                         Spacer()
-                        Image(pants.imageURL)
+                        Image(pants.iconURL)
                             .resizable()
                             .scaledToFit()
                         Spacer()

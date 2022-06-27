@@ -8,5 +8,5 @@
 import Foundation
 struct Clothing: Identifiable{
     var id: Int
-    let name, imageURL: String
+    let name, iconURL, imageURL: String
 }
