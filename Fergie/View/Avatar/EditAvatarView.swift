@@ -15,7 +15,7 @@ class selected: ObservableObject {
     @Published var selectedClothingImage: String = ""
     @Published var selectedPantsImage: String = ""
     @Published var isOwned: Bool = false
-    @Published var isBuy: Bool = false
+    @Published var isHaveEnoughMoney: Bool = false
     @Published var selectedBuyItem: String = ""
 }
 
@@ -103,7 +103,7 @@ struct EditAvatarView: View {
                     Spacer()
                 }
                 // Clothing and Pants
-                if selectedStuff.selectedClothingName == "yellowShirt" || selectedStuff.selectedClothingName == "tee" {
+                if selectedStuff.selectedClothingImage == "clothingYellowShirt" || selectedStuff.selectedClothingImage == "clothingTee" {
                     HStack {
                         Spacer()
                         Image(selectedStuff.selectedClothingImage)
@@ -291,8 +291,8 @@ struct EditAvatarView: View {
                     }
                     Spacer()
                         .frame(height: 30)
-                    if selectedStuff.isOwned == false && selectedStuff.isBuy == true {
-                        Button {
+                    Button {
+                        if selectedStuff.isOwned == false, selectedStuff.isHaveEnoughMoney == true {
                             if accessories.contains(where: { accessory in accessory.imageURL == selectedStuff.selectedBuyItem }) {
                                 userSettings.ownedAccessories.append(selectedStuff.selectedBuyItem)
                                 userSettings.coin = userSettings.coin - 200
@@ -303,28 +303,17 @@ struct EditAvatarView: View {
                                 userSettings.ownedBottoms.append(selectedStuff.selectedBuyItem)
                                 userSettings.coin = userSettings.coin - 200
                             }
-
-                        } label: {
-                            Text("Buy")
-                                .frame(maxWidth: .infinity, alignment: .center)
                         }
-                        .padding(.horizontal, 25)
-                        .padding(.vertical, 10)
-                        .background(Color.ui.blue)
-                        .foregroundColor(.white)
-                        .clipShape(Capsule())
 
-                    } else {
-                        Button {} label: {
-                            Text("Buy")
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        }
-                        .padding(.horizontal, 25)
-                        .padding(.vertical, 10)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .clipShape(Capsule())
+                    } label: {
+                        Text("Buy")
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
+                    .padding(.horizontal, 25)
+                    .padding(.vertical, 10)
+                    .background((selectedStuff.isOwned == false && selectedStuff.isHaveEnoughMoney == false) || selectedStuff.isOwned == true ? .gray : Color.ui.blue)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
 
                 }.padding(20)
             }
@@ -363,10 +352,12 @@ struct AccessoriesView: View {
             print(userSettings.ownedAccessories)
             if userSettings.ownedAccessories.contains(accessory.imageURL) {
                 selectedStuff.isOwned = true
+                selectedStuff.isHaveEnoughMoney = false
                 userSettings.accessory = accessory.imageURL
             } else {
                 if userSettings.coin >= 200 {
-                    selectedStuff.isBuy = true
+                    selectedStuff.isHaveEnoughMoney = true
+                    selectedStuff.isOwned = false
                     selectedStuff.selectedBuyItem = accessory.imageURL
                 }
             }
@@ -407,10 +398,12 @@ struct ClothingView: View {
         Button {
             if userSettings.ownedTops.contains(clothing.imageURL) {
                 selectedStuff.isOwned = true
+                selectedStuff.isHaveEnoughMoney = false
                 userSettings.top = clothing.imageURL
             } else {
                 if userSettings.coin >= 200 {
-                    selectedStuff.isBuy = true
+                    selectedStuff.isHaveEnoughMoney = true
+                    selectedStuff.isOwned = false
                     selectedStuff.selectedBuyItem = clothing.imageURL
                 }
             }
@@ -451,10 +444,12 @@ struct PantsView: View {
         Button {
             if userSettings.ownedBottoms.contains(pants.imageURL) {
                 selectedStuff.isOwned = true
+                selectedStuff.isHaveEnoughMoney = false
                 userSettings.bottom = pants.imageURL
             } else {
                 if userSettings.coin >= 200 {
-                    selectedStuff.isBuy = true
+                    selectedStuff.isHaveEnoughMoney = true
+                    selectedStuff.isOwned = false
                     selectedStuff.selectedBuyItem = pants.imageURL
                 }
             }
