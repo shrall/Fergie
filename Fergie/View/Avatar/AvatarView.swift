@@ -10,11 +10,20 @@ import SwiftUI
 struct AvatarView: View {
     @ObservedObject var userSettings = UserSettings()
 
+    // Half Sheet Modal
     @State private var showSheet: Bool = false
+
+    // Coin
     @State private var coin: Int = 0
+
+    // Happiness Meter
     @State private var happiness: Double = 6
     @State private var maxValue: Double = 10
+
+    // Navigation Link
     @State private var isEditAvatarActive: Bool = false
+
+    // Gesture Detector
     @GestureState private var isDetectingPress = false
 
     var body: some View {
@@ -35,7 +44,7 @@ struct AvatarView: View {
                 }
                 Spacer()
                 ZStack {
-                    // body
+                    // Body
                     HStack {
                         Spacer()
                         if happiness >= 0 && happiness <= 3 {
@@ -54,12 +63,10 @@ struct AvatarView: View {
                                 .scaledToFit()
                                 .frame(width: 300, height: 300)
                         }
-//                        Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 300, height: 300)
                         Spacer()
                     }
+
+                    // Accessory
                     HStack {
                         Spacer()
                         Image(userSettings.accessory)
@@ -69,6 +76,7 @@ struct AvatarView: View {
                         Spacer()
                     }
 
+                    // Clothing and Pants
                     if userSettings.top == "clothingYellowShirt" || userSettings.top == "clothingTee" {
                         HStack {
                             Spacer()
@@ -131,6 +139,7 @@ struct AvatarView: View {
                 .foregroundColor(.white)
                 .clipShape(Capsule())
                 .frame(maxWidth: .infinity, alignment: .center)
+                // Half Sheet Modal
 //                .halfSheet(showSheet: $showSheet) {
 //                    // Half Sheet View
 //                    ZStack {
@@ -314,12 +323,13 @@ struct AvatarView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         }
         .navigationBarTitle("")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear {
             userSettings.coin = 1500
             coin = userSettings.coin
-            userSettings.mood = 3
+            userSettings.mood = 9
             happiness = userSettings.mood
         }
     }

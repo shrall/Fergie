@@ -29,9 +29,6 @@ struct EditAvatarView: View {
     @State private var clothingIsActive: Bool = false
     @State private var pantsIsActive: Bool = false
 
-    // Navigation Bar
-    @State private var hideNavigationbar: Bool = true
-
     // Navigation Link
     @State private var isAvatarActive: Bool = false
 
@@ -58,294 +55,291 @@ struct EditAvatarView: View {
     ]
 
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text("Fergie").font(.title).fontWeight(.bold)
-                    Spacer()
-                    HStack {
-                        Image("coin")
-                        Text(String(userSettings.coin)).fontWeight(.semibold)
-                    }
-                }
-                .padding(20)
-                .padding(.top, -70)
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Text("Fergie").font(.title).fontWeight(.bold)
                 Spacer()
-                ZStack {
-                    // Body
-                    HStack {
-                        Spacer()
-                        if userSettings.mood <= 3 {
-                            Image("fergieSad")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 260)
-                        } else if userSettings.mood <= 6 {
-                            Image("fergieNeutral")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 260)
-                        } else {
-                            Image("fergieHappy")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 260)
-                        }
+                HStack {
+                    Image("coin")
+                    Text(String(userSettings.coin)).fontWeight(.semibold)
+                }
+            }
+            .padding(20)
+            Spacer()
+            ZStack {
+                // Body
+                HStack {
+                    Spacer()
+                    if userSettings.mood <= 3 {
+                        Image("fergieSad")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 260)
+                    } else if userSettings.mood <= 6 {
+                        Image("fergieNeutral")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 260)
+                    } else {
+                        Image("fergieHappy")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 260)
+                    }
 //                        Image("fergieHappy")
 //                            .resizable()
 //                            .scaledToFit()
 //                            .frame(width: 300, height: 300)
-                        Spacer()
-                    }
+                    Spacer()
+                }
 
-                    // Accessories
+                // Accessories
+                HStack {
+                    Spacer()
+                    Image(selectedStuff.selectedAccessoryImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 260)
+                    Spacer()
+                }
+                // Clothing and Pants
+                if selectedStuff.selectedClothingName == "yellowShirt" || selectedStuff.selectedClothingName == "tee" {
                     HStack {
                         Spacer()
-                        Image(selectedStuff.selectedAccessoryImage)
+                        Image(selectedStuff.selectedClothingImage)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 260)
                         Spacer()
                     }
-                    // Clothing and Pants
-                    if selectedStuff.selectedClothingName == "yellowShirt" || selectedStuff.selectedClothingName == "tee" {
-                        HStack {
-                            Spacer()
-                            Image(selectedStuff.selectedClothingImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 260)
-                            Spacer()
-                        }
 
-                        HStack {
-                            Spacer()
-                            Image(selectedStuff.selectedPantsImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 260)
-                            Spacer()
-                        }
-                    } else {
-                        HStack {
-                            Spacer()
-                            Image(selectedStuff.selectedPantsImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 260)
-                            Spacer()
-                        }
-                        HStack {
-                            Spacer()
-                            Image(selectedStuff.selectedClothingImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 260)
-                            Spacer()
-                        }
+                    HStack {
+                        Spacer()
+                        Image(selectedStuff.selectedPantsImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 260)
+                        Spacer()
+                    }
+                } else {
+                    HStack {
+                        Spacer()
+                        Image(selectedStuff.selectedPantsImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 260)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Image(selectedStuff.selectedClothingImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 260)
+                        Spacer()
                     }
                 }
-                Spacer()
-                ZStack {
-                    Color.ui.gray
-                        .ignoresSafeArea()
-                    VStack {
-                        HStack {
-                            Text("Customize").font(.title).fontWeight(.bold)
-                            Spacer()
-                            NavigationLink(destination: AvatarView(), isActive: $isAvatarActive) {
-                                EmptyView()
-                            }
-
-                            Button {
-                                isAvatarActive = true
-                            } label: {
-                                Image(systemName: "checkmark")
-                            }
-                            .padding(10)
-                            .background(Color.ui.lightRed)
-                            .foregroundColor(Color.ui.red)
-                            .clipShape(Circle())
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                        .padding(.top, 20)
-
-                        HStack {
-                            if accessoriesIsActive {
-                                Button {
-                                    print("Accessories")
-                                    accessoriesIsActive = true
-                                    clothingIsActive = false
-                                    pantsIsActive = false
-                                } label: {
-                                    Text("Accessories").font(.caption)
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(Color.ui.blue)
-                                .foregroundColor(.white)
-                                .clipShape(Capsule())
-                                .frame(maxWidth: .infinity)
-                            } else {
-                                Button {
-                                    print("Accessories")
-                                    accessoriesIsActive = true
-                                    clothingIsActive = false
-                                    pantsIsActive = false
-                                } label: {
-                                    Text("Accessories").font(.caption)
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(.clear)
-                                .foregroundColor(Color.ui.blue)
-                                .clipShape(Capsule())
-                                .frame(maxWidth: .infinity)
-                            }
-                            if clothingIsActive {
-                                Button {
-                                    print("Clothing")
-                                    accessoriesIsActive = false
-                                    clothingIsActive = true
-                                    pantsIsActive = false
-                                } label: {
-                                    Text("Clothing").font(.caption)
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(Color.ui.blue)
-                                .foregroundColor(.white)
-                                .clipShape(Capsule())
-                                .frame(maxWidth: .infinity)
-                            } else {
-                                Button {
-                                    print("Clothing")
-                                    accessoriesIsActive = false
-                                    clothingIsActive = true
-                                    pantsIsActive = false
-                                    print(clothingIsActive)
-                                } label: {
-                                    Text("Clothing").font(.caption)
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(.clear)
-                                .foregroundColor(Color.ui.blue)
-                                .clipShape(Capsule())
-                                .frame(maxWidth: .infinity)
-                            }
-                            if pantsIsActive {
-                                Button {
-                                    print("Pants")
-                                    accessoriesIsActive = false
-                                    clothingIsActive = false
-                                    pantsIsActive = true
-
-                                } label: {
-                                    Text("Pants").font(.caption)
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(Color.ui.blue)
-                                .foregroundColor(.white)
-                                .clipShape(Capsule())
-                                .frame(maxWidth: .infinity)
-                            } else {
-                                Button {
-                                    print("Pants")
-                                    accessoriesIsActive = false
-                                    clothingIsActive = false
-                                    pantsIsActive = true
-                                    print(pantsIsActive)
-                                } label: {
-                                    Text("Pants").font(.caption)
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(.clear)
-                                .foregroundColor(Color.ui.blue)
-                                .clipShape(Capsule())
-                                .frame(maxWidth: .infinity)
-                            }
-                        }
+            }
+            Spacer()
+            ZStack {
+                Color.ui.gray
+                    .ignoresSafeArea()
+                VStack {
+                    HStack {
+                        Text("Customize").font(.title).fontWeight(.bold)
                         Spacer()
-                            .frame(height: 20)
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            if accessoriesIsActive {
-                                HStack {
-                                    ForEach(accessories) { accessory in
-                                        AccessoriesView(accessory: accessory, selectedStuff: selectedStuff, userSettings: userSettings)
-                                    }
-                                }
-                            }
-                            if clothingIsActive {
-                                HStack {
-                                    ForEach(clothing) { clothing in
-                                        ClothingView(clothing: clothing, selectedStuff: selectedStuff, userSettings: userSettings)
-                                    }
-                                }
-                            }
-
-                            if pantsIsActive {
-                                HStack {
-                                    ForEach(pants) { pants in
-                                        PantsView(pants: pants, selectedStuff: selectedStuff, userSettings: userSettings)
-                                    }
-                                }
-                            }
+                        NavigationLink(destination: AvatarView(), isActive: $isAvatarActive) {
+                            EmptyView()
                         }
-                        Spacer()
-                            .frame(height: 30)
-                        if selectedStuff.isOwned == false && selectedStuff.isBuy == true {
-                            Button {
-                                if accessories.contains(where: { accessory in accessory.imageURL == selectedStuff.selectedBuyItem }) {
-                                    userSettings.ownedAccessories.append(selectedStuff.selectedBuyItem)
-                                    userSettings.coin = userSettings.coin - 200
-                                } else if clothing.contains(where: { clothing in clothing.imageURL == selectedStuff.selectedBuyItem }) {
-                                    userSettings.ownedTops.append(selectedStuff.selectedBuyItem)
-                                    userSettings.coin = userSettings.coin - 200
-                                } else if pants.contains(where: { pants in pants.imageURL == selectedStuff.selectedBuyItem }) {
-                                    userSettings.ownedBottoms.append(selectedStuff.selectedBuyItem)
-                                    userSettings.coin = userSettings.coin - 200
-                                }
 
+                        Button {
+                            isAvatarActive = true
+                        } label: {
+                            Image(systemName: "checkmark")
+                        }
+                        .padding(10)
+                        .background(Color.ui.lightRed)
+                        .foregroundColor(Color.ui.red)
+                        .clipShape(Circle())
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .padding(.top, 20)
+
+                    HStack {
+                        if accessoriesIsActive {
+                            Button {
+                                print("Accessories")
+                                accessoriesIsActive = true
+                                clothingIsActive = false
+                                pantsIsActive = false
                             } label: {
-                                Text("Buy")
-                                    .frame(maxWidth: .infinity, alignment: .center)
+                                Text("Accessories").font(.caption)
                             }
-                            .padding(.horizontal, 25)
+                            .padding(.horizontal, 20)
                             .padding(.vertical, 10)
                             .background(Color.ui.blue)
                             .foregroundColor(.white)
                             .clipShape(Capsule())
-
+                            .frame(maxWidth: .infinity)
                         } else {
-                            Button {} label: {
-                                Text("Buy")
-                                    .frame(maxWidth: .infinity, alignment: .center)
+                            Button {
+                                print("Accessories")
+                                accessoriesIsActive = true
+                                clothingIsActive = false
+                                pantsIsActive = false
+                            } label: {
+                                Text("Accessories").font(.caption)
                             }
-                            .padding(.horizontal, 25)
+                            .padding(.horizontal, 20)
                             .padding(.vertical, 10)
-                            .background(.gray)
+                            .background(.clear)
+                            .foregroundColor(Color.ui.blue)
+                            .clipShape(Capsule())
+                            .frame(maxWidth: .infinity)
+                        }
+                        if clothingIsActive {
+                            Button {
+                                print("Clothing")
+                                accessoriesIsActive = false
+                                clothingIsActive = true
+                                pantsIsActive = false
+                            } label: {
+                                Text("Clothing").font(.caption)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(Color.ui.blue)
                             .foregroundColor(.white)
                             .clipShape(Capsule())
+                            .frame(maxWidth: .infinity)
+                        } else {
+                            Button {
+                                print("Clothing")
+                                accessoriesIsActive = false
+                                clothingIsActive = true
+                                pantsIsActive = false
+                                print(clothingIsActive)
+                            } label: {
+                                Text("Clothing").font(.caption)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(.clear)
+                            .foregroundColor(Color.ui.blue)
+                            .clipShape(Capsule())
+                            .frame(maxWidth: .infinity)
+                        }
+                        if pantsIsActive {
+                            Button {
+                                print("Pants")
+                                accessoriesIsActive = false
+                                clothingIsActive = false
+                                pantsIsActive = true
+
+                            } label: {
+                                Text("Pants").font(.caption)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(Color.ui.blue)
+                            .foregroundColor(.white)
+                            .clipShape(Capsule())
+                            .frame(maxWidth: .infinity)
+                        } else {
+                            Button {
+                                print("Pants")
+                                accessoriesIsActive = false
+                                clothingIsActive = false
+                                pantsIsActive = true
+                                print(pantsIsActive)
+                            } label: {
+                                Text("Pants").font(.caption)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(.clear)
+                            .foregroundColor(Color.ui.blue)
+                            .clipShape(Capsule())
+                            .frame(maxWidth: .infinity)
+                        }
+                    }
+                    Spacer()
+                        .frame(height: 20)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        if accessoriesIsActive {
+                            HStack {
+                                ForEach(accessories) { accessory in
+                                    AccessoriesView(accessory: accessory, selectedStuff: selectedStuff, userSettings: userSettings)
+                                }
+                            }
+                        }
+                        if clothingIsActive {
+                            HStack {
+                                ForEach(clothing) { clothing in
+                                    ClothingView(clothing: clothing, selectedStuff: selectedStuff, userSettings: userSettings)
+                                }
+                            }
                         }
 
-                    }.padding(20)
-                }
-                .frame(width: .infinity, height: 300)
-                .padding(.bottom, 20)
-                .cornerRadius(20)
-                .padding(.bottom, -30)
+                        if pantsIsActive {
+                            HStack {
+                                ForEach(pants) { pants in
+                                    PantsView(pants: pants, selectedStuff: selectedStuff, userSettings: userSettings)
+                                }
+                            }
+                        }
+                    }
+                    Spacer()
+                        .frame(height: 30)
+                    if selectedStuff.isOwned == false && selectedStuff.isBuy == true {
+                        Button {
+                            if accessories.contains(where: { accessory in accessory.imageURL == selectedStuff.selectedBuyItem }) {
+                                userSettings.ownedAccessories.append(selectedStuff.selectedBuyItem)
+                                userSettings.coin = userSettings.coin - 200
+                            } else if clothing.contains(where: { clothing in clothing.imageURL == selectedStuff.selectedBuyItem }) {
+                                userSettings.ownedTops.append(selectedStuff.selectedBuyItem)
+                                userSettings.coin = userSettings.coin - 200
+                            } else if pants.contains(where: { pants in pants.imageURL == selectedStuff.selectedBuyItem }) {
+                                userSettings.ownedBottoms.append(selectedStuff.selectedBuyItem)
+                                userSettings.coin = userSettings.coin - 200
+                            }
+
+                        } label: {
+                            Text("Buy")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .padding(.horizontal, 25)
+                        .padding(.vertical, 10)
+                        .background(Color.ui.blue)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+
+                    } else {
+                        Button {} label: {
+                            Text("Buy")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .padding(.horizontal, 25)
+                        .padding(.vertical, 10)
+                        .background(.gray)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                    }
+
+                }.padding(20)
             }
-            .frame(maxWidth: .infinity, // Full Screen Width
-                   maxHeight: .infinity, // Full Screen Height
-                   alignment: .topLeading) // Align To top
-            .navigationBarTitle("")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(hideNavigationbar)
-            .navigationBarBackButtonHidden(true)
+            .frame(width: .infinity, height: 300)
+            .padding(.bottom, 20)
+            .cornerRadius(20)
+            .padding(.bottom, -30)
         }
+        .frame(maxWidth: .infinity, // Full Screen Width
+               maxHeight: .infinity, // Full Screen Height
+               alignment: .topLeading) // Align To top
+        .navigationBarTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             selectedStuff.selectedAccessoryImage = userSettings.accessory
             selectedStuff.selectedClothingImage = userSettings.top
