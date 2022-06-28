@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $tabSelection) {
             NavigationView{
-                TodayTaskListView().navigationBarTitleDisplayMode(.inline).navigationTitle(Text("Task"))
+                TodayTaskListView().navigationBarTitleDisplayMode(.inline).navigationTitle(Text("Today"))
             }
             .tag(1)
             NavigationView{
