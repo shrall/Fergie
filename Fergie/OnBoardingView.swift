@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @Binding var isLinkActive:Bool
+    @Binding var isLinkActive: Bool
     var body: some View {
         NavigationView {
             ZStack {
                 Color.ui.gray
                     .ignoresSafeArea()
-                
+
                 VStack {
                     HStack {
                         Spacer()
@@ -32,11 +32,17 @@ struct OnboardingView: View {
                     Text("Let's cheer you on doing your daily tasks!")
                     Spacer()
                         .frame(height: 70)
-                    
+
                     Button(action: {
-                        self.isLinkActive = true
+                        withAnimation {
+                            self.isLinkActive = true
+                        }
                     }) {
-                        Text("Get Started")
+                        HStack {
+                            Spacer()
+                            Text("Get Started")
+                            Spacer()
+                        }
                     }
                     .padding(.horizontal, 25)
                     .padding(.vertical, 10)
@@ -45,25 +51,28 @@ struct OnboardingView: View {
                     .clipShape(Capsule())
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
+                .padding(20)
             }
         }
     }
 }
 
-//struct OnboardingView_Previews: PreviewProvider {
+// struct OnboardingView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        OnboardingView(isLinkActive: false)
 //    }
-//}
+// }
 
 extension Color {
     static let ui = Color.UI()
-    
+
     struct UI {
         let gray = Color("GrayColor")
         let yellow = Color("PrimaryColor")
         let blue = Color("AccentColor")
         let red = Color("RedColor")
         let lightRed = Color("LightRedColor")
+        let white = Color("WhiteColor")
+        let darkGray = Color("DarkGrayColor")
     }
 }

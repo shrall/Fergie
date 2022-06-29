@@ -37,8 +37,8 @@ struct AvatarView: View {
                 ProgressBar(value: $happiness.wrappedValue,
                             maxValue: self.maxValue,
                             foregroundColor: Color.ui.yellow)
-                .frame(width: 200, height: 20)
-                .padding(10)
+                    .frame(width: 200, height: 20)
+                    .padding(10)
                 Spacer()
             }
             Spacer()

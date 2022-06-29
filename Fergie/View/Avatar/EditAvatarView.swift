@@ -295,12 +295,15 @@ struct EditAvatarView: View {
                         if selectedStuff.isOwned == false, selectedStuff.isHaveEnoughMoney == true {
                             if accessories.contains(where: { accessory in accessory.imageURL == selectedStuff.selectedBuyItem }) {
                                 userSettings.ownedAccessories.append(selectedStuff.selectedBuyItem)
+                                userSettings.accessory = selectedStuff.selectedBuyItem
                                 userSettings.coin = userSettings.coin - 200
                             } else if clothing.contains(where: { clothing in clothing.imageURL == selectedStuff.selectedBuyItem }) {
                                 userSettings.ownedTops.append(selectedStuff.selectedBuyItem)
+                                userSettings.top = selectedStuff.selectedBuyItem
                                 userSettings.coin = userSettings.coin - 200
                             } else if pants.contains(where: { pants in pants.imageURL == selectedStuff.selectedBuyItem }) {
                                 userSettings.ownedBottoms.append(selectedStuff.selectedBuyItem)
+                                userSettings.bottom = selectedStuff.selectedBuyItem
                                 userSettings.coin = userSettings.coin - 200
                             }
                         }
@@ -311,8 +314,8 @@ struct EditAvatarView: View {
                     }
                     .padding(.horizontal, 25)
                     .padding(.vertical, 10)
-                    .background((selectedStuff.isOwned == false && selectedStuff.isHaveEnoughMoney == false) || selectedStuff.isOwned == true ? .gray : Color.ui.blue)
-                    .foregroundColor(.white)
+                    .background((selectedStuff.isOwned == false && selectedStuff.isHaveEnoughMoney == false) || selectedStuff.isOwned == true ? Color.ui.darkGray : Color.ui.blue)
+                    .foregroundColor((selectedStuff.isOwned == false && selectedStuff.isHaveEnoughMoney == false) || selectedStuff.isOwned == true ? Color.ui.white : .white)
                     .clipShape(Capsule())
 
                 }.padding(20)
@@ -383,7 +386,7 @@ struct AccessoriesView: View {
                     }
                 }.frame(width: 100, height: 100)
 
-                    .background(.white)
+                    .background(Color.ui.white)
                     .cornerRadius(10)
             }
         }
@@ -429,7 +432,7 @@ struct ClothingView: View {
                     }
                 }.frame(width: 100, height: 100)
 
-                    .background(.white)
+                    .background(Color.ui.white)
                     .cornerRadius(10)
             }
         }
@@ -475,7 +478,7 @@ struct PantsView: View {
                     }
 
                 }.frame(width: 100, height: 100)
-                    .background(.white)
+                    .background(Color.ui.white)
                     .cornerRadius(10)
             }
         }

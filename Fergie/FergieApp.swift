@@ -15,11 +15,11 @@ struct FergieApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if(isLinkActive){
+            if isLinkActive {
                 TaskView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environmentObject(taskViewModel)
-            }else{
+            } else {
                 OnboardingView(isLinkActive: $isLinkActive)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environmentObject(taskViewModel)
