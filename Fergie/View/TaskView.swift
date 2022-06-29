@@ -56,8 +56,8 @@ struct TaskView: View {
                             }
                         }.listStyle(InsetListStyle())
                     } else{
-                        ScrollView{
-                            EmptyTaskListCell(isPresented: $isPresented)
+                        List{
+                            EmptyTaskListCell(isPresented: $isPresented).listRowSeparator(.hidden)
                             VStack(alignment: .center) {
                                 Image("FergieCoins").resizable()
                                     .scaledToFit().frame(maxWidth: UIScreen.main.bounds.width * 0.75).padding()
@@ -68,7 +68,7 @@ struct TaskView: View {
                                 }.padding().padding(.leading, 50).padding(.trailing,50)
                                     .background(Color("AccentColor")).cornerRadius(30)
                                 
-                            }.padding(.top, UIScreen.main.bounds.height * 0.05)
+                            }.padding(.top, UIScreen.main.bounds.height * 0.05).listRowSeparator(.hidden)
                         }
                     }
                     
