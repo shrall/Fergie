@@ -20,6 +20,7 @@ struct TaskView: View {
     
     @State private var todayOrUpcoming = 0
     @State private var isPresented = false
+    @State private var isShowAvatarActive = false
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.accentColor)
@@ -30,6 +31,9 @@ struct TaskView: View {
     var body: some View {
         NavigationView{
             VStack{
+                NavigationLink(destination: AvatarView(), isActive: $isShowAvatarActive) {
+                    EmptyView()
+                }
                 Picker("", selection: $todayOrUpcoming) {
                     Text("Today").tag(0)
                     Text("Upcoming").tag(1)
@@ -63,7 +67,7 @@ struct TaskView: View {
                                     Text("Add New Task").foregroundColor(.white)
                                 }.padding().padding(.leading, 50).padding(.trailing,50)
                                     .background(Color("AccentColor")).cornerRadius(30)
-
+                                
                             }.padding(.top, UIScreen.main.bounds.height * 0.05)
                         }
                     }
@@ -91,7 +95,7 @@ struct TaskView: View {
                                     Text("Add New Task").foregroundColor(.white)
                                 }.padding().padding(.leading, 50).padding(.trailing,50)
                                     .background(Color("AccentColor")).cornerRadius(30)
-
+                                
                             }.padding(.top, UIScreen.main.bounds.height * 0.05)
                         }
                     }
@@ -112,15 +116,12 @@ struct TaskView: View {
                     }
                 }
                 .toolbar{
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        HStack{
-                            Button{
-                                //action to mascot view
-                            }label: {
-                                VStack{
-                                    Image("FergieHappyButton").padding(.top, UIScreen.main.bounds.height * 0.08)
-                                }
-                            }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button{
+                            isShowAvatarActive = true
+                            print("dor")
+                        }label: {
+                            Image("FergieHappyButton").padding(.top, UIScreen.main.bounds.height * 0.08)
                         }
                     }
                 }
@@ -138,7 +139,7 @@ extension Date {
     var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)
     }
-
+    
     var endOfDay: Date {
         var components = DateComponents()
         components.day = 1
