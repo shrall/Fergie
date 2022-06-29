@@ -20,6 +20,8 @@ class selected: ObservableObject {
 }
 
 struct EditAvatarView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     // Selected
     @ObservedObject var selectedStuff: selected = .init()
     @ObservedObject var userSettings = UserSettings()
@@ -154,6 +156,7 @@ struct EditAvatarView: View {
 
                         Button {
                             isAvatarActive = true
+//                            presentationMode.wrappedValue.dismiss()
                         } label: {
                             Image(systemName: "checkmark")
                         }
@@ -328,10 +331,10 @@ struct EditAvatarView: View {
         .frame(maxWidth: .infinity, // Full Screen Width
                maxHeight: .infinity, // Full Screen Height
                alignment: .topLeading) // Align To top
-        .navigationBarTitle("")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+//        .navigationBarTitle("")
+//        .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarHidden(true)
+//        .navigationBarBackButtonHidden(true)
         .onAppear {
             selectedStuff.selectedAccessoryImage = userSettings.accessory
             selectedStuff.selectedClothingImage = userSettings.top
