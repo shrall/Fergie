@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct NotificationView: View {
+    var title: String?
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack (alignment:.center) {
+            AnimatedImage(imageName: "fergieNotification", imageFrames: 30)
+            Text("Don't forget to \(title ?? "sad")!\nFergie is waiting.")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+        }
     }
 }
 
 struct NotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationView()
+        NotificationView(title: "Beli Sayur")
     }
 }

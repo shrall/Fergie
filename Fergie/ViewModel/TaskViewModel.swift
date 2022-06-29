@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import UserNotifications
 
 class TaskViewModel: ObservableObject {
     @Published var date = Date()
@@ -49,6 +50,12 @@ class TaskViewModel: ObservableObject {
     func checkedDone(context:NSManagedObjectContext, id:UUID){
         let task = getTask(context: context, id: id)
         task?.isDone.toggle()
+    }
+    func finishTask(context:NSManagedObjectContext, id:UUID){
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers:[id.uuidString])
+        let task = getTask(context: context, id: id)!
+        task.updatedAt = Date()
+        task.isDone = !task.isDone
         save(context: context)
     }
     

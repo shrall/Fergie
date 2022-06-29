@@ -21,4 +21,13 @@ public extension Date {
     func monthSymbol(using calendar: Calendar = .current) -> String {
         calendar.monthSymbols[calendar.component(.month, from: self)-1]
     }
+    
+    func dateFormatting() -> String {
+            let formatterDate = DateFormatter()
+            formatterDate.dateFormat = "HH:mm E, d MMM"
+            if let str = formatterDate.string(for: self) {
+                return str
+            }
+        return ""
+    }
 }
