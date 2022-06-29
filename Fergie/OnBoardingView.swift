@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @Binding var isLinkActive: Bool
     @ObservedObject var userSettings = UserSettings()
-
+    @Binding var isLinkActive: Bool
     var body: some View {
         NavigationView {
             ZStack {
@@ -36,10 +35,16 @@ struct OnboardingView: View {
                         .frame(height: 70)
 
                     Button(action: {
-                        self.isLinkActive = true
-                        userSettings.isOnboardingShown = true
+                        withAnimation {
+                            self.isLinkActive = true
+                            userSettings.isOnboardingShown = true
+                        }
                     }) {
-                        Text("Get Started")
+                        HStack {
+                            Spacer()
+                            Text("Get Started")
+                            Spacer()
+                        }
                     }
                     .padding(.horizontal, 25)
                     .padding(.vertical, 10)
@@ -48,6 +53,7 @@ struct OnboardingView: View {
                     .clipShape(Capsule())
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
+                .padding(20)
             }
         }
     }
@@ -68,5 +74,7 @@ extension Color {
         let blue = Color("AccentColor")
         let red = Color("RedColor")
         let lightRed = Color("LightRedColor")
+        let white = Color("WhiteColor")
+        let darkGray = Color("DarkGrayColor")
     }
 }
