@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AvatarView: View {
+    @State private var isPresented = false
+    
     @ObservedObject var userSettings = UserSettings()
     
     // Half Sheet Modal
@@ -27,7 +29,16 @@ struct AvatarView: View {
     @GestureState private var isDetectingPress = false
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Text("Fergie").font(.title).fontWeight(.bold)
+                Spacer()
+                HStack {
+                    Image("coin")
+                    Text(String(userSettings.coin)).fontWeight(.semibold)
+                }
+            }
+            Spacer()
             HStack {
                 Spacer()
                 Image("happinessIcon")
@@ -37,8 +48,8 @@ struct AvatarView: View {
                 ProgressBar(value: $happiness.wrappedValue,
                             maxValue: self.maxValue,
                             foregroundColor: Color.ui.yellow)
-                .frame(width: 200, height: 20)
-                .padding(10)
+                    .frame(width: 200, height: 20)
+                    .padding(10)
                 Spacer()
             }
             Spacer()
@@ -131,6 +142,7 @@ struct AvatarView: View {
             Button("Customize Your Fergie!") {
                 //                    showSheet.toggle()
                 isEditAvatarActive = true
+//                isPresented.toggle()
             }
             .padding(.horizontal, 25)
             .padding(.vertical, 10)
@@ -307,30 +319,31 @@ struct AvatarView: View {
             //                }
             Spacer()
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Text("Fergie").font(.title).fontWeight(.bold)
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                HStack {
-                    Image("coin")
-                    Text(String(coin)).fontWeight(.semibold)
-                }
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Text("Fergie").font(.title).fontWeight(.bold)
+//            }
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                HStack {
+//                    Image("coin")
+//                    Text(String(coin)).fontWeight(.semibold)
+//                }
+//            }
+//        }
         .padding(20)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         
-//        .navigationBarTitle("")
-//        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle("")
+        .navigationBarTitleDisplayMode(.inline)
 //        .navigationBarHidden(true)
-//        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(false)
         .onAppear {
             userSettings.coin = 1500
             coin = userSettings.coin
-            userSettings.mood = 5
+            userSettings.mood = 10
             happiness = userSettings.mood
         }
+        .fullScreenCover(isPresented: $isPresented, content: EditAvatarView.init)
     }
 }
 
