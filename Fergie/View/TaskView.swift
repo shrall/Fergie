@@ -41,7 +41,7 @@ struct TaskView: View {
                 if(todayOrUpcoming == 0){
                     if todayTaskListCount.count > 0{
                         List{
-                            Section(header: Text("To Do List").font(Font.title2.weight(.bold)).foregroundColor(.black)){
+                            Section(header: Text("To Do List").font(Font.system(size: 18).weight(.bold)).foregroundColor(Color("SectionColor"))){
                                 ForEach(fetchedTaskList.filter{$0.isDone == false && $0.date ?? Date() >= Date().startOfDay && $0.date ?? Date() <= Date().endOfDay}){ item in
                                     TaskListCell(taskListItem: item)
                                 }
@@ -49,7 +49,7 @@ struct TaskView: View {
                                 EmptyTaskListCell(isPresented: $isPresented)
                             }
                             
-                            Section(header: Text("Done").font(Font.title2.weight(.bold)).foregroundColor(.black)){
+                            Section(header: Text("Done").font(Font.system(size: 18).weight(.bold)).foregroundColor(Color("SectionColor"))){
                                 ForEach(fetchedTaskList.filter{$0.isDone == true}){ item in
                                     TaskListCell(taskListItem: item)
                                 }
@@ -76,7 +76,7 @@ struct TaskView: View {
                     if upcomingTaskListCount.count > 0{
                         List{
                             ForEach((1...2), id: \.self){ item in
-                                Section(header: item == 1 ? Text("Tomorrow").font(Font.title2.weight(.bold)).foregroundColor(.black) : Text("\(Date().startOfDay.addingTimeInterval(Double(item) * 24.0 * 3600.0), style: .date)").font(Font.title2.weight(.bold)).foregroundColor(.black)){
+                                Section(header: item == 1 ? Text("Tomorrow").font(Font.system(size: 18).weight(.bold)).foregroundColor(Color("SectionColor")) : Text("\(Date().startOfDay.addingTimeInterval(Double(item) * 24.0 * 3600.0), style: .date)").font(Font.system(size: 18).weight(.bold)).foregroundColor(Color("SectionColor"))){
                                     ForEach(fetchedTaskList.filter{$0.date ?? Date() >= Date().startOfDay.addingTimeInterval(Double(item) * 24.0 * 3600.0) && $0.date ?? Date() <= Date().endOfDay.addingTimeInterval(Double(item) * 24.0 * 3600.0)}){ item in
                                         TaskListCell(taskListItem: item)
                                     }
@@ -101,6 +101,14 @@ struct TaskView: View {
                     }
                 }
             }.navigationTitle("Task")
+                .navigationBarItems(
+                    trailing:
+                        Button{
+                            isShowAvatarActive.toggle()
+                        }label: {
+                            Image("FergieHappyButton")//.offset(y:40)
+                        }
+                )
                 .onAppear(perform: notificationManager.reloadAuthorizationStatus)
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     notificationManager.reloadAuthorizationStatus()
@@ -113,16 +121,6 @@ struct TaskView: View {
                         notificationManager.reloadLocalNotifications()
                     default:
                         break
-                    }
-                }
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button{
-                            isShowAvatarActive = true
-                            print("dor")
-                        }label: {
-                            Image("FergieHappyButton").padding(.top, UIScreen.main.bounds.height * 0.08)
-                        }
                     }
                 }
         }

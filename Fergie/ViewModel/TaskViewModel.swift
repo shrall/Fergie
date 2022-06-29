@@ -20,6 +20,8 @@ class TaskViewModel: ObservableObject {
     
     @Published var tasks: [Task] = []
     
+    @Published var userSettings = UserSettings()
+    
     func createTask(context:NSManagedObjectContext){
         let task = Task(context: context)
         task.id = UUID()
@@ -48,15 +50,34 @@ class TaskViewModel: ObservableObject {
     }
     
     func checkedDone(context:NSManagedObjectContext, id:UUID){
-        let task = getTask(context: context, id: id)
-        task?.isDone.toggle()
+        let task = getTask(context: context, id: id)!
+        task.isDone.toggle()
+        task.updatedAt = Date()
+        if(task.isDone){
+            userSettings.coin += 10
+            userSettings.mood += 1
+        }else{
+            userSettings.coin -= 10
+            userSettings.mood -= 1
+        }
+        save(context: context)
     }
+    
     func finishTask(context:NSManagedObjectContext, id:UUID){
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers:[id.uuidString])
         let task = getTask(context: context, id: id)!
         task.updatedAt = Date()
         task.isDone = !task.isDone
         save(context: context)
+    }
+    
+    func dateToString(date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        
+        return dateFormatter.string(from: date)
     }
     
     func deleteTask(context:NSManagedObjectContext, id:UUID){

@@ -15,72 +15,104 @@ struct TaskListCell: View{
     @State private var newTitle = ""
     @State private var newDate = Date()
     
-    @State private var showRepeatModal = false
+    //Repeat Modal Button
+    @State private var checkedRepeatButton: String = "None"
+    @State private var presentedRepeatButton: Bool = false
     
     var body: some View{
-        HStack{
-            Button{
-                taskVM.checkedDone(context: viewContext, id: taskListItem.id!)
-            }label: {
-                if(taskListItem.isDone){
-                    Image(systemName: "circle.inset.filled").foregroundColor(.gray).padding(.leading)
-                }else{
-                    Image(systemName: "circle").foregroundColor(Color("AccentColor")).padding(.leading)
-                }
-            }.buttonStyle(PlainButtonStyle())
-            
-            VStack(alignment: .leading, spacing: 5){
-                if(taskListItem.isDone){
-                    TextField("Title", text: $newTitle)
-                        .font(Font.title3.weight(.bold))
-                        .onAppear{
-                            self.newTitle = self.taskListItem.title ?? ""
-                        }.foregroundColor(.gray)
-                } else{
-                    TextField("Title", text: $newTitle)
-                        .font(Font.title3.weight(.bold))
-                        .onAppear{
-                            self.newTitle = self.taskListItem.title ?? ""
-                        }
-                }
-                if(taskListItem.isDone){
-                    Text("\(taskListItem.date ?? Date(), style: .time)").foregroundColor(.gray)
-                }else{
-                    DatePicker("", selection: $newDate, displayedComponents: .hourAndMinute).labelsHidden()
-                        .onAppear{
-                            self.newDate = self.taskListItem.date ?? Date()
-                        }
-                }
-            }.frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
-            
+        DisclosureGroup {
             if(!taskListItem.isDone){
-                Button{
-                    taskVM.title = newTitle
-                    taskVM.date = newDate
-                    taskVM.isDone = taskListItem.isDone
-                    taskVM.updateTask(context: viewContext, id: taskListItem.id!)
-                }label: {
-                    Text("Save").foregroundColor(.gray)
-                }.buttonStyle(PlainButtonStyle()).padding(.trailing)
-            }
-        }
-        .sheet(isPresented: $showRepeatModal) {
-            RepeatTodayTaskView(showModal: $showRepeatModal, title: $newTitle, date: $newDate)
-        }
-        .swipeActions(edge: .trailing){
-            Button {
-                taskVM.deleteTask(context: viewContext, id: taskListItem.id!)
-            } label: {
-                Label("Delete", systemImage: "")
-            }.tint(Color("TertiaryColor"))
-            
-            if(!taskListItem.isDone){
+                DatePicker("", selection: $newDate, displayedComponents: .hourAndMinute).labelsHidden().datePickerStyle(WheelDatePickerStyle())
+                
+                //Form Picker
                 Button {
-                    showRepeatModal.toggle()
+                    presentedRepeatButton.toggle()
                 } label: {
-                    Label("Repeat", systemImage: "repeat")
-                }.tint(Color("AccentColor"))
+                    HStack{
+                        Text("Repeat")
+                        Spacer()
+                        Text(self.checkedRepeatButton).foregroundColor(.gray)
+                        Image(systemName: "chevron.right")
+                    }
+                }.fullScreenCover(isPresented: $presentedRepeatButton) {
+                    RepeatModalView(isPresentRepeatModal: $presentedRepeatButton, isCheckedRepeatModal: $checkedRepeatButton)
+                }
+
             }
-        }
+        } label: {
+            HStack{
+                Button{
+                    taskVM.checkedDone(context: viewContext, id: taskListItem.id!)
+                }label: {
+                    if(taskListItem.isDone){
+                        Image(systemName: "circle.inset.filled").foregroundColor(.gray).padding(.leading)
+                    }else{
+                        Image(systemName: "circle").foregroundColor(Color("AccentColor")).padding(.leading)
+                    }
+                }.buttonStyle(PlainButtonStyle())
+                
+                VStack(alignment: .leading, spacing: 5){
+                    if(taskListItem.isDone){
+                        Text("\(taskListItem.title ?? "None")").foregroundColor(.gray)
+                    } else{
+                        TextField("Title", text: $newTitle)
+                            .font(.system(size: 16))
+                            .onAppear{
+                                self.newTitle = self.taskListItem.title ?? ""
+                            }
+                    }
+                    if(taskListItem.isDone){
+                        Text("\(taskListItem.date ?? Date(), style: .time)").foregroundColor(.gray)
+                    }else{
+                        Text(taskVM.dateToString(date: newDate))
+                            .onAppear{
+                                self.newDate = self.taskListItem.date ?? Date()
+                            }
+                    }
+                }.frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+                
+                if(!taskListItem.isDone){
+                    Button{
+                        if(checkedRepeatButton == "None"){
+                            taskVM.title = newTitle
+                            taskVM.date = newDate
+                            taskVM.isDone = taskListItem.isDone
+                            taskVM.updateTask(context: viewContext, id: taskListItem.id!)
+                        }else if(checkedRepeatButton == "Tomorrow"){
+                            taskVM.title = newTitle
+                            taskVM.date = newDate
+                            taskVM.isDone = taskListItem.isDone
+                            taskVM.updateTask(context: viewContext, id: taskListItem.id!)
+                            
+                            taskVM.title = newTitle
+                            taskVM.date = newDate.addingTimeInterval(1.0 * 24.0 * 3600.0)
+                            taskVM.createTask(context: viewContext)
+                        }else if(checkedRepeatButton == "in 7 Days"){
+                            taskVM.title = newTitle
+                            taskVM.date = newDate
+                            taskVM.isDone = taskListItem.isDone
+                            taskVM.updateTask(context: viewContext, id: taskListItem.id!)
+                            
+                            for i in 1...7{
+                                taskVM.title = newTitle
+                                taskVM.date = newDate.addingTimeInterval(Double(i) * 24.0 * 3600.0)
+                                taskVM.createTask(context: viewContext)
+                            }
+                        }
+                    }label: {
+                        Text("Save").foregroundColor(.gray)
+                    }.buttonStyle(PlainButtonStyle())
+                }else{
+                    Text("+10 Coins").font(.system(size: 13)).foregroundColor(.gray).padding(.top)
+                }
+            }
+        }.accentColor(.clear)
+            .swipeActions(edge: .trailing){
+                Button {
+                    taskVM.deleteTask(context: viewContext, id: taskListItem.id!)
+                } label: {
+                    Text("Delete")
+                }.tint(Color("TertiaryColor"))
+            }
     }
 }
