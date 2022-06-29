@@ -10,16 +10,17 @@ import SwiftUI
 @main
 struct FergieApp: App {
     let persistenceController = PersistenceController.shared
+    @ObservedObject var userSettings = UserSettings()
     @StateObject var taskViewModel = TaskViewModel()
     @State var isLinkActive = false
 
     var body: some Scene {
         WindowGroup {
-            if(isLinkActive){
+            if isLinkActive || userSettings.isOnboardingShown == true {
                 TaskView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environmentObject(taskViewModel)
-            }else{
+            } else {
                 OnboardingView(isLinkActive: $isLinkActive)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environmentObject(taskViewModel)

@@ -9,6 +9,12 @@ import Combine
 import Foundation
 
 class UserSettings: ObservableObject {
+    @Published var isOnboardingShown: Bool {
+        didSet {
+            UserDefaults.standard.set(isOnboardingShown, forKey: "isOnboardingShown")
+        }
+    }
+
     @Published var coin: Int {
         didSet {
             UserDefaults.standard.set(coin, forKey: "coin")
@@ -64,6 +70,7 @@ class UserSettings: ObservableObject {
     }
 
     init() {
+        self.isOnboardingShown = UserDefaults.standard.bool(forKey: "isOnboardingShown")
         self.coin = UserDefaults.standard.integer(forKey: "coin")
         self.mood = UserDefaults.standard.double(forKey: "mood")
         self.name = UserDefaults.standard.string(forKey: "name") ?? ""
