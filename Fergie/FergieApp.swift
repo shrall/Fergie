@@ -14,7 +14,7 @@ struct FergieApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AvatarView()
+            OnboardingView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(taskViewModel)
         }

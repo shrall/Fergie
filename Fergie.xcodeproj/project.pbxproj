@@ -49,6 +49,7 @@
 		1086B8A42865A79300810D7E /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086B8A32865A79300810D7E /* CircularProgressView.swift */; };
 		1086B8A52865A88D00810D7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1045BC0B28608560005D50C1 /* Assets.xcassets */; };
 		1086B8A82865B50A00810D7E /* LinearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086B8A72865B50A00810D7E /* LinearProgressView.swift */; };
+		5B251F74286464490073950C /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F73286464490073950C /* OnBoardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		1086B8A02865A42E00810D7E /* FergieMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieMoodView.swift; sourceTree = "<group>"; };
 		1086B8A32865A79300810D7E /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		1086B8A72865B50A00810D7E /* LinearProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearProgressView.swift; sourceTree = "<group>"; };
+		5B251F73286464490073950C /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnBoardingView.swift; path = Fergie/OnBoardingView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				2B7FB9ED2864A84800CEADAC /* TaskView.swift */,
 				5B251F68286456920073950C /* Components */,
 				5B2C726428631DE5004F1379 /* Avatar */,
+				5B251F73286464490073950C /* OnBoardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				2B3F1DD32865BF82005F9E01 /* RepeatTodayTaskView.swift in Sources */,
 				5B251F782865AFF60073950C /* Clothing.swift in Sources */,
 				1045BC082860855D005D50C1 /* FergieApp.swift in Sources */,
+				5B251F74286464490073950C /* OnBoardingView.swift in Sources */,
 				1045BC7628619EF4005D50C1 /* UserDefaults.swift in Sources */,
 				5B2C726628631DFF004F1379 /* AvatarView.swift in Sources */,
 				1045BC502860A022005D50C1 /* Fergie.xcdatamodeld in Sources */,
