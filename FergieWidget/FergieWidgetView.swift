@@ -90,18 +90,24 @@ struct FergieWidgetEntryView : View {
                         Text("hohohaha")
                     }
                 }
-                ForEach(fetchedTasks.prefix(4).indices, id:\.self){index in
-                    HStack{
-                        Text(fetchedTasks.prefix(4)[index].title!).fontWeight(index == 0 ? .bold : .none).lineLimit(1)
-                        Spacer()
-                        Text(fetchedTasks.prefix(4)[index].date!.showTime()).fontWeight(index == 0 ? .bold : .none)
-                    }.padding(.vertical, 4).font(Font.system(size: 14))
-                    if(fetchedTasks.prefix(4).count - 1 != index ){
-                        Rectangle()
-                            .fill(Color.gray.opacity(0.5))
-                            .frame(height: 1.5)
-                            .edgesIgnoringSafeArea(.horizontal)
+                if(fetchedTasks.count > 0){
+                    ForEach(fetchedTasks.prefix(4).indices, id:\.self){index in
+                        HStack{
+                            Text(fetchedTasks.prefix(4)[index].title!).fontWeight(index == 0 ? .bold : .none).lineLimit(1)
+                            Spacer()
+                            Text(fetchedTasks.prefix(4)[index].date!.showTime()).fontWeight(index == 0 ? .bold : .none)
+                        }.padding(.vertical, 4).font(Font.system(size: 14))
+                        if(fetchedTasks.prefix(4).count - 1 != index ){
+                            Rectangle()
+                                .fill(Color.gray.opacity(0.5))
+                                .frame(height: 1.5)
+                                .edgesIgnoringSafeArea(.horizontal)
+                        }
                     }
+                }else{
+                    Spacer()
+                    Text("No tasks left for today.")
+                    Spacer()
                 }
             }.padding()
         default:
