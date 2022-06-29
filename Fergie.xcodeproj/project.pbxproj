@@ -31,6 +31,12 @@
 		1045BC542860A35B005D50C1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC522860A35B005D50C1 /* Persistence.swift */; };
 		1045BC7628619EF4005D50C1 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC7528619EF4005D50C1 /* UserDefaults.swift */; };
 		1045BC7728619EF4005D50C1 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC7528619EF4005D50C1 /* UserDefaults.swift */; };
+		2B3F1DD32865BF82005F9E01 /* RepeatTodayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */; };
+		2B3F1DD728699F2E005F9E01 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DD628699F2E005F9E01 /* NotificationManager.swift */; };
+		2B3F1DDF286B1247005F9E01 /* RepeatModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DDE286B1247005F9E01 /* RepeatModalView.swift */; };
+		2B7FB9EE2864A84800CEADAC /* EmptyTaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9EB2864A84800CEADAC /* EmptyTaskListCell.swift */; };
+		2B7FB9EF2864A84800CEADAC /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9EC2864A84800CEADAC /* TaskListCell.swift */; };
+		2B7FB9F02864A84800CEADAC /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9ED2864A84800CEADAC /* TaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +104,12 @@
 		1045BC4F2860A022005D50C1 /* Fergie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fergie.xcdatamodel; sourceTree = "<group>"; };
 		1045BC522860A35B005D50C1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		1045BC7528619EF4005D50C1 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTodayTaskView.swift; sourceTree = "<group>"; };
+		2B3F1DD628699F2E005F9E01 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		2B3F1DDE286B1247005F9E01 /* RepeatModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatModalView.swift; sourceTree = "<group>"; };
+		2B7FB9EB2864A84800CEADAC /* EmptyTaskListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTaskListCell.swift; sourceTree = "<group>"; };
+		2B7FB9EC2864A84800CEADAC /* TaskListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
+		2B7FB9ED2864A84800CEADAC /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +158,7 @@
 				1045BC4128608CF9005D50C1 /* View */,
 				1045BC4028608CF4005D50C1 /* Model */,
 				1045BC072860855D005D50C1 /* FergieApp.swift */,
+				2B3F1DD628699F2E005F9E01 /* NotificationManager.swift */,
 				1045BC092860855D005D50C1 /* ContentView.swift */,
 				1045BC0B28608560005D50C1 /* Assets.xcassets */,
 				1045BC0D28608560005D50C1 /* Preview Content */,
@@ -206,6 +219,11 @@
 		1045BC4128608CF9005D50C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B7FB9EB2864A84800CEADAC /* EmptyTaskListCell.swift */,
+				2B7FB9EC2864A84800CEADAC /* TaskListCell.swift */,
+				2B3F1DDE286B1247005F9E01 /* RepeatModalView.swift */,
+				2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */,
+				2B7FB9ED2864A84800CEADAC /* TaskView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -358,10 +376,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7FB9EE2864A84800CEADAC /* EmptyTaskListCell.swift in Sources */,
+				2B7FB9EF2864A84800CEADAC /* TaskListCell.swift in Sources */,
 				1045BC48286095DD005D50C1 /* DateExtension.swift in Sources */,
+				2B7FB9F02864A84800CEADAC /* TaskView.swift in Sources */,
 				1045BC0A2860855D005D50C1 /* ContentView.swift in Sources */,
 				1045BC4C28609886005D50C1 /* TaskViewModel.swift in Sources */,
+				2B3F1DD728699F2E005F9E01 /* NotificationManager.swift in Sources */,
+				2B3F1DDF286B1247005F9E01 /* RepeatModalView.swift in Sources */,
 				1045BC532860A35B005D50C1 /* Persistence.swift in Sources */,
+				2B3F1DD32865BF82005F9E01 /* RepeatTodayTaskView.swift in Sources */,
 				1045BC082860855D005D50C1 /* FergieApp.swift in Sources */,
 				1045BC7628619EF4005D50C1 /* UserDefaults.swift in Sources */,
 				1045BC502860A022005D50C1 /* Fergie.xcdatamodeld in Sources */,

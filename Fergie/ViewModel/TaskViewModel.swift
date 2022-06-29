@@ -10,10 +10,10 @@ import Foundation
 
 class TaskViewModel: ObservableObject {
     @Published var date = Date()
-    @Published var isRepeated = false
-    @Published var notificationFrequency = 0
-    @Published var notificationType = "hour"
-    @Published var repeatFrequency = 0
+    //@Published var isRepeated = false
+    //@Published var notificationFrequency = 0
+    //@Published var notificationType = "hour"
+    //@Published var repeatFrequency = 0
     @Published var title = ""
     @Published var isDone = false
     
@@ -23,10 +23,10 @@ class TaskViewModel: ObservableObject {
         let task = Task(context: context)
         task.id = UUID()
         task.date = date
-        task.isRepeated = isRepeated
-        task.notificationFrequency = Int16(notificationFrequency)
-        task.notificationType = notificationType
-        task.repeatFrequency = Int16(repeatFrequency)
+        task.isRepeated = false//isRepeated
+        task.notificationFrequency = 0//Int16(notificationFrequency)
+        task.notificationType = "hour"//notificationType
+        task.repeatFrequency = 0//Int16(repeatFrequency)
         task.title = title
         task.createdAt = Date()
         task.isDone = false
@@ -36,13 +36,19 @@ class TaskViewModel: ObservableObject {
     func updateTask(context:NSManagedObjectContext, id:UUID){
         let task = getTask(context: context, id: id)!
         task.date = date
-        task.isRepeated = isRepeated
-        task.notificationFrequency = Int16(notificationFrequency)
-        task.notificationType = notificationType
-        task.repeatFrequency = Int16(repeatFrequency)
+        task.isRepeated = false//isRepeated
+        task.notificationFrequency = 0//Int16(notificationFrequency)
+        task.notificationType = "hour"//notificationType
+        task.repeatFrequency = 0//Int16(repeatFrequency)
         task.title = title
         task.updatedAt = Date()
         task.isDone = isDone
+        save(context: context)
+    }
+    
+    func checkedDone(context:NSManagedObjectContext, id:UUID){
+        let task = getTask(context: context, id: id)
+        task?.isDone.toggle()
         save(context: context)
     }
     
@@ -64,10 +70,10 @@ class TaskViewModel: ObservableObject {
     
     func resetVariables(){
         date = Date()
-        isRepeated = false
-        notificationFrequency = 0
-        notificationType = "hour"
-        repeatFrequency = 0
+        //isRepeated = false
+        //notificationFrequency = 0
+        //notificationType = "hour"
+        //repeatFrequency = 0
         title = ""
         isDone = false
     }
