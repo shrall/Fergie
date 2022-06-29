@@ -33,6 +33,17 @@
 		1045BC7728619EF4005D50C1 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC7528619EF4005D50C1 /* UserDefaults.swift */; };
 		1058D58A286C35FA00BE5325 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058D589286C35FA00BE5325 /* ProgressBar.swift */; };
 		1061A5D6286933B8008F80A7 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061A5D5286933B8008F80A7 /* AnimatedImage.swift */; };
+		1061A602286BC3BB008F80A7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1061A601286BC3BB008F80A7 /* WidgetKit.framework */; };
+		1061A604286BC3BB008F80A7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1061A603286BC3BB008F80A7 /* SwiftUI.framework */; };
+		1061A60D286BC3BC008F80A7 /* FergieWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1061A5FF286BC3BB008F80A7 /* FergieWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1061A613286BC3EA008F80A7 /* Fergie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC4E2860A022005D50C1 /* Fergie.xcdatamodeld */; };
+		1061A614286BC3FC008F80A7 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC7528619EF4005D50C1 /* UserDefaults.swift */; };
+		1061A61D286BC6B0008F80A7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC522860A35B005D50C1 /* Persistence.swift */; };
+		1061A61E286BC782008F80A7 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC4B28609886005D50C1 /* TaskViewModel.swift */; };
+		1061A621286BD28B008F80A7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC47286095DD005D50C1 /* DateExtension.swift */; };
+		106D5B90286C3E580051D017 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 106D5B8C286C3E580051D017 /* Assets.xcassets */; };
+		106D5B91286C3E580051D017 /* FergieWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D5B8D286C3E580051D017 /* FergieWidget.swift */; };
+		106D5B92286C3E580051D017 /* FergieWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D5B8E286C3E580051D017 /* FergieWidgetView.swift */; };
 		1086B89F286597AF00810D7E /* TodayTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086B89E286597AF00810D7E /* TodayTaskListView.swift */; };
 		1086B8A12865A42E00810D7E /* FergieMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086B8A02865A42E00810D7E /* FergieMoodView.swift */; };
 		1086B8A42865A79300810D7E /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086B8A32865A79300810D7E /* CircularProgressView.swift */; };
@@ -50,16 +61,6 @@
 		5B251F7A2865B0030073950C /* Pants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F792865B0030073950C /* Pants.swift */; };
 		5B251F7C2868BF570073950C /* EditAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F7B2868BF570073950C /* EditAvatarView.swift */; };
 		5B2C726628631DFF004F1379 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C726528631DFF004F1379 /* AvatarView.swift */; };
-		1061A602286BC3BB008F80A7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1061A601286BC3BB008F80A7 /* WidgetKit.framework */; };
-		1061A604286BC3BB008F80A7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1061A603286BC3BB008F80A7 /* SwiftUI.framework */; };
-		1061A607286BC3BB008F80A7 /* FergieWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061A606286BC3BB008F80A7 /* FergieWidget.swift */; };
-		1061A60D286BC3BC008F80A7 /* FergieWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1061A5FF286BC3BB008F80A7 /* FergieWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1061A613286BC3EA008F80A7 /* Fergie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC4E2860A022005D50C1 /* Fergie.xcdatamodeld */; };
-		1061A614286BC3FC008F80A7 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC7528619EF4005D50C1 /* UserDefaults.swift */; };
-		1061A61C286BC626008F80A7 /* FergieWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061A61B286BC626008F80A7 /* FergieWidgetView.swift */; };
-		1061A61D286BC6B0008F80A7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC522860A35B005D50C1 /* Persistence.swift */; };
-		1061A61E286BC782008F80A7 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC4B28609886005D50C1 /* TaskViewModel.swift */; };
-		1061A621286BD28B008F80A7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC47286095DD005D50C1 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,16 @@
 		1045BC7528619EF4005D50C1 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		1058D589286C35FA00BE5325 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		1061A5D5286933B8008F80A7 /* AnimatedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImage.swift; sourceTree = "<group>"; };
+		1061A5FF286BC3BB008F80A7 /* FergieWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FergieWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1061A601286BC3BB008F80A7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1061A603286BC3BB008F80A7 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		1061A606286BC3BB008F80A7 /* FergieWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieWidget.swift; sourceTree = "<group>"; };
+		1061A615286BC4A0008F80A7 /* Fergie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fergie.entitlements; sourceTree = "<group>"; };
+		1061A61B286BC626008F80A7 /* FergieWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieWidgetView.swift; sourceTree = "<group>"; };
+		106D5B8C286C3E580051D017 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		106D5B8D286C3E580051D017 /* FergieWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FergieWidget.swift; sourceTree = "<group>"; };
+		106D5B8E286C3E580051D017 /* FergieWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FergieWidgetView.swift; sourceTree = "<group>"; };
+		106D5B8F286C3E580051D017 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1086B89E286597AF00810D7E /* TodayTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskListView.swift; sourceTree = "<group>"; };
 		1086B8A02865A42E00810D7E /* FergieMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieMoodView.swift; sourceTree = "<group>"; };
 		1086B8A32865A79300810D7E /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
@@ -163,14 +174,6 @@
 		5B251F792865B0030073950C /* Pants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pants.swift; sourceTree = "<group>"; };
 		5B251F7B2868BF570073950C /* EditAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAvatarView.swift; sourceTree = "<group>"; };
 		5B2C726528631DFF004F1379 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
-		1061A5FF286BC3BB008F80A7 /* FergieWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FergieWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		1061A601286BC3BB008F80A7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		1061A603286BC3BB008F80A7 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		1061A606286BC3BB008F80A7 /* FergieWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieWidget.swift; sourceTree = "<group>"; };
-		1061A608286BC3BC008F80A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1061A60A286BC3BC008F80A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1061A615286BC4A0008F80A7 /* Fergie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fergie.entitlements; sourceTree = "<group>"; };
-		1061A61B286BC626008F80A7 /* FergieWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieWidgetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,12 +206,12 @@
 		1045BBFB2860855C005D50C1 = {
 			isa = PBXGroup;
 			children = (
+				106D5B8B286C3E580051D017 /* FergieWidget */,
 				1045BC062860855D005D50C1 /* Fergie */,
 				1045BC1628608560005D50C1 /* Fergie WatchKit App */,
 				1045BC2128608562005D50C1 /* Fergie WatchKit Extension */,
-				1061A605286BC3BB008F80A7 /* FergieWidget */,
-				1061A600286BC3BB008F80A7 /* Frameworks */,
 				1045BC052860855D005D50C1 /* Products */,
+				106D5B8A286C3E400051D017 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,6 +326,28 @@
 				1045BC47286095DD005D50C1 /* DateExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		106D5B8A286C3E400051D017 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				1061A606286BC3BB008F80A7 /* FergieWidget.swift */,
+				1061A61B286BC626008F80A7 /* FergieWidgetView.swift */,
+				1061A603286BC3BB008F80A7 /* SwiftUI.framework */,
+				1061A601286BC3BB008F80A7 /* WidgetKit.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		106D5B8B286C3E580051D017 /* FergieWidget */ = {
+			isa = PBXGroup;
+			children = (
+				106D5B8C286C3E580051D017 /* Assets.xcassets */,
+				106D5B8D286C3E580051D017 /* FergieWidget.swift */,
+				106D5B8E286C3E580051D017 /* FergieWidgetView.swift */,
+				106D5B8F286C3E580051D017 /* Info.plist */,
+			);
+			path = FergieWidget;
 			sourceTree = "<group>";
 		};
 		1086B89D2865978200810D7E /* View */ = {
@@ -507,7 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1061A620286BCBD7008F80A7 /* Assets.xcassets in Resources */,
+				106D5B90286C3E580051D017 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,12 +592,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1061A607286BC3BB008F80A7 /* FergieWidget.swift in Sources */,
 				1061A621286BD28B008F80A7 /* DateExtension.swift in Sources */,
 				1061A61E286BC782008F80A7 /* TaskViewModel.swift in Sources */,
+				106D5B91286C3E580051D017 /* FergieWidget.swift in Sources */,
 				1061A613286BC3EA008F80A7 /* Fergie.xcdatamodeld in Sources */,
-				1061A61C286BC626008F80A7 /* FergieWidgetView.swift in Sources */,
 				1061A614286BC3FC008F80A7 /* UserDefaults.swift in Sources */,
+				106D5B92286C3E580051D017 /* FergieWidgetView.swift in Sources */,
 				1061A61D286BC6B0008F80A7 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
