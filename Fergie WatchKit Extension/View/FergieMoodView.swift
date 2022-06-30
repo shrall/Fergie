@@ -58,9 +58,6 @@ struct FergieMoodView: View {
                 }
                 Text("Fergie is now happy!")
             }
-        }.onAppear{
-            UserDefaults.standard.set(1, forKey: "mood")
-            print(Double(UserDefaults.standard.integer(forKey: "mood"))/10)
         }
     }
 }

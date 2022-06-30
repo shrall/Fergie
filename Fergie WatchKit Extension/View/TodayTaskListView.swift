@@ -13,13 +13,15 @@ struct TodayTaskListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var taskViewModel: TaskViewModel
     
+    @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "date >= %@ && date <= %@", Date().startOfDay as CVarArg, Date().endOfDay as CVarArg)) var fetchedTasks:FetchedResults<Task>
+    
     @State var clickedTaskID = [UUID()]
     
     var body: some View {
         VStack(alignment:.leading){
-            if(taskViewModel.tasks.count > 0){
+            if(fetchedTasks.filter({$0.isDone == false}).count > 0){
                 List{
-                    ForEach(taskViewModel.tasks, id:\.self){ task in
+                    ForEach(fetchedTasks, id:\.self){ task in
                         if(!task.isDone){
                             HStack{
                                 Button{
@@ -43,35 +45,13 @@ struct TodayTaskListView: View {
                 }
             }else{
                 VStack{
-                    Image("fergieEmptyPlaceholder").resizable().frame(width: 120, height: 100)
-                    Text("No tasks left for today.")
+                    Text("No tasks left for today.").font(Font.system(size: 14)).multilineTextAlignment(.center)
                 }
             }
-        }
-        .onAppear{
-//            taskViewModel.title = "nyoba aja \(Int.random(in: 1..<522))"
-//            taskViewModel.date = Date().adding(.minute, value: 1)
-//            taskViewModel.createTask(context: viewContext)
-//            taskViewModel.getAllTasks(context: viewContext, sort: "date")
-            
-            for task in taskViewModel.tasks {
-                if(!task.isDone){
-                    let content = UNMutableNotificationContent()
-                    content.title = task.title!
-                    content.subtitle = "Due by \(task.date!.dateFormatting())"
-                    content.sound = UNNotificationSound.default
-                    content.categoryIdentifier = "FergieTest"
-                    
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                    
-                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                    UNUserNotificationCenter.current().add(request) { (error) in
-                        if let error = error {
-                            debugPrint(error)
-                        }
-                    }
-                }
-            }
+        }.onAppear{
+            taskViewModel.title = "nyoba aja \(Int.random(in: 1..<522))"
+            taskViewModel.date = Date().adding(.minute, value: 1)
+            taskViewModel.createTask(context: viewContext)
         }
     }
     
@@ -79,7 +59,6 @@ struct TodayTaskListView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             if(clickedTaskID.contains(taskID)){
                 taskViewModel.finishTask(context: viewContext, id: taskID)
-                taskViewModel.getAllTasks(context: viewContext, sort: "date")
             }
         }
     }
