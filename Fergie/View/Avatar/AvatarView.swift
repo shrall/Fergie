@@ -102,7 +102,7 @@ struct AvatarView: View {
                         Image(userSettings.bottom)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .frame(width: 250)
                         Spacer()
                     }
                 } else {
@@ -111,7 +111,7 @@ struct AvatarView: View {
                         Image(userSettings.bottom)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .frame(width: 250)
                         Spacer()
                     }
                     HStack {
@@ -340,7 +340,7 @@ struct AvatarView: View {
         .onAppear {
             userSettings.coin = 1500
             coin = userSettings.coin
-            userSettings.mood = 10
+//            userSettings.mood = 5
             happiness = userSettings.mood
         }
         .fullScreenCover(isPresented: $isPresented, content: EditAvatarView.init)

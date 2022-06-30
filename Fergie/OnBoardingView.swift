@@ -38,6 +38,7 @@ struct OnboardingView: View {
                         withAnimation {
                             self.isLinkActive = true
                             userSettings.isOnboardingShown = true
+                            userSettings.mood = 5
                         }
                     }) {
                         HStack {
