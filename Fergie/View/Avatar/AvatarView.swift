@@ -10,6 +10,10 @@ import SwiftUI
 struct AvatarView: View {
     @State private var isPresented = false
     
+    // Hour
+    let hour = Calendar.current.component(.hour, from: Date())
+    
+    // USer Defaults
     @ObservedObject var userSettings = UserSettings()
     
     // Half Sheet Modal
@@ -19,7 +23,7 @@ struct AvatarView: View {
     @State private var coin: Int = 0
     
     // Happiness Meter
-    @State private var happiness: Double = 6
+    @State private var happiness: Double = 0
     @State private var maxValue: Double = 10
     
     // Navigation Link
@@ -340,10 +344,17 @@ struct AvatarView: View {
         .onAppear {
             userSettings.coin = 1500
             coin = userSettings.coin
-//            userSettings.mood = 5
+            happiness = userSettings.mood
+            checkMood()
+        }
+//        .fullScreenCover(isPresented: $isPresented, content: EditAvatarView.init)
+    }
+
+    func checkMood() {
+        if hour == 0 || hour == 6 || hour == 12 || hour == 18 || hour == 24 {
+            happiness = happiness - 1
             happiness = userSettings.mood
         }
-        .fullScreenCover(isPresented: $isPresented, content: EditAvatarView.init)
     }
 }
 
