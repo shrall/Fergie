@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct Clothing: Identifiable{
+struct Clothing: Identifiable {
     var id: Int
     let name, iconURL, imageURL: String
+    var price: Int
 }

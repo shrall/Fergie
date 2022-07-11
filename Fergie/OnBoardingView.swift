@@ -39,6 +39,9 @@ struct OnboardingView: View {
                             self.isLinkActive = true
                             userSettings.isOnboardingShown = true
                             userSettings.mood = 5
+                            userSettings.ownedAccessories = [""]
+                            userSettings.ownedTops = [""]
+                            userSettings.ownedBottoms = [""]
                         }
                     }) {
                         HStack {
