@@ -5,6 +5,7 @@
 //  Created by Tinara Nathania Wiryonoputro on 26/06/22.
 //
 
+import AVFoundation
 import SwiftUI
 
 class selected: ObservableObject {
@@ -21,6 +22,9 @@ class selected: ObservableObject {
 
 struct EditAvatarView: View {
     @Environment(\.presentationMode) var presentationMode
+
+    // Sound
+    @State private var player: AVAudioPlayer?
 
     // Selected
     @ObservedObject var selectedStuff: selected = .init()
@@ -305,6 +309,7 @@ struct EditAvatarView: View {
                                 if selectedStuff.selectedBuyItem == "" {
                                     userSettings.coin = userSettings.coin - 0
                                 } else {
+                                    playCoinSound()
                                     userSettings.coin = userSettings.coin - 200
                                 }
 
@@ -314,6 +319,7 @@ struct EditAvatarView: View {
                                 if selectedStuff.selectedBuyItem == "" {
                                     userSettings.coin = userSettings.coin - 0
                                 } else {
+                                    playCoinSound()
                                     userSettings.coin = userSettings.coin - 200
                                 }
 
@@ -323,6 +329,7 @@ struct EditAvatarView: View {
                                 if selectedStuff.selectedBuyItem == "" {
                                     userSettings.coin = userSettings.coin - 0
                                 } else {
+                                    playCoinSound()
                                     userSettings.coin = userSettings.coin - 200
                                 }
                             }
@@ -356,6 +363,21 @@ struct EditAvatarView: View {
             selectedStuff.selectedAccessoryImage = userSettings.accessory
             selectedStuff.selectedClothingImage = userSettings.top
             selectedStuff.selectedPantsImage = userSettings.bottom
+        }
+    }
+
+    func playCoinSound() {
+        guard let path = Bundle.main.path(forResource: "coinSFX", ofType: "mp3") else {
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

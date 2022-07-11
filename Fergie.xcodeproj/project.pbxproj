@@ -55,6 +55,7 @@
 		2B7FB9EE2864A84800CEADAC /* EmptyTaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9EB2864A84800CEADAC /* EmptyTaskListCell.swift */; };
 		2B7FB9EF2864A84800CEADAC /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9EC2864A84800CEADAC /* TaskListCell.swift */; };
 		2B7FB9F02864A84800CEADAC /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9ED2864A84800CEADAC /* TaskView.swift */; };
+		5B1BB732287C1ABA002AA977 /* coinSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */; };
 		5B251F74286464490073950C /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F73286464490073950C /* OnBoardingView.swift */; };
 		5B251F762865AF960073950C /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F752865AF960073950C /* Accessory.swift */; };
 		5B251F782865AFF60073950C /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F772865AFF60073950C /* Clothing.swift */; };
@@ -168,6 +169,7 @@
 		2B7FB9EB2864A84800CEADAC /* EmptyTaskListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTaskListCell.swift; sourceTree = "<group>"; };
 		2B7FB9EC2864A84800CEADAC /* TaskListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
 		2B7FB9ED2864A84800CEADAC /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = coinSFX.mp3; path = ../../../../../../Downloads/fergieAssets/coinSFX.mp3; sourceTree = "<group>"; };
 		5B251F73286464490073950C /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnBoardingView.swift; path = Fergie/OnBoardingView.swift; sourceTree = SOURCE_ROOT; };
 		5B251F752865AF960073950C /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
 		5B251F772865AFF60073950C /* Clothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		1045BC062860855D005D50C1 /* Fergie */ = {
 			isa = PBXGroup;
 			children = (
+				5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */,
 				1061A615286BC4A0008F80A7 /* Fergie.entitlements */,
 				1045BC46286095C9005D50C1 /* Extension */,
 				1045BC4228608CFC005D50C1 /* ViewModel */,
@@ -505,6 +508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1BB732287C1ABA002AA977 /* coinSFX.mp3 in Resources */,
 				1045BC0F28608560005D50C1 /* Preview Assets.xcassets in Resources */,
 				1045BC0C28608560005D50C1 /* Assets.xcassets in Resources */,
 			);
