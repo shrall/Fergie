@@ -13,10 +13,13 @@ struct PersistenceController{
     
     let container:NSPersistentContainer
     init(inMemory: Bool = false){
+        let storeURL = AppGroup.facts.containerURL.appendingPathComponent("Fergie.xcdatamodeld")
+        let description = NSPersistentStoreDescription(url: storeURL)
         container = NSPersistentContainer(name: "Fergie")
-        if inMemory{
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        }
+        container.persistentStoreDescriptions = [description]
+//        if inMemory{
+//            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+//        }
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores(completionHandler: {(storeDescription, error) in
                                        if let error = error as NSError? {
