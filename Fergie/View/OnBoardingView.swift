@@ -42,6 +42,7 @@ struct OnboardingView: View {
                             userSettings.ownedAccessories = [""]
                             userSettings.ownedTops = [""]
                             userSettings.ownedBottoms = [""]
+                            userSettings.coin = 200
                         }
                     }) {
                         HStack {

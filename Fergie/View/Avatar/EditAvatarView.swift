@@ -173,6 +173,7 @@ struct EditAvatarView: View {
                             userSettingsSave.ownedTops = userSettings.ownedTops
                             userSettingsSave.bottom = userSettings.bottom
                             userSettingsSave.ownedBottoms = userSettings.ownedBottoms
+                            userSettingsSave.coin = userSettings.coin
                             userSettingsSave.objectWillChange.send()
                             self.presentationMode.wrappedValue.dismiss()
                         } label: {

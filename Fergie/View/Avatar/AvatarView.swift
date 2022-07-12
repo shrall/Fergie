@@ -160,7 +160,6 @@ struct AvatarView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)
         .onAppear {
-            userSettings.coin = 1500
             coin = userSettings.coin
             happiness = userSettings.mood
             checkMood()
