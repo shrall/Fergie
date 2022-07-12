@@ -23,6 +23,8 @@ class selected: ObservableObject {
 struct EditAvatarView: View {
     @Environment(\.presentationMode) var presentationMode
 
+    @Binding var isShowEditAvatarView: Bool
+
     // Sound
     @State private var player: AVAudioPlayer?
 
@@ -95,10 +97,6 @@ struct EditAvatarView: View {
                             .scaledToFit()
                             .frame(width: 260)
                     }
-//                        Image("fergieHappy")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 300, height: 300)
                     Spacer()
                 }
 
@@ -157,12 +155,15 @@ struct EditAvatarView: View {
                     HStack {
                         Text("Customize").font(.title).fontWeight(.bold)
                         Spacer()
-                        NavigationLink(destination: AvatarView(), isActive: $isAvatarActive) {
-                            EmptyView()
-                        }
+//                        NavigationLink(destination: AvatarView(), isActive: $isAvatarActive) {
+//                            EmptyView()
+//                        }
 
                         Button {
-                            isAvatarActive = true
+                            print(isShowEditAvatarView)
+                            isShowEditAvatarView = false
+                            print(isShowEditAvatarView)
+//                            isAvatarActive = true
 //                            presentationMode.wrappedValue.dismiss()
                         } label: {
                             Image(systemName: "checkmark")
@@ -375,6 +376,7 @@ struct EditAvatarView: View {
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player?.play()
+            print("play!")
 
         } catch {
             print(error.localizedDescription)
@@ -384,7 +386,7 @@ struct EditAvatarView: View {
 
 struct EditAvatarView_Previews: PreviewProvider {
     static var previews: some View {
-        EditAvatarView()
+        EditAvatarView(isShowEditAvatarView: .constant(false))
     }
 }
 

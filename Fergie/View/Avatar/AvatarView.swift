@@ -10,6 +10,8 @@ import SwiftUI
 struct AvatarView: View {
     @State private var isPresented = false
     
+//    @Binding var isShowAvatarView: Bool
+    
     // Hour
     let hour = Calendar.current.component(.hour, from: Date())
     
@@ -139,7 +141,7 @@ struct AvatarView: View {
                 })
             Spacer()
             
-            NavigationLink(destination: EditAvatarView(), isActive: $isEditAvatarActive) {
+            NavigationLink(destination: EditAvatarView(isShowEditAvatarView: $isEditAvatarActive), isActive: $isEditAvatarActive) {
                 EmptyView()
             }
             
@@ -154,6 +156,16 @@ struct AvatarView: View {
             .foregroundColor(.white)
             .clipShape(Capsule())
             .frame(maxWidth: .infinity, alignment: .center)
+            
+//            Button("Trial") {
+//                isShowAvatarView = false
+//            }
+//            .padding(.horizontal, 25)
+//            .padding(.vertical, 10)
+//            .background(Color.ui.blue)
+//            .foregroundColor(.white)
+//            .clipShape(Capsule())
+//            .frame(maxWidth: .infinity, alignment: .center)
             // Half Sheet Modal
             //                .halfSheet(showSheet: $showSheet) {
             //                    // Half Sheet View

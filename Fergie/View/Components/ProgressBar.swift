@@ -47,7 +47,7 @@ struct ProgressBar: View {
                                                 maxValue: self.maxValue,
                                                 width: geometryReader.size.width)) // 5
                     .foregroundColor(self.foregroundColor) // 6
-                    .animation(.easeIn) // 7
+//                    .animation(.easeIn) // 7
             }
         }
     }
