@@ -21,15 +21,17 @@ class selected: ObservableObject {
 }
 
 struct EditAvatarView: View {
-    @Environment(\.presentationMode) var presentationMode
+//    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    @Binding var isShowEditAvatarView: Bool
+//    @Binding var isShowEditAvatarView: Bool
 
     // Sound
     @State private var player: AVAudioPlayer?
 
     // Selected
     @ObservedObject var selectedStuff: selected = .init()
+    @ObservedObject var userSettingsSave: UserSettings
     @ObservedObject var userSettings = UserSettings()
 
     // Tabs/Categories
@@ -160,11 +162,19 @@ struct EditAvatarView: View {
 //                        }
 
                         Button {
-                            print(isShowEditAvatarView)
-                            isShowEditAvatarView = false
-                            print(isShowEditAvatarView)
+//                            print(isShowEditAvatarView)
+//                            isShowEditAvatarView = false
+//                            print(isShowEditAvatarView)
 //                            isAvatarActive = true
 //                            presentationMode.wrappedValue.dismiss()
+                            userSettingsSave.accessory = userSettings.accessory
+                            userSettingsSave.ownedAccessories = userSettings.ownedAccessories
+                            userSettingsSave.top = userSettings.top
+                            userSettingsSave.ownedTops = userSettings.ownedTops
+                            userSettingsSave.bottom = userSettings.bottom
+                            userSettingsSave.ownedBottoms = userSettings.ownedBottoms
+                            userSettingsSave.objectWillChange.send()
+                            self.presentationMode.wrappedValue.dismiss()
                         } label: {
                             Image(systemName: "checkmark")
                         }
@@ -382,11 +392,15 @@ struct EditAvatarView: View {
             print(error.localizedDescription)
         }
     }
+
+//    func updateView() {
+//        self.objectWillChange.send()
+//    }
 }
 
 struct EditAvatarView_Previews: PreviewProvider {
     static var previews: some View {
-        EditAvatarView(isShowEditAvatarView: .constant(false))
+        EditAvatarView(userSettingsSave: UserSettings(), userSettings: UserSettings())
     }
 }
 
