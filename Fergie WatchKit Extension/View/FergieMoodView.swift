@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FergieMoodView: View {
-    @State var progressValue: Float = Float(UserDefaults.standard.integer(forKey: "mood"))/10
+    @State var progressValue: Float = Float(UserDefaults(suiteName: "group.com.fergie")!.integer(forKey: "mood"))/10
     @State var fergieClicked = false
     
     var body: some View {

@@ -11,67 +11,67 @@ import Foundation
 class UserSettings: ObservableObject {
     @Published var coin: Int {
         didSet {
-            UserDefaults.standard.set(coin, forKey: "coin")
+            UserDefaults(suiteName: "group.com.fergie")!.set(coin, forKey: "coin")
         }
     }
 
     @Published var mood: Double {
         didSet {
-            UserDefaults.standard.set(mood, forKey: "mood")
+            UserDefaults(suiteName: "group.com.fergie")!.set(mood, forKey: "mood")
         }
     }
 
     @Published var name: String {
         didSet {
-            UserDefaults.standard.set(name, forKey: "name")
+            UserDefaults(suiteName: "group.com.fergie")!.set(name, forKey: "name")
         }
     }
 
     @Published var accessory: String {
         didSet {
-            UserDefaults.standard.set(accessory, forKey: "accessory")
+            UserDefaults(suiteName: "group.com.fergie")!.set(accessory, forKey: "accessory")
         }
     }
 
     @Published var top: String {
         didSet {
-            UserDefaults.standard.set(top, forKey: "top")
+            UserDefaults(suiteName: "group.com.fergie")?.set(top, forKey: "top")
         }
     }
 
     @Published var bottom: String {
         didSet {
-            UserDefaults.standard.set(bottom, forKey: "bottom")
+            UserDefaults(suiteName: "group.com.fergie")!.set(bottom, forKey: "bottom")
         }
     }
 
     @Published var ownedTops: [String] {
         didSet {
-            UserDefaults.standard.set(ownedTops, forKey: "ownedTops")
+            UserDefaults(suiteName: "group.com.fergie")!.set(ownedTops, forKey: "ownedTops")
         }
     }
 
     @Published var ownedBottoms: [String] {
         didSet {
-            UserDefaults.standard.set(ownedBottoms, forKey: "ownedBottoms")
+            UserDefaults(suiteName: "group.com.fergie")!.set(ownedBottoms, forKey: "ownedBottoms")
         }
     }
 
     @Published var ownedAccessories: [String] {
         didSet {
-            UserDefaults.standard.set(ownedAccessories, forKey: "ownedAccessories")
+            UserDefaults(suiteName: "group.com.fergie")!.set(ownedAccessories, forKey: "ownedAccessories")
         }
     }
 
     init() {
-        self.coin = UserDefaults.standard.integer(forKey: "coin")
-        self.mood = UserDefaults.standard.double(forKey: "mood")
-        self.name = UserDefaults.standard.string(forKey: "name") ?? ""
-        self.accessory = UserDefaults.standard.string(forKey: "accessory") ?? ""
-        self.top = UserDefaults.standard.string(forKey: "top") ?? ""
-        self.bottom = UserDefaults.standard.string(forKey: "bottom") ?? ""
-        self.ownedTops = UserDefaults.standard.stringArray(forKey: "ownedTops") ?? []
-        self.ownedBottoms = UserDefaults.standard.stringArray(forKey: "ownedBottoms") ?? []
-        self.ownedAccessories = UserDefaults.standard.stringArray(forKey: "ownedAccessories") ?? []
+        self.coin = UserDefaults(suiteName: "group.com.fergie")!.integer(forKey: "coin")
+        self.mood = UserDefaults(suiteName: "group.com.fergie")!.double(forKey: "mood")
+        self.name = UserDefaults(suiteName: "group.com.fergie")!.string(forKey: "name") ?? ""
+        self.accessory = UserDefaults(suiteName: "group.com.fergie")!.string(forKey: "accessory") ?? ""
+        self.top = UserDefaults(suiteName: "group.com.fergie")!.string(forKey: "top") ?? ""
+        self.bottom = UserDefaults(suiteName: "group.com.fergie")!.string(forKey: "bottom") ?? ""
+        self.ownedTops = UserDefaults(suiteName: "group.com.fergie")!.stringArray(forKey: "ownedTops") ?? []
+        self.ownedBottoms = UserDefaults(suiteName: "group.com.fergie")!.stringArray(forKey: "ownedBottoms") ?? []
+        self.ownedAccessories = UserDefaults(suiteName: "group.com.fergie")?.stringArray(forKey: "ownedAccessories") ?? []
     }
 }
