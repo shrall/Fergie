@@ -52,6 +52,8 @@
 		10EED7BA287C275600027516 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EED7B9287C275600027516 /* AppGroup.swift */; };
 		10EED7BB287C275600027516 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EED7B9287C275600027516 /* AppGroup.swift */; };
 		10EED7BC287C275600027516 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EED7B9287C275600027516 /* AppGroup.swift */; };
+		10EED7BF287D686F00027516 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EED7BE287D686F00027516 /* CloudKit.framework */; };
+		10EED7C2287D716C00027516 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EED7C1287D716C00027516 /* CloudKit.framework */; };
 		2B3F1DD32865BF82005F9E01 /* RepeatTodayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */; };
 		2B3F1DD728699F2E005F9E01 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DD628699F2E005F9E01 /* NotificationManager.swift */; };
 		2B3F1DDF286B1247005F9E01 /* RepeatModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DDE286B1247005F9E01 /* RepeatModalView.swift */; };
@@ -169,6 +171,9 @@
 		10EED7B7287C1C9E00027516 /* Fergie WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fergie WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		10EED7B8287C1CAD00027516 /* FergieWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FergieWidgetExtension.entitlements; sourceTree = "<group>"; };
 		10EED7B9287C275600027516 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		10EED7BE287D686F00027516 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		10EED7C0287D714600027516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		10EED7C1287D716C00027516 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTodayTaskView.swift; sourceTree = "<group>"; };
 		2B3F1DD628699F2E005F9E01 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		2B3F1DDE286B1247005F9E01 /* RepeatModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatModalView.swift; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EED7BF287D686F00027516 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EED7C2287D716C00027516 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +227,7 @@
 				1045BC2128608562005D50C1 /* Fergie WatchKit Extension */,
 				1045BC052860855D005D50C1 /* Products */,
 				106D5B8A286C3E400051D017 /* Recovered References */,
+				10EED7BD287D686F00027516 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -237,6 +245,7 @@
 		1045BC062860855D005D50C1 /* Fergie */ = {
 			isa = PBXGroup;
 			children = (
+				10EED7C0287D714600027516 /* Info.plist */,
 				1061A615286BC4A0008F80A7 /* Fergie.entitlements */,
 				1045BC46286095C9005D50C1 /* Extension */,
 				1045BC4228608CFC005D50C1 /* ViewModel */,
@@ -379,6 +388,15 @@
 				1061A5D5286933B8008F80A7 /* AnimatedImage.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		10EED7BD287D686F00027516 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10EED7C1287D716C00027516 /* CloudKit.framework */,
+				10EED7BE287D686F00027516 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5B2C726428631DE5004F1379 /* Avatar */ = {
@@ -759,7 +777,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fergie WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Fergie WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Fergie_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -792,7 +810,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fergie WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Fergie WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Fergie_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -892,6 +910,7 @@
 				DEVELOPMENT_TEAM = X3D8UM28XD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fergie/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -925,6 +944,7 @@
 				DEVELOPMENT_TEAM = X3D8UM28XD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fergie/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
