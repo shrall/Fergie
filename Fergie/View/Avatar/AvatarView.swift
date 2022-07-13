@@ -64,34 +64,56 @@ struct AvatarView: View {
                 HStack {
                     Spacer()
                     if happiness >= 0 && happiness <= 3 {
-                        Image(isDetectingPress == true ? "fergieTappedSad" : "fergieSad")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300)
+//                        Image(isDetectingPress == true ? "fergieTappedSad" : "fergieSad")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 300)
+                        AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
                     } else if happiness > 3 && happiness <= 6 {
-                        Image(isDetectingPress == true ? "fergieTappedNeutral" : "fergieNeutral")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300)
+//                        Image(isDetectingPress == true ? "fergieTappedNeutral" : "fergieNeutral")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 300)
+                        AnimatedImage(imageName: "neutralFergieNone", imageFrames: 84)
                     } else {
-                        Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300)
+//                        Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 300)
+                        
+                        if userSettings.accessory == "accessoriesCap" {
+                            AnimatedImage(imageName: "happyFergieCap", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesGlasses" {
+                            AnimatedImage(imageName: "happyFergieGlasses", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesSun" {
+                            AnimatedImage(imageName: "happyFergieSun", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesSunhat" {
+                            AnimatedImage(imageName: "happyFergieSunhat", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesSunglasses" {
+                            AnimatedImage(imageName: "happyFergieSunglasses", imageFrames: 160)
+                        
+                        } else {
+                            AnimatedImage(imageName: "happyFergieNone", imageFrames: 160).onAppear {
+                                print(userSettings.accessory)
+                            }
+                        }
                     }
                     Spacer()
                 }
-                
-                // Accessory
-                HStack {
-                    Spacer()
-                    Image(userSettings.accessory)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300)
-                    Spacer()
+                if (happiness >= 0 && happiness <= 3) || (happiness > 3 && happiness <= 6) {
+                    // Accessory
+                    HStack {
+                        Spacer()
+                        Image(userSettings.accessory)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 255)
+                        Spacer()
+                    }
+                } else {
+                    EmptyView()
                 }
-                
+               
                 // Clothing and Pants
                 if userSettings.top == "clothingYellowShirt" || userSettings.top == "clothingTee" {
                     HStack {
@@ -99,35 +121,45 @@ struct AvatarView: View {
                         Image(userSettings.top)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 300)
+                            .frame(width: 260)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    .padding(.top, 4)
                     
                     HStack {
                         Spacer()
                         Image(userSettings.bottom)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 300)
+                            .frame(width: 264)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    .padding(.top, -16)
+                    
                 } else {
                     HStack {
                         Spacer()
                         Image(userSettings.bottom)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 300)
+                            .frame(width: 264)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    .padding(.top, -16)
+                    
                     HStack {
                         Spacer()
                         Image(userSettings.top)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 300)
+                            .frame(width: 260)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    .padding(.top, 4)
                 }
             }
             .gesture(LongPressGesture(minimumDuration: 0.1).sequenced(before: DragGesture(minimumDistance: 0))

@@ -57,6 +57,7 @@
 		2B7FB9F02864A84800CEADAC /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9ED2864A84800CEADAC /* TaskView.swift */; };
 		5B1BB732287C1ABA002AA977 /* coinSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */; };
 		5B1BB735287D7247002AA977 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BB734287D7247002AA977 /* OnBoardingView.swift */; };
+		5B1BB737287EBA4F002AA977 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BB736287EBA4F002AA977 /* AnimatedImage.swift */; };
 		5B251F762865AF960073950C /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F752865AF960073950C /* Accessory.swift */; };
 		5B251F782865AFF60073950C /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F772865AFF60073950C /* Clothing.swift */; };
 		5B251F7A2865B0030073950C /* Pants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F792865B0030073950C /* Pants.swift */; };
@@ -171,6 +172,7 @@
 		2B7FB9ED2864A84800CEADAC /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = coinSFX.mp3; path = ../../../../../../Downloads/fergieAssets/coinSFX.mp3; sourceTree = "<group>"; };
 		5B1BB734287D7247002AA977 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		5B1BB736287EBA4F002AA977 /* AnimatedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImage.swift; sourceTree = "<group>"; };
 		5B251F752865AF960073950C /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
 		5B251F772865AFF60073950C /* Clothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
 		5B251F792865B0030073950C /* Pants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pants.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				1058D589286C35FA00BE5325 /* ProgressBar.swift */,
+				5B1BB736287EBA4F002AA977 /* AnimatedImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				1045BC4C28609886005D50C1 /* TaskViewModel.swift in Sources */,
 				2B3F1DD728699F2E005F9E01 /* NotificationManager.swift in Sources */,
 				2B3F1DDF286B1247005F9E01 /* RepeatModalView.swift in Sources */,
+				5B1BB737287EBA4F002AA977 /* AnimatedImage.swift in Sources */,
 				1045BC532860A35B005D50C1 /* Persistence.swift in Sources */,
 				2B3F1DD32865BF82005F9E01 /* RepeatTodayTaskView.swift in Sources */,
 				5B1BB735287D7247002AA977 /* OnBoardingView.swift in Sources */,

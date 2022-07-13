@@ -38,11 +38,11 @@ struct OnboardingView: View {
                         withAnimation {
                             self.isLinkActive = true
                             userSettings.isOnboardingShown = true
-                            userSettings.mood = 5
+                            userSettings.mood = 10
                             userSettings.ownedAccessories = [""]
                             userSettings.ownedTops = [""]
                             userSettings.ownedBottoms = [""]
-                            userSettings.coin = 200
+                            userSettings.coin = 2000
                         }
                     }) {
                         HStack {
