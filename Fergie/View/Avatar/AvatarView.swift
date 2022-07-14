@@ -63,24 +63,18 @@ struct AvatarView: View {
                 // Body
                 HStack {
                     Spacer()
-                    if happiness >= 0 && happiness <= 3 {
-//                        Image(isDetectingPress == true ? "fergieTappedSad" : "fergieSad")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 300)
-                        AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
+                    if happiness >= 0, happiness <= 3 {
+                        if userSettings.accessory == "accessoriesGlasses" {
+                            AnimatedImage(imageName: "sadFergieGlasses", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesSunglasses" {
+                            AnimatedImage(imageName: "sadFergieSunglasses", imageFrames: 160)
+                        
+                        } else {
+                            AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
+                        }
                     } else if happiness > 3 && happiness <= 6 {
-//                        Image(isDetectingPress == true ? "fergieTappedNeutral" : "fergieNeutral")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 300)
                         AnimatedImage(imageName: "neutralFergieNone", imageFrames: 84)
                     } else {
-//                        Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 300)
-                        
                         if userSettings.accessory == "accessoriesCap" {
                             AnimatedImage(imageName: "happyFergieCap", imageFrames: 160)
                         } else if userSettings.accessory == "accessoriesGlasses" {
@@ -100,7 +94,7 @@ struct AvatarView: View {
                     }
                     Spacer()
                 }
-                if (happiness >= 0 && happiness <= 3) || (happiness > 3 && happiness <= 6) {
+                if happiness > 3 && happiness <= 6 {
                     // Accessory
                     HStack {
                         Spacer()
@@ -108,7 +102,22 @@ struct AvatarView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 255)
+                            .padding(.top, 5)
                         Spacer()
+                    }
+
+                } else if happiness >= 0, happiness <= 3 {
+                    if userSettings.accessory == "" || userSettings.accessory == "accessoriesSun" || userSettings.accessory == "accessoriesSunhat" || userSettings.accessory == "accessoriesCap" {
+                        HStack {
+                            Spacer()
+                            Image(userSettings.accessory)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 255)
+                                .padding(.top, 16)
+                                .padding(.leading, 4)
+                            Spacer()
+                        }
                     }
                 } else {
                     EmptyView()
