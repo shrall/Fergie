@@ -182,14 +182,30 @@ struct AvatarView: View {
                 })
             Spacer()
     
-            NavigationLink(destination: EditAvatarView(userSettingsSave: userSettings)) {
-                Text("Customize your Fergie")
-                    .padding(.horizontal, 25)
-                    .padding(.vertical, 10)
-                    .background(Color.ui.blue)
-                    .foregroundColor(.white)
-                    .clipShape(Capsule())
-                    .frame(maxWidth: .infinity, alignment: .center)
+            ZStack {
+                NavigationLink(destination: EditAvatarView(userSettingsSave: userSettings)) {
+                    Text("Customize your Fergie")
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 10)
+                        .background(Color.ui.blue)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                ZStack {
+                    Circle()
+                        .fill(Color.ui.blue)
+                        .frame(width: 55, height: 55)
+                    Circle()
+                        .fill(Color.ui.white)
+                        .frame(width: 40, height: 40)
+                    Image("customizeIcon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 15)
             }
         
             Spacer()
