@@ -10,6 +10,8 @@ import SwiftUI
 struct FergieMoodView: View {
     @State var progressValue: Float = Float(UserDefaults(suiteName: "group.com.fergie")!.integer(forKey: "mood"))/10
     @State var fergieClicked = false
+    @ObservedObject var userSettings = UserSettings()
+    @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
     
     var body: some View {
         VStack(spacing:8){
@@ -58,6 +60,11 @@ struct FergieMoodView: View {
                 }
                 Text("Fergie is now happy!")
             }
+        }.onAppear{
+//            print(connectivityManager.moodValue)
+            userSettings.mood = Double(connectivityManager.moodValue ?? "0")!
+            progressValue = Float(userSettings.mood)
+//            print(userSettings.mood)
         }
     }
 }

@@ -54,6 +54,8 @@
 		10EED7BC287C275600027516 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EED7B9287C275600027516 /* AppGroup.swift */; };
 		10EED7BF287D686F00027516 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EED7BE287D686F00027516 /* CloudKit.framework */; };
 		10EED7C2287D716C00027516 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EED7C1287D716C00027516 /* CloudKit.framework */; };
+		10EED7C5287FF98200027516 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EED7C4287FF98200027516 /* WatchConnectivityManager.swift */; };
+		10EED7C6287FF98200027516 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EED7C4287FF98200027516 /* WatchConnectivityManager.swift */; };
 		2B3F1DD32865BF82005F9E01 /* RepeatTodayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */; };
 		2B3F1DD728699F2E005F9E01 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DD628699F2E005F9E01 /* NotificationManager.swift */; };
 		2B3F1DDF286B1247005F9E01 /* RepeatModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DDE286B1247005F9E01 /* RepeatModalView.swift */; };
@@ -174,6 +176,7 @@
 		10EED7BE287D686F00027516 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		10EED7C0287D714600027516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		10EED7C1287D716C00027516 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		10EED7C4287FF98200027516 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTodayTaskView.swift; sourceTree = "<group>"; };
 		2B3F1DD628699F2E005F9E01 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		2B3F1DDE286B1247005F9E01 /* RepeatModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatModalView.swift; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 		1045BBFB2860855C005D50C1 = {
 			isa = PBXGroup;
 			children = (
+				10EED7C3287FF8C200027516 /* WatchConnectivity */,
 				10EED7B8287C1CAD00027516 /* FergieWidgetExtension.entitlements */,
 				106D5B8B286C3E580051D017 /* FergieWidget */,
 				1045BC062860855D005D50C1 /* Fergie */,
@@ -397,6 +401,14 @@
 				10EED7BE287D686F00027516 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		10EED7C3287FF8C200027516 /* WatchConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				10EED7C4287FF98200027516 /* WatchConnectivityManager.swift */,
+			);
+			path = WatchConnectivity;
 			sourceTree = "<group>";
 		};
 		5B2C726428631DE5004F1379 /* Avatar */ = {
@@ -582,6 +594,7 @@
 				1045BC0A2860855D005D50C1 /* ContentView.swift in Sources */,
 				1045BC4C28609886005D50C1 /* TaskViewModel.swift in Sources */,
 				2B3F1DD728699F2E005F9E01 /* NotificationManager.swift in Sources */,
+				10EED7C5287FF98200027516 /* WatchConnectivityManager.swift in Sources */,
 				10EED7BA287C275600027516 /* AppGroup.swift in Sources */,
 				2B3F1DDF286B1247005F9E01 /* RepeatModalView.swift in Sources */,
 				1045BC532860A35B005D50C1 /* Persistence.swift in Sources */,
@@ -609,6 +622,7 @@
 				1045BC2328608562005D50C1 /* FergieApp.swift in Sources */,
 				10EED7BB287C275600027516 /* AppGroup.swift in Sources */,
 				1045BC7728619EF4005D50C1 /* UserDefaults.swift in Sources */,
+				10EED7C6287FF98200027516 /* WatchConnectivityManager.swift in Sources */,
 				1061A5D6286933B8008F80A7 /* AnimatedImage.swift in Sources */,
 				1045BC512860A022005D50C1 /* Fergie.xcdatamodeld in Sources */,
 				1045BC4D28609886005D50C1 /* TaskViewModel.swift in Sources */,
