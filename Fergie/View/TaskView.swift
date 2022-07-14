@@ -76,8 +76,6 @@ struct TaskView: View {
                                 ForEach(fetchedTaskList.filter{$0.isDone == false && $0.date ?? Date() >= Date().startOfDay && $0.date ?? Date() <= Date().endOfDay}){ item in
                                     TaskListCell(taskListItem: item)
                                 }
-                                
-                                //EmptyTaskListCell()
                             }
                             
                             if todayTaskListCount.filter{$0.isDone == true}.count > 0{
@@ -96,7 +94,6 @@ struct TaskView: View {
                             
                         }.listStyle(InsetListStyle())
                     } else{
-                        //EmptyTaskListCell().listRowSeparator(.hidden).padding()
                         VStack(alignment: .center) {
                             Image("FergieCoins").resizable()
                                 .scaledToFit().frame(maxWidth: UIScreen.main.bounds.width * 0.75).padding()
@@ -122,7 +119,6 @@ struct TaskView: View {
                             }
                         }.listStyle(InsetListStyle())
                     } else{
-                        //EmptyTaskListCell()
                         VStack(alignment: .center) {
                             Image("FergieJump").resizable()
                                 .scaledToFit().frame(maxWidth: UIScreen.main.bounds.width * 0.75).padding()
