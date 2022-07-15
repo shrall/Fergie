@@ -45,7 +45,7 @@ struct FergieMoodView: View {
                         }
                     }
                 }
-                Text("Fergie is feeling bored.")
+                Text("Fergie is bored.")
             }else{
                 if(!fergieClicked){
                     AnimatedImage(imageName: "fergieHappy", imageFrames: 143).onTapGesture {
@@ -58,13 +58,13 @@ struct FergieMoodView: View {
                         }
                     }
                 }
-                Text("Fergie is now happy!")
+                Text("Fergie is happy!")
             }
         }.onAppear{
-//            print(connectivityManager.moodValue)
-            userSettings.mood = Double(connectivityManager.moodValue ?? "0")!
-            progressValue = Float(userSettings.mood)
-//            print(userSettings.mood)
+            if(connectivityManager.moodValue != nil){
+                userSettings.mood = Double(connectivityManager.moodValue ?? "0")!
+            }
+            progressValue = Float(userSettings.mood)/10
         }
     }
 }

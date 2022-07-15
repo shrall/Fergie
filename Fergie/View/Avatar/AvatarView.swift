@@ -328,7 +328,7 @@ struct AvatarView: View {
         .onAppear {
             userSettings.coin = 1500
             coin = userSettings.coin
-            userSettings.mood = 10
+            userSettings.mood = 8
             happiness = userSettings.mood
         }
     }
