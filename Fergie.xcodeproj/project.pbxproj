@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		103E50F42886998700057867 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103E50F22886998700057867 /* AnimatedImage.swift */; };
+		103E50F52886998700057867 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103E50F32886998700057867 /* ProgressBar.swift */; };
+		103E50F7288699A300057867 /* coinSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 103E50F6288699A300057867 /* coinSFX.mp3 */; };
+		103E50F828869A0C00057867 /* AddTaskModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55A08A287D7B670086DFB5 /* AddTaskModalView.swift */; };
 		1045BC082860855D005D50C1 /* FergieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC072860855D005D50C1 /* FergieApp.swift */; };
 		1045BC0A2860855D005D50C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC092860855D005D50C1 /* ContentView.swift */; };
 		1045BC0C28608560005D50C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1045BC0B28608560005D50C1 /* Assets.xcassets */; };
@@ -31,7 +35,6 @@
 		1045BC542860A35B005D50C1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC522860A35B005D50C1 /* Persistence.swift */; };
 		1045BC7628619EF4005D50C1 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC7528619EF4005D50C1 /* UserDefaults.swift */; };
 		1045BC7728619EF4005D50C1 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045BC7528619EF4005D50C1 /* UserDefaults.swift */; };
-		1058D58A286C35FA00BE5325 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058D589286C35FA00BE5325 /* ProgressBar.swift */; };
 		1061A5D6286933B8008F80A7 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061A5D5286933B8008F80A7 /* AnimatedImage.swift */; };
 		1061A602286BC3BB008F80A7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1061A601286BC3BB008F80A7 /* WidgetKit.framework */; };
 		1061A604286BC3BB008F80A7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1061A603286BC3BB008F80A7 /* SwiftUI.framework */; };
@@ -56,15 +59,11 @@
 		10EED7C2287D716C00027516 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EED7C1287D716C00027516 /* CloudKit.framework */; };
 		10EED7C5287FF98200027516 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EED7C4287FF98200027516 /* WatchConnectivityManager.swift */; };
 		10EED7C6287FF98200027516 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EED7C4287FF98200027516 /* WatchConnectivityManager.swift */; };
-		2B3F1DD32865BF82005F9E01 /* RepeatTodayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */; };
 		2B3F1DD728699F2E005F9E01 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DD628699F2E005F9E01 /* NotificationManager.swift */; };
 		2B3F1DDF286B1247005F9E01 /* EditTaskModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F1DDE286B1247005F9E01 /* EditTaskModalView.swift */; };
-		2B55A08B287D7B670086DFB5 /* AddTaskModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B55A08A287D7B670086DFB5 /* AddTaskModalView.swift */; };
 		2B7FB9EF2864A84800CEADAC /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9EC2864A84800CEADAC /* TaskListCell.swift */; };
 		2B7FB9F02864A84800CEADAC /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FB9ED2864A84800CEADAC /* TaskView.swift */; };
-		5B1BB732287C1ABA002AA977 /* coinSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */; };
 		5B1BB735287D7247002AA977 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BB734287D7247002AA977 /* OnBoardingView.swift */; };
-		5B1BB737287EBA4F002AA977 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BB736287EBA4F002AA977 /* AnimatedImage.swift */; };
 		5B251F762865AF960073950C /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F752865AF960073950C /* Accessory.swift */; };
 		5B251F782865AFF60073950C /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F772865AFF60073950C /* Clothing.swift */; };
 		5B251F7A2865B0030073950C /* Pants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B251F792865B0030073950C /* Pants.swift */; };
@@ -133,6 +132,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		103E50F22886998700057867 /* AnimatedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImage.swift; sourceTree = "<group>"; };
+		103E50F32886998700057867 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		103E50F6288699A300057867 /* coinSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinSFX.mp3; sourceTree = "<group>"; };
 		1045BC042860855D005D50C1 /* Fergie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fergie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1045BC072860855D005D50C1 /* FergieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieApp.swift; sourceTree = "<group>"; };
 		1045BC092860855D005D50C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -185,7 +187,7 @@
 		2B55A08A287D7B670086DFB5 /* AddTaskModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskModalView.swift; sourceTree = "<group>"; };
 		2B7FB9EC2864A84800CEADAC /* TaskListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
 		2B7FB9ED2864A84800CEADAC /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
-		5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = coinSFX.mp3; path = ../../../../../../Downloads/fergieAssets/coinSFX.mp3; sourceTree = "<group>"; };
+		5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = coinSFX.mp3; path = /Downloads/fergieAssets/coinSFX.mp3; sourceTree = "<absolute>"; };
 		5B1BB734287D7247002AA977 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		5B1BB736287EBA4F002AA977 /* AnimatedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImage.swift; sourceTree = "<group>"; };
 		5B251F752865AF960073950C /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
@@ -224,6 +226,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		103E50F12886998700057867 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				103E50F22886998700057867 /* AnimatedImage.swift */,
+				103E50F32886998700057867 /* ProgressBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		1045BBFB2860855C005D50C1 = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +264,7 @@
 		1045BC062860855D005D50C1 /* Fergie */ = {
 			isa = PBXGroup;
 			children = (
+				103E50F6288699A300057867 /* coinSFX.mp3 */,
 				10EED7C0287D714600027516 /* Info.plist */,
 				1061A615286BC4A0008F80A7 /* Fergie.entitlements */,
 				1045BC46286095C9005D50C1 /* Extension */,
@@ -328,8 +340,7 @@
 		1045BC4128608CF9005D50C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B1BB733287D7146002AA977 /* Components */,
-				2B7FB9EB2864A84800CEADAC /* EmptyTaskListCell.swift */,
+				103E50F12886998700057867 /* Components */,
 				2B7FB9EC2864A84800CEADAC /* TaskListCell.swift */,
 				2B3F1DDE286B1247005F9E01 /* EditTaskModalView.swift */,
 				2B55A08A287D7B670086DFB5 /* AddTaskModalView.swift */,
@@ -363,6 +374,10 @@
 				1061A61B286BC626008F80A7 /* FergieWidgetView.swift */,
 				1061A603286BC3BB008F80A7 /* SwiftUI.framework */,
 				1061A601286BC3BB008F80A7 /* WidgetKit.framework */,
+				5B1BB736287EBA4F002AA977 /* AnimatedImage.swift */,
+				2B3F1DD22865BF82005F9E01 /* RepeatTodayTaskView.swift */,
+				1058D589286C35FA00BE5325 /* ProgressBar.swift */,
+				5B1BB731287C1ABA002AA977 /* coinSFX.mp3 */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -550,9 +565,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B1BB732287C1ABA002AA977 /* coinSFX.mp3 in Resources */,
 				1045BC0F28608560005D50C1 /* Preview Assets.xcassets in Resources */,
 				1045BC0C28608560005D50C1 /* Assets.xcassets in Resources */,
+				103E50F7288699A300057867 /* coinSFX.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				103E50F828869A0C00057867 /* AddTaskModalView.swift in Sources */,
 				2B7FB9EF2864A84800CEADAC /* TaskListCell.swift in Sources */,
 				1045BC48286095DD005D50C1 /* DateExtension.swift in Sources */,
 				2B7FB9F02864A84800CEADAC /* TaskView.swift in Sources */,
@@ -600,16 +616,15 @@
 				2B3F1DD728699F2E005F9E01 /* NotificationManager.swift in Sources */,
 				10EED7C5287FF98200027516 /* WatchConnectivityManager.swift in Sources */,
 				10EED7BA287C275600027516 /* AppGroup.swift in Sources */,
-				2B3F1DDF286B1247005F9E01 /* RepeatModalView.swift in Sources */,
-				5B1BB737287EBA4F002AA977 /* AnimatedImage.swift in Sources */,
+				2B3F1DDF286B1247005F9E01 /* EditTaskModalView.swift in Sources */,
 				1045BC532860A35B005D50C1 /* Persistence.swift in Sources */,
-				2B3F1DD32865BF82005F9E01 /* RepeatTodayTaskView.swift in Sources */,
+				103E50F42886998700057867 /* AnimatedImage.swift in Sources */,
 				5B1BB735287D7247002AA977 /* OnBoardingView.swift in Sources */,
 				5B251F782865AFF60073950C /* Clothing.swift in Sources */,
 				1045BC082860855D005D50C1 /* FergieApp.swift in Sources */,
 				1045BC7628619EF4005D50C1 /* UserDefaults.swift in Sources */,
 				5B2C726628631DFF004F1379 /* AvatarView.swift in Sources */,
-				1058D58A286C35FA00BE5325 /* ProgressBar.swift in Sources */,
+				103E50F52886998700057867 /* ProgressBar.swift in Sources */,
 				1045BC502860A022005D50C1 /* Fergie.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

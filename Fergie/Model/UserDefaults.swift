@@ -70,6 +70,7 @@ class UserSettings: ObservableObject {
     }
 
     init() {
+        self.isOnboardingShown = UserDefaults.standard.bool(forKey: "isOnboardingShown")
         self.coin = UserDefaults(suiteName: "group.com.fergie")!.integer(forKey: "coin")
         self.mood = UserDefaults(suiteName: "group.com.fergie")!.double(forKey: "mood")
         self.name = UserDefaults(suiteName: "group.com.fergie")!.string(forKey: "name") ?? ""

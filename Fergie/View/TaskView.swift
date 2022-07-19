@@ -160,7 +160,9 @@ struct TaskView: View {
                         Text("")
                     }
                 }
-                .onAppear(perform: taskVM.reloadAuthorizationStatus)
+                .onAppear(perform: taskVM.reloadAuthorizationStatus).onAppear{
+                    WatchConnectivityManager.shared.send(String(UserDefaults(suiteName: "group.com.fergie")!.integer(forKey: "mood")))
+                }
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     taskVM.reloadAuthorizationStatus()
                 }
