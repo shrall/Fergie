@@ -126,9 +126,9 @@ struct AvatarView: View {
                             Image(userSettings.accessory)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 255)
+                                .frame(width: 260)
                                 .padding(.top, 16)
-                                .padding(.leading, 4)
+                                .padding(.leading, 12)
                             Spacer()
                         }
                     } else if userSettings.accessory == "accessoriesGlasses" || userSettings.accessory == "accessoriesSunglasses" {
@@ -138,8 +138,8 @@ struct AvatarView: View {
                                 Image(userSettings.accessory)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 255)
-                                    .padding(.top, 5)
+                                    .frame(width: 260)
+                                    .padding(.top, 12)
                                 Spacer()
                             }
                         }
@@ -151,8 +151,8 @@ struct AvatarView: View {
                         Image(userSettings.accessory)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 255)
-                            .padding(.top, 5)
+                            .frame(width: 260)
+                            .padding(.top, 12)
                         Spacer()
                     }
                 } else if happiness > 6, happiness <= 10 {
@@ -163,8 +163,8 @@ struct AvatarView: View {
                             Image(userSettings.accessory)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 255)
-                                .padding(.top, 5)
+                                .frame(width: 260)
+                                .padding(.top, 12)
                             Spacer()
                         }
                     }
