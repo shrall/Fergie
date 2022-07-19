@@ -64,37 +64,87 @@ struct AvatarView: View {
                 HStack {
                     Spacer()
                     if happiness >= 0, happiness <= 3 {
-                        if userSettings.accessory == "accessoriesGlasses" {
-                            AnimatedImage(imageName: "sadFergieGlasses", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesSunglasses" {
-                            AnimatedImage(imageName: "sadFergieSunglasses", imageFrames: 160)
-                        
+                        if isDetectingPress == true {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            Image("fergieTappedSad")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
                         } else {
-                            AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            if userSettings.accessory == "accessoriesGlasses" {
+                                AnimatedImage(imageName: "sadFergieGlasses", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSunglasses" {
+                                AnimatedImage(imageName: "sadFergieSunglasses", imageFrames: 160)
+                            } else {
+                                AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
+                            }
                         }
-                    } else if happiness > 3 && happiness <= 6 {
-                        AnimatedImage(imageName: "neutralFergieNone", imageFrames: 84)
-                    } else {
-                        if userSettings.accessory == "accessoriesCap" {
-                            AnimatedImage(imageName: "happyFergieCap", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesGlasses" {
-                            AnimatedImage(imageName: "happyFergieGlasses", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesSun" {
-                            AnimatedImage(imageName: "happyFergieSun", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesSunhat" {
-                            AnimatedImage(imageName: "happyFergieSunhat", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesSunglasses" {
-                            AnimatedImage(imageName: "happyFergieSunglasses", imageFrames: 160)
                         
+                    } else if happiness > 3, happiness <= 6 {
+                        if isDetectingPress == true {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            Image("fergieTappedNeutral")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
                         } else {
-                            AnimatedImage(imageName: "happyFergieNone", imageFrames: 160).onAppear {
-                                print(userSettings.accessory)
+                            AnimatedImage(imageName: "neutralFergieNone", imageFrames: 84)
+                        }
+                    } else {
+                        if isDetectingPress == true {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            Image("fergieTappedHappy")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        } else {
+                            if userSettings.accessory == "accessoriesCap" {
+                                AnimatedImage(imageName: "happyFergieCap", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesGlasses" {
+                                AnimatedImage(imageName: "happyFergieGlasses", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSun" {
+                                AnimatedImage(imageName: "happyFergieSun", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSunhat" {
+                                AnimatedImage(imageName: "happyFergieSunhat", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSunglasses" {
+                                AnimatedImage(imageName: "happyFergieSunglasses", imageFrames: 160)
+                            } else {
+                                AnimatedImage(imageName: "happyFergieNone", imageFrames: 160).onAppear {
+                                    print(userSettings.accessory)
+                                }
                             }
                         }
                     }
+                    
                     Spacer()
                 }
-                if happiness > 3 && happiness <= 6 {
+                if happiness >= 0, happiness <= 3 {
+                    if userSettings.accessory == "" || userSettings.accessory == "accessoriesSun" || userSettings.accessory == "accessoriesSunhat" || userSettings.accessory == "accessoriesCap" {
+                        HStack {
+                            Spacer()
+                            Image(userSettings.accessory)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 255)
+                                .padding(.top, 16)
+                                .padding(.leading, 4)
+                            Spacer()
+                        }
+                    } else if userSettings.accessory == "accessoriesGlasses" || userSettings.accessory == "accessoriesSunglasses" {
+                        if isDetectingPress == true {
+                            HStack {
+                                Spacer()
+                                Image(userSettings.accessory)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 255)
+                                    .padding(.top, 5)
+                                Spacer()
+                            }
+                        }
+                    }
+                } else if happiness > 3, happiness <= 6 {
                     // Accessory
                     HStack {
                         Spacer()
@@ -105,17 +155,16 @@ struct AvatarView: View {
                             .padding(.top, 5)
                         Spacer()
                     }
-
-                } else if happiness >= 0, happiness <= 3 {
-                    if userSettings.accessory == "" || userSettings.accessory == "accessoriesSun" || userSettings.accessory == "accessoriesSunhat" || userSettings.accessory == "accessoriesCap" {
+                } else if happiness > 6, happiness <= 10 {
+                    // Accessory
+                    if isDetectingPress == true {
                         HStack {
                             Spacer()
                             Image(userSettings.accessory)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 255)
-                                .padding(.top, 16)
-                                .padding(.leading, 4)
+                                .padding(.top, 5)
                             Spacer()
                         }
                     }
