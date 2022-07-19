@@ -10,7 +10,13 @@ import SwiftUI
 struct AvatarView: View {
     @State private var isPresented = false
     
-    @ObservedObject var userSettings = UserSettings()
+//    @Binding var isShowAvatarView: Bool
+    
+    // Hour
+    let hour = Calendar.current.component(.hour, from: Date())
+    
+    // USer Defaults
+    @StateObject var userSettings = UserSettings()
     
     // Half Sheet Modal
     @State private var showSheet: Bool = false
@@ -19,7 +25,7 @@ struct AvatarView: View {
     @State private var coin: Int = 0
     
     // Happiness Meter
-    @State private var happiness: Double = 6
+    @State private var happiness: Double = 0
     @State private var maxValue: Double = 10
     
     // Navigation Link
@@ -57,35 +63,66 @@ struct AvatarView: View {
                 // Body
                 HStack {
                     Spacer()
-                    if happiness >= 0 && happiness <= 3 {
-                        Image(isDetectingPress == true ? "fergieTappedSad" : "fergieSad")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300, height: 300)
+                    if happiness >= 0, happiness <= 3 {
+                        if userSettings.accessory == "accessoriesGlasses" {
+                            AnimatedImage(imageName: "sadFergieGlasses", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesSunglasses" {
+                            AnimatedImage(imageName: "sadFergieSunglasses", imageFrames: 160)
+                        
+                        } else {
+                            AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
+                        }
                     } else if happiness > 3 && happiness <= 6 {
-                        Image(isDetectingPress == true ? "fergieTappedNeutral" : "fergieNeutral")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300, height: 300)
+                        AnimatedImage(imageName: "neutralFergieNone", imageFrames: 84)
                     } else {
-                        Image(isDetectingPress == true ? "fergieTappedHappy" : "fergieHappy")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300, height: 300)
+                        if userSettings.accessory == "accessoriesCap" {
+                            AnimatedImage(imageName: "happyFergieCap", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesGlasses" {
+                            AnimatedImage(imageName: "happyFergieGlasses", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesSun" {
+                            AnimatedImage(imageName: "happyFergieSun", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesSunhat" {
+                            AnimatedImage(imageName: "happyFergieSunhat", imageFrames: 160)
+                        } else if userSettings.accessory == "accessoriesSunglasses" {
+                            AnimatedImage(imageName: "happyFergieSunglasses", imageFrames: 160)
+                        
+                        } else {
+                            AnimatedImage(imageName: "happyFergieNone", imageFrames: 160).onAppear {
+                                print(userSettings.accessory)
+                            }
+                        }
                     }
                     Spacer()
                 }
-                
-                // Accessory
-                HStack {
-                    Spacer()
-                    Image(userSettings.accessory)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 300)
-                    Spacer()
+                if happiness > 3 && happiness <= 6 {
+                    // Accessory
+                    HStack {
+                        Spacer()
+                        Image(userSettings.accessory)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 255)
+                            .padding(.top, 5)
+                        Spacer()
+                    }
+
+                } else if happiness >= 0, happiness <= 3 {
+                    if userSettings.accessory == "" || userSettings.accessory == "accessoriesSun" || userSettings.accessory == "accessoriesSunhat" || userSettings.accessory == "accessoriesCap" {
+                        HStack {
+                            Spacer()
+                            Image(userSettings.accessory)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 255)
+                                .padding(.top, 16)
+                                .padding(.leading, 4)
+                            Spacer()
+                        }
+                    }
+                } else {
+                    EmptyView()
                 }
-                
+               
                 // Clothing and Pants
                 if userSettings.top == "clothingYellowShirt" || userSettings.top == "clothingTee" {
                     HStack {
@@ -96,24 +133,32 @@ struct AvatarView: View {
                             .frame(width: 260)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    .padding(.top, 4)
                     
                     HStack {
                         Spacer()
                         Image(userSettings.bottom)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .frame(width: 264)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    .padding(.top, -16)
+                    
                 } else {
                     HStack {
                         Spacer()
                         Image(userSettings.bottom)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .frame(width: 264)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    .padding(.top, -16)
+                    
                     HStack {
                         Spacer()
                         Image(userSettings.top)
@@ -122,6 +167,8 @@ struct AvatarView: View {
                             .frame(width: 260)
                         Spacer()
                     }
+                    .padding(.leading, 2)
+                    .padding(.top, 4)
                 }
             }
             .gesture(LongPressGesture(minimumDuration: 0.1).sequenced(before: DragGesture(minimumDistance: 0))
@@ -134,216 +181,53 @@ struct AvatarView: View {
                     }
                 })
             Spacer()
-            
-            NavigationLink(destination: EditAvatarView(), isActive: $isEditAvatarActive) {
-                EmptyView()
+    
+            ZStack {
+                NavigationLink(destination: EditAvatarView(userSettingsSave: userSettings)) {
+                    Text("Customize your Fergie")
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 10)
+                        .background(Color.ui.blue)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                ZStack {
+                    Circle()
+                        .fill(Color.ui.blue)
+                        .frame(width: 55, height: 55)
+                    Circle()
+                        .fill(Color.ui.white)
+                        .frame(width: 40, height: 40)
+                    Image("customizeIcon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 15)
             }
-            
-            Button("Customize Your Fergie!") {
-                //                    showSheet.toggle()
-                isEditAvatarActive = true
-//                isPresented.toggle()
-            }
-            .padding(.horizontal, 25)
-            .padding(.vertical, 10)
-            .background(Color.ui.blue)
-            .foregroundColor(.white)
-            .clipShape(Capsule())
-            .frame(maxWidth: .infinity, alignment: .center)
-            // Half Sheet Modal
-            //                .halfSheet(showSheet: $showSheet) {
-            //                    // Half Sheet View
-            //                    ZStack {
-            //                        Color.ui.gray
-            //                            .ignoresSafeArea()
-            //                        VStack {
-            //                            HStack {
-            //                                Text("Customize").font(.title).fontWeight(.bold)
-            //                                Spacer()
-            //                                Button {
-            //                                    showSheet.toggle()
-            //                                } label: {
-            //                                    Image(systemName: "multiply")
-            //                                }
-            //                                .padding(10)
-            //                                .background(Color.ui.lightRed)
-            //                                .foregroundColor(Color.ui.red)
-            //                                .clipShape(Circle())
-            //                                .frame(maxWidth: .infinity, alignment: .trailing)
-            //                            }
-            //
-            //                            HStack {
-            //                                if accessoriesIsActive {
-            //                                    Button {
-            //                                        print("Accessories")
-            //                                        accessoriesIsActive = true
-            //                                        clothingIsActive = false
-            //                                        pantsIsActive = false
-            //                                    } label: {
-            //                                        Text("Accessories").font(.caption)
-            //                                    }
-            //                                    .padding(.horizontal, 20)
-            //                                    .padding(.vertical, 10)
-            //                                    .background(Color.ui.blue)
-            //                                    .foregroundColor(.white)
-            //                                    .clipShape(Capsule())
-            //                                    .frame(maxWidth: .infinity)
-            //                                } else {
-            //                                    Button {
-            //                                        print("Accessories")
-            //                                        accessoriesIsActive = true
-            //                                        clothingIsActive = false
-            //                                        pantsIsActive = false
-            //                                    } label: {
-            //                                        Text("Accessories").font(.caption)
-            //                                    }
-            //                                    .padding(.horizontal, 20)
-            //                                    .padding(.vertical, 10)
-            //                                    .background(.clear)
-            //                                    .foregroundColor(Color.ui.blue)
-            //                                    .clipShape(Capsule())
-            //                                    .frame(maxWidth: .infinity)
-            //                                }
-            //                                if clothingIsActive {
-            //                                    Button {
-            //                                        print("Clothing")
-            //                                        accessoriesIsActive = false
-            //                                        clothingIsActive = true
-            //                                        pantsIsActive = false
-            //                                    } label: {
-            //                                        Text("Clothing").font(.caption)
-            //                                    }
-            //                                    .padding(.horizontal, 20)
-            //                                    .padding(.vertical, 10)
-            //                                    .background(Color.ui.blue)
-            //                                    .foregroundColor(.white)
-            //                                    .clipShape(Capsule())
-            //                                    .frame(maxWidth: .infinity)
-            //                                } else {
-            //                                    Button {
-            //                                        print("Clothing")
-            //                                        accessoriesIsActive = false
-            //                                        clothingIsActive = true
-            //                                        pantsIsActive = false
-            //                                        print(clothingIsActive)
-            //                                    } label: {
-            //                                        Text("Clothing").font(.caption)
-            //                                    }
-            //                                    .padding(.horizontal, 20)
-            //                                    .padding(.vertical, 10)
-            //                                    .background(.clear)
-            //                                    .foregroundColor(Color.ui.blue)
-            //                                    .clipShape(Capsule())
-            //                                    .frame(maxWidth: .infinity)
-            //                                }
-            //                                if pantsIsActive {
-            //                                    Button {
-            //                                        print("Pants")
-            //                                        accessoriesIsActive = false
-            //                                        clothingIsActive = false
-            //                                        pantsIsActive = true
-            //
-            //                                    } label: {
-            //                                        Text("Pants").font(.caption)
-            //                                    }
-            //                                    .padding(.horizontal, 20)
-            //                                    .padding(.vertical, 10)
-            //                                    .background(Color.ui.blue)
-            //                                    .foregroundColor(.white)
-            //                                    .clipShape(Capsule())
-            //                                    .frame(maxWidth: .infinity)
-            //                                } else {
-            //                                    Button {
-            //                                        print("Pants")
-            //                                        accessoriesIsActive = false
-            //                                        clothingIsActive = false
-            //                                        pantsIsActive = true
-            //                                        print(pantsIsActive)
-            //                                    } label: {
-            //                                        Text("Pants").font(.caption)
-            //                                    }
-            //                                    .padding(.horizontal, 20)
-            //                                    .padding(.vertical, 10)
-            //                                    .background(.clear)
-            //                                    .foregroundColor(Color.ui.blue)
-            //                                    .clipShape(Capsule())
-            //                                    .frame(maxWidth: .infinity)
-            //                                }
-            //                            }
-            //                            Spacer()
-            //                                .frame(height: 20)
-            //                            ScrollView(.horizontal, showsIndicators: false) {
-            //                                if accessoriesIsActive {
-            //                                    HStack {
-            //                                        ForEach(accessories) { accessory in
-            //                                            AccessoriesView(accessory: accessory)
-            //                                        }
-            //                                    }
-            //                                }
-            //                                if clothingIsActive {
-            //                                    HStack {
-            //                                        ForEach(clothing) { clothing in
-            //                                            ClothingView(clothing: clothing)
-            //                                        }
-            //                                    }
-            //                                }
-            //
-            //                                if pantsIsActive {
-            //                                    HStack {
-            //                                        ForEach(pants) { pants in
-            //                                            PantsView(pants: pants)
-            //                                        }
-            //                                    }
-            //                                }
-            //                            }
-            //                            Spacer()
-            //                            Button {
-            //                                showSheet.toggle()
-            //                            } label: {
-            //                                Text("Buy")
-            //                                    .frame(maxWidth: .infinity, alignment: .center)
-            //                            }
-            //                            .padding(.horizontal, 25)
-            //                            .padding(.vertical, 10)
-            //                            .background(.gray)
-            //                            .foregroundColor(.white)
-            //                            .clipShape(Capsule())
-            //
-            //                            Spacer()
-            //
-            //                        }.padding(20)
-            //                    }
-            //
-            //                } onEnd: {
-            //                    print("Dismissed")
-            //                }
+        
             Spacer()
         }
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Text("Fergie").font(.title).fontWeight(.bold)
-//            }
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                HStack {
-//                    Image("coin")
-//                    Text(String(coin)).fontWeight(.semibold)
-//                }
-//            }
-//        }
         .padding(20)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         
         .navigationBarTitle("")
         .navigationBarTitleDisplayMode(.inline)
-//        .navigationBarHidden(true)
         .navigationBarBackButtonHidden(false)
         .onAppear {
-            userSettings.coin = 1500
             coin = userSettings.coin
-            userSettings.mood = 10
+            happiness = userSettings.mood
+            checkMood()
+        }
+    }
+
+    func checkMood() {
+        if hour == 0 || hour == 6 || hour == 12 || hour == 18 || hour == 24 {
+            happiness = happiness - 1
             happiness = userSettings.mood
         }
-        .fullScreenCover(isPresented: $isPresented, content: EditAvatarView.init)
     }
 }
 

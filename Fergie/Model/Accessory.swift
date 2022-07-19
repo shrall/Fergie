@@ -10,4 +10,5 @@ import Foundation
 struct Accessory: Identifiable {
     var id: Int
     let name, iconURL, imageURL: String
+    var price: Int
 }

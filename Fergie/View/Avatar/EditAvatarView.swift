@@ -5,6 +5,7 @@
 //  Created by Tinara Nathania Wiryonoputro on 26/06/22.
 //
 
+import AVFoundation
 import SwiftUI
 
 class selected: ObservableObject {
@@ -20,10 +21,17 @@ class selected: ObservableObject {
 }
 
 struct EditAvatarView: View {
-    @Environment(\.presentationMode) var presentationMode
+//    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+//    @Binding var isShowEditAvatarView: Bool
+
+    // Sound
+    @State private var player: AVAudioPlayer?
 
     // Selected
     @ObservedObject var selectedStuff: selected = .init()
+    @ObservedObject var userSettingsSave: UserSettings
     @ObservedObject var userSettings = UserSettings()
 
     // Tabs/Categories
@@ -36,24 +44,27 @@ struct EditAvatarView: View {
 
     // Accessories Array
     @State private var accessories: [Accessory] = [
-        Accessory(id: 0, name: "cap", iconURL: "accessoriesCapIcon", imageURL: "accessoriesCap"),
-        Accessory(id: 1, name: "glasses", iconURL: "accessoriesGlassesIcon", imageURL: "accessoriesGlasses"),
-        Accessory(id: 2, name: "sun", iconURL: "accessoriesSunIcon", imageURL: "accessoriesSun"),
-        Accessory(id: 3, name: "sunhat", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunhat"),
-        Accessory(id: 4, name: "sunglasses", iconURL: "accessoriesSunglassesIcon", imageURL: "accessoriesSunglasses")
+        Accessory(id: 0, name: "none", iconURL: "noSignIcon", imageURL: "", price: 0),
+        Accessory(id: 1, name: "cap", iconURL: "accessoriesCapIcon", imageURL: "accessoriesCap", price: 200),
+        Accessory(id: 2, name: "glasses", iconURL: "accessoriesGlassesIcon", imageURL: "accessoriesGlasses", price: 200),
+        Accessory(id: 3, name: "sun", iconURL: "accessoriesSunIcon", imageURL: "accessoriesSun", price: 200),
+        Accessory(id: 4, name: "sunhat", iconURL: "accessoriesSunhatIcon", imageURL: "accessoriesSunhat", price: 200),
+        Accessory(id: 5, name: "sunglasses", iconURL: "accessoriesSunglassesIcon", imageURL: "accessoriesSunglasses", price: 200)
     ]
 
     @State private var clothing: [Clothing] = [
-        Clothing(id: 0, name: "shirt", iconURL: "clothingShirtIcon", imageURL: "clothingShirt"),
-        Clothing(id: 1, name: "yellowShirt", iconURL: "clothingYellowShirtIcon", imageURL: "clothingYellowShirt"),
-        Clothing(id: 2, name: "hoodie", iconURL: "clothingHoodieIcon", imageURL: "clothingHoodie"),
-        Clothing(id: 3, name: "tee", iconURL: "clothingTeeIcon", imageURL: "clothingTee")
+        Clothing(id: 0, name: "none", iconURL: "noSignIcon", imageURL: "", price: 0),
+        Clothing(id: 1, name: "shirt", iconURL: "clothingShirtIcon", imageURL: "clothingShirt", price: 200),
+        Clothing(id: 2, name: "yellowShirt", iconURL: "clothingYellowShirtIcon", imageURL: "clothingYellowShirt", price: 200),
+        Clothing(id: 3, name: "hoodie", iconURL: "clothingHoodieIcon", imageURL: "clothingHoodie", price: 200),
+        Clothing(id: 4, name: "tee", iconURL: "clothingTeeIcon", imageURL: "clothingTee", price: 200)
     ]
     @State private var pants: [Pants] = [
-        Pants(id: 0, name: "yellow", iconURL: "pantsYellowIcon", imageURL: "pantsYellow"),
-        Pants(id: 1, name: "red", iconURL: "pantsRedIcon", imageURL: "pantsRed"),
-        Pants(id: 2, name: "string", iconURL: "pantsStringIcon", imageURL: "pantsString"),
-        Pants(id: 3, name: "long", iconURL: "pantsLongIcon", imageURL: "pantsLong")
+        Pants(id: 0, name: "none", iconURL: "noSignIcon", imageURL: "", price: 200),
+        Pants(id: 1, name: "yellow", iconURL: "pantsYellowIcon", imageURL: "pantsYellow", price: 200),
+        Pants(id: 2, name: "red", iconURL: "pantsRedIcon", imageURL: "pantsRed", price: 200),
+        Pants(id: 3, name: "string", iconURL: "pantsStringIcon", imageURL: "pantsString", price: 200),
+        Pants(id: 4, name: "long", iconURL: "pantsLongIcon", imageURL: "pantsLong", price: 200)
     ]
 
     var body: some View {
@@ -88,10 +99,6 @@ struct EditAvatarView: View {
                             .scaledToFit()
                             .frame(width: 260)
                     }
-//                        Image("fergieHappy")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 300, height: 300)
                     Spacer()
                 }
 
@@ -150,13 +157,25 @@ struct EditAvatarView: View {
                     HStack {
                         Text("Customize").font(.title).fontWeight(.bold)
                         Spacer()
-                        NavigationLink(destination: AvatarView(), isActive: $isAvatarActive) {
-                            EmptyView()
-                        }
+//                        NavigationLink(destination: AvatarView(), isActive: $isAvatarActive) {
+//                            EmptyView()
+//                        }
 
                         Button {
-                            isAvatarActive = true
+//                            print(isShowEditAvatarView)
+//                            isShowEditAvatarView = false
+//                            print(isShowEditAvatarView)
+//                            isAvatarActive = true
 //                            presentationMode.wrappedValue.dismiss()
+                            userSettingsSave.accessory = userSettings.accessory
+                            userSettingsSave.ownedAccessories = userSettings.ownedAccessories
+                            userSettingsSave.top = userSettings.top
+                            userSettingsSave.ownedTops = userSettings.ownedTops
+                            userSettingsSave.bottom = userSettings.bottom
+                            userSettingsSave.ownedBottoms = userSettings.ownedBottoms
+                            userSettingsSave.coin = userSettings.coin
+                            userSettingsSave.objectWillChange.send()
+                            self.presentationMode.wrappedValue.dismiss()
                         } label: {
                             Image(systemName: "checkmark")
                         }
@@ -299,15 +318,32 @@ struct EditAvatarView: View {
                             if accessories.contains(where: { accessory in accessory.imageURL == selectedStuff.selectedBuyItem }) {
                                 userSettings.ownedAccessories.append(selectedStuff.selectedBuyItem)
                                 userSettings.accessory = selectedStuff.selectedBuyItem
-                                userSettings.coin = userSettings.coin - 200
+                                if selectedStuff.selectedBuyItem == "" {
+                                    userSettings.coin = userSettings.coin - 0
+                                } else {
+                                    playCoinSound()
+                                    userSettings.coin = userSettings.coin - 200
+                                }
+
                             } else if clothing.contains(where: { clothing in clothing.imageURL == selectedStuff.selectedBuyItem }) {
                                 userSettings.ownedTops.append(selectedStuff.selectedBuyItem)
                                 userSettings.top = selectedStuff.selectedBuyItem
-                                userSettings.coin = userSettings.coin - 200
+                                if selectedStuff.selectedBuyItem == "" {
+                                    userSettings.coin = userSettings.coin - 0
+                                } else {
+                                    playCoinSound()
+                                    userSettings.coin = userSettings.coin - 200
+                                }
+
                             } else if pants.contains(where: { pants in pants.imageURL == selectedStuff.selectedBuyItem }) {
                                 userSettings.ownedBottoms.append(selectedStuff.selectedBuyItem)
                                 userSettings.bottom = selectedStuff.selectedBuyItem
-                                userSettings.coin = userSettings.coin - 200
+                                if selectedStuff.selectedBuyItem == "" {
+                                    userSettings.coin = userSettings.coin - 0
+                                } else {
+                                    playCoinSound()
+                                    userSettings.coin = userSettings.coin - 200
+                                }
                             }
                         }
 
@@ -341,11 +377,31 @@ struct EditAvatarView: View {
             selectedStuff.selectedPantsImage = userSettings.bottom
         }
     }
+
+    func playCoinSound() {
+        guard let path = Bundle.main.path(forResource: "coinSFX", ofType: "mp3") else {
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+            print("play!")
+
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+//    func updateView() {
+//        self.objectWillChange.send()
+//    }
 }
 
 struct EditAvatarView_Previews: PreviewProvider {
     static var previews: some View {
-        EditAvatarView()
+        EditAvatarView(userSettingsSave: UserSettings(), userSettings: UserSettings())
     }
 }
 
@@ -380,7 +436,7 @@ struct AccessoriesView: View {
                             .scaledToFit()
                         Spacer()
                     }
-                    if userSettings.ownedAccessories.contains(accessory.imageURL) {
+                    if userSettings.ownedAccessories.contains(accessory.imageURL) || accessory.name == "none" {
                         EmptyView()
                     } else {
                         Image("fergieClothingPrice")
@@ -426,7 +482,7 @@ struct ClothingView: View {
                             .scaledToFit()
                         Spacer()
                     }
-                    if userSettings.ownedTops.contains(clothing.imageURL) {
+                    if userSettings.ownedTops.contains(clothing.imageURL) || clothing.name == "none" {
                         EmptyView()
                     } else {
                         Image("fergieClothingPrice")
@@ -472,7 +528,7 @@ struct PantsView: View {
                             .scaledToFit()
                         Spacer()
                     }
-                    if userSettings.ownedBottoms.contains(pants.imageURL) {
+                    if userSettings.ownedBottoms.contains(pants.imageURL) || pants.name == "none" {
                         EmptyView()
                     } else {
                         Image("fergieClothingPrice")
