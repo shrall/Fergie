@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct FergieMoodView: View {
-    @State var progressValue: Float = Float(UserDefaults.standard.integer(forKey: "mood"))/10
+    @State var progressValue: Float = Float(UserDefaults(suiteName: "group.com.fergie")!.integer(forKey: "mood"))/10
     @State var fergieClicked = false
+    @ObservedObject var userSettings = UserSettings()
+    @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
     
     var body: some View {
         VStack(spacing:8){
@@ -43,7 +45,7 @@ struct FergieMoodView: View {
                         }
                     }
                 }
-                Text("Fergie is feeling bored.")
+                Text("Fergie is bored.")
             }else{
                 if(!fergieClicked){
                     AnimatedImage(imageName: "fergieHappy", imageFrames: 143).onTapGesture {
@@ -56,8 +58,13 @@ struct FergieMoodView: View {
                         }
                     }
                 }
-                Text("Fergie is now happy!")
+                Text("Fergie is happy!")
             }
+        }.onAppear{
+            if(connectivityManager.moodValue != nil){
+                userSettings.mood = Double(connectivityManager.moodValue ?? "0")!
+            }
+            progressValue = Float(userSettings.mood)/10
         }
     }
 }

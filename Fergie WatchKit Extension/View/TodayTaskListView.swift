@@ -13,15 +13,13 @@ struct TodayTaskListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var taskViewModel: TaskViewModel
     
-    @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "date >= %@ && date <= %@", Date().startOfDay as CVarArg, Date().endOfDay as CVarArg)) var fetchedTasks:FetchedResults<Task>
-    
     @State var clickedTaskID = [UUID()]
     
     var body: some View {
         VStack(alignment:.leading){
-            if(fetchedTasks.filter({$0.isDone == false}).count > 0){
+            if(taskViewModel.tasks.filter({$0.isDone == false}).count > 0){
                 List{
-                    ForEach(fetchedTasks, id:\.self){ task in
+                    ForEach(taskViewModel.tasks, id:\.self){ task in
                         if(!task.isDone){
                             HStack{
                                 Button{
@@ -49,9 +47,7 @@ struct TodayTaskListView: View {
                 }
             }
         }.onAppear{
-            taskViewModel.title = "nyoba aja \(Int.random(in: 1..<522))"
-            taskViewModel.date = Date().adding(.minute, value: 1)
-            taskViewModel.createTask(context: viewContext)
+            taskViewModel.getTodayTasks(context: viewContext)
         }
     }
     
