@@ -13,14 +13,31 @@ struct TaskListCell: View{
     
     @EnvironmentObject var taskVM:TaskViewModel
     @ObservedObject var taskListItem:Task //CoreData
+    @ObservedObject var userSettings = UserSettings()
+    
+    @Binding var limitTask: Int
     
     @State private var setTimeType = ""
     @State private var editTaskModalPresented = false
+    
     
     var body: some View{
         HStack{
             Button{
                 taskVM.checkedDone(context: viewContext, id: taskListItem.id!)
+                if(taskListItem.isDone){
+                    if limitTask > 0{
+                        userSettings.coin += 10
+                        userSettings.mood += 1
+                    }
+                    limitTask -= 1
+                }else{
+                    limitTask += 1
+                    if limitTask > 0{
+                        userSettings.coin -= 10
+                        userSettings.mood -= 1
+                    }
+                }
             }label: {
                 if(taskListItem.isDone){
                     Image(systemName: "circle.inset.filled").foregroundColor(.gray).padding(.leading)

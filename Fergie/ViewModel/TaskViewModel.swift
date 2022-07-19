@@ -20,8 +20,6 @@ class TaskViewModel: ObservableObject {
     
     @Published var tasks: [Task] = []
     
-    @Published var userSettings = UserSettings()
-    
     //Notifications Manager
     @Published private(set) var notifications: [UNNotificationRequest] = []
     @Published private(set) var authorizationStatus: UNAuthorizationStatus?
@@ -93,14 +91,8 @@ class TaskViewModel: ObservableObject {
         task.isDone.toggle()
         task.updatedAt = Date()
         if(task.isDone){
-            userSettings.coin += 10
-            userSettings.mood += 1
-            
             deleteLocalNotifications(identifiers: ["\(task.title ?? "")_\(dateToString)"])
         }else{
-            userSettings.coin -= 10
-            userSettings.mood -= 1
-            
             //Create Notif//
             guard let day = dateComponents.day,
                   let month = dateComponents.month,
