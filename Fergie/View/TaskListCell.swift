@@ -9,18 +9,35 @@ import SwiftUI
 
 struct TaskListCell: View{
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var taskVM:TaskViewModel
     @ObservedObject var taskListItem:Task //CoreData
+    @ObservedObject var userSettings = UserSettings()
     
-    @State private var newTitle = ""
-    @State private var newDate = Date()
+    @Binding var limitTask: Int
     
-    @State private var showRepeatModal = false
+    @State private var setTimeType = ""
+    @State private var editTaskModalPresented = false
+    
     
     var body: some View{
         HStack{
             Button{
                 taskVM.checkedDone(context: viewContext, id: taskListItem.id!)
+                if(taskListItem.isDone){
+                    if limitTask > 0{
+                        userSettings.coin += 10
+                        userSettings.mood += 1
+                    }
+                    limitTask -= 1
+                }else{
+                    limitTask += 1
+                    if limitTask > 0{
+                        userSettings.coin -= 10
+                        userSettings.mood -= 1
+                    }
+                }
             }label: {
                 if(taskListItem.isDone){
                     Image(systemName: "circle.inset.filled").foregroundColor(.gray).padding(.leading)
@@ -31,56 +48,37 @@ struct TaskListCell: View{
             
             VStack(alignment: .leading, spacing: 5){
                 if(taskListItem.isDone){
-                    TextField("Title", text: $newTitle)
-                        .font(Font.title3.weight(.bold))
-                        .onAppear{
-                            self.newTitle = self.taskListItem.title ?? ""
-                        }.foregroundColor(.gray)
+                    Text("\(taskListItem.title ?? "None")").foregroundColor(.gray)
                 } else{
-                    TextField("Title", text: $newTitle)
-                        .font(Font.title3.weight(.bold))
-                        .onAppear{
-                            self.newTitle = self.taskListItem.title ?? ""
-                        }
+                    Text("\(taskListItem.title ?? "None")")
                 }
+                
                 if(taskListItem.isDone){
                     Text("\(taskListItem.date ?? Date(), style: .time)").foregroundColor(.gray)
                 }else{
-                    DatePicker("", selection: $newDate, displayedComponents: .hourAndMinute).labelsHidden()
-                        .onAppear{
-                            self.newDate = self.taskListItem.date ?? Date()
-                        }
+                    Text("\(taskListItem.date ?? Date(), style: .time)")
                 }
             }.frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
             
-            if(!taskListItem.isDone){
-                Button{
-                    taskVM.title = newTitle
-                    taskVM.date = newDate
-                    taskVM.isDone = taskListItem.isDone
-                    taskVM.updateTask(context: viewContext, id: taskListItem.id!)
-                }label: {
-                    Text("Save").foregroundColor(.gray)
-                }.buttonStyle(PlainButtonStyle()).padding(.trailing)
+            Button{
+                editTaskModalPresented.toggle()
+                setTimeType = "Today"
+            }label: {
+                Text("")
+            }.sheet(isPresented: $editTaskModalPresented){
+                EditTaskModalView(taskListItem: taskListItem, setTimeType: $setTimeType)
             }
-        }
-        .sheet(isPresented: $showRepeatModal) {
-            RepeatTodayTaskView(showModal: $showRepeatModal, title: $newTitle, date: $newDate)
-        }
-        .swipeActions(edge: .trailing){
+            
+            if(taskListItem.isDone){
+                Text("+10 Coins").font(.system(size: 13)).foregroundColor(.gray).padding(.top)
+            }
+        }.swipeActions(edge: .trailing){
             Button {
                 taskVM.deleteTask(context: viewContext, id: taskListItem.id!)
+                //notificationManager.deleteLocalNotifications(identifiers: [taskVM.title])
             } label: {
-                Label("Delete", systemImage: "")
+                Text("Delete")
             }.tint(Color("TertiaryColor"))
-            
-            if(!taskListItem.isDone){
-                Button {
-                    showRepeatModal.toggle()
-                } label: {
-                    Label("Repeat", systemImage: "repeat")
-                }.tint(Color("AccentColor"))
-            }
         }
     }
 }

@@ -11,7 +11,6 @@ import UserNotifications
 final class NotificationManager: ObservableObject {
     @Published private(set) var notifications: [UNNotificationRequest] = []
     @Published private(set) var authorizationStatus: UNAuthorizationStatus?
-    //@Published private(set) var notificationID: String
     
     func reloadAuthorizationStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
@@ -37,7 +36,7 @@ final class NotificationManager: ObservableObject {
         }
     }
     
-    func createLocalNotification(title: String, subTitle: String, day: Int, month: Int, year: Int, hour: Int, minute: Int, completion: @escaping (Error?) -> Void) {
+    func createLocalNotification(title: String, subTitle: String, day: Int, month: Int, year: Int, hour: Int, minute: Int, customId: String, completion: @escaping (Error?) -> Void) {
         var dateComponents = DateComponents()
         dateComponents.day = day
         dateComponents.month = month
@@ -52,7 +51,8 @@ final class NotificationManager: ObservableObject {
         notificationContent.body = subTitle
         notificationContent.sound = .default
         
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
+        //let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
+        let request = UNNotificationRequest(identifier: customId, content: notificationContent, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: completion)
     }
@@ -60,14 +60,6 @@ final class NotificationManager: ObservableObject {
     func deleteLocalNotifications(identifiers: [String]) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
     }
-    
-//    func getIDLocalNotifications(){
-//        UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
-//            DispatchQueue.main.async {
-//                self.notificationID = notifications
-//            }
-//        }
-//    }
     
     func removeRequest(withIdentifier identifier: String) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
