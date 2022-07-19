@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var taskVM:TaskViewModel
     
     @FetchRequest(entity: Task.entity(), sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: true)]) var fetchedTaskList:FetchedResults<Task>
@@ -81,14 +82,14 @@ struct TaskView: View {
                 if(todayOrUpcoming == 0){
                     if todayTaskListCount.count > 0{
                         List{
-                            Section(header: Text("To Do List").font(Font.system(size: 18).weight(.bold)).foregroundColor(Color("SectionColor"))){
+                            Section(header: Text("To Do List").font(Font.system(size: 18).weight(.bold)).foregroundColor(colorScheme == .dark ? .white : .black)){
                                 ForEach(fetchedTaskList.filter{$0.isDone == false && $0.date ?? Date() >= Date().startOfDay && $0.date ?? Date() <= Date().endOfDay}){ item in
                                     TaskListCell(taskListItem: item, limitTask: $limitTask)
                                 }
                             }
                             
                             if todayTaskListCount.filter{$0.isDone == true}.count > 0{
-                                Section(header: Text("Done").font(Font.system(size: 18).weight(.bold)).foregroundColor(Color("SectionColor"))){
+                                Section(header: Text("Done").font(Font.system(size: 18).weight(.bold)).foregroundColor(colorScheme == .dark ? .white : .black)){
                                     ForEach(fetchedTaskList.filter{$0.isDone == true && $0.date ?? Date() >= Date().startOfDay && $0.date ?? Date() <= Date().endOfDay}){ item in
                                         TaskListCell(taskListItem: item, limitTask: $limitTask)
                                     }
@@ -108,10 +109,15 @@ struct TaskView: View {
                                 .scaledToFit().frame(maxWidth: UIScreen.main.bounds.width * 0.75).padding()
                             Text("You know what? You can earn")
                             Text("coins by completing task.")
-                            Button { } label: {
+                            Button {
+                                isAddNewTaskModalPresented.toggle()
+                            } label: {
                                 Text("Add New Task").foregroundColor(.white)
-                            }.padding().padding(.leading, 50).padding(.trailing,50)
-                                .background(Color("AccentColor")).cornerRadius(30)
+                                    .padding().padding(.leading, 50).padding(.trailing,50)
+                                    .background(Color("AccentColor")).cornerRadius(30)
+                            }.sheet(isPresented: $isAddNewTaskModalPresented) {
+                                AddTaskModalView(setTimeType: $setTimeType)
+                            }
                             
                         }.padding(.top, UIScreen.main.bounds.height * 0.05).listRowSeparator(.hidden)
                     }
@@ -120,7 +126,7 @@ struct TaskView: View {
                     if upcomingTaskListCount.count > 0{
                         List{
                             ForEach(grouping(upcomingTaskListCount), id: \.self){ (section: [Task]) in
-                                Section(header: Text("\(self.dateFormatter.string(from: section[0].date!) == self.dateFormatter.string(from: Date().addingTimeInterval(1.0 * 24.0 * 3600.0)) ? "Tomorrow" : self.dateFormatter.string(from: section[0].date!))").font(Font.system(size: 18).weight(.bold)).foregroundColor(Color("SectionColor"))){
+                                Section(header: Text("\(self.dateFormatter.string(from: section[0].date!) == self.dateFormatter.string(from: Date().addingTimeInterval(1.0 * 24.0 * 3600.0)) ? "Tomorrow" : self.dateFormatter.string(from: section[0].date!))").font(Font.system(size: 18).weight(.bold)).foregroundColor(colorScheme == .dark ? .white : .black)){
                                     ForEach(section){ itemDetails in
                                         TaskListCell(taskListItem: itemDetails, limitTask: $limitTask)
                                     }
@@ -132,12 +138,16 @@ struct TaskView: View {
                             Image("FergieJump").resizable()
                                 .scaledToFit().frame(maxWidth: UIScreen.main.bounds.width * 0.75).padding()
                             Text("No upcoming schedule?")
-                            Text("Try adding some more.")
-                            Button { } label: {
+                            Text("Try adding some more.can")
+                            Button {
+                                isAddNewTaskModalPresented.toggle()
+                            } label: {
                                 Text("Add New Task").foregroundColor(.white)
-                            }.padding().padding(.leading, 50).padding(.trailing,50)
-                                .background(Color("AccentColor")).cornerRadius(30)
-                            
+                                    .padding().padding(.leading, 50).padding(.trailing,50)
+                                    .background(Color("AccentColor")).cornerRadius(30)
+                            }.sheet(isPresented: $isAddNewTaskModalPresented) {
+                                AddTaskModalView(setTimeType: $setTimeType)
+                            }
                         }.padding(.top, UIScreen.main.bounds.height * 0.05)
                     }
                 }

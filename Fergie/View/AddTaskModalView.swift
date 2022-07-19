@@ -34,7 +34,7 @@ struct AddTaskModalView: View {
                             Group{
                                 Image(systemName: "calendar").foregroundColor(Color("AccentColor"))
                                 Text("Set Date")
-                            }.font(Font.system(size: 18).weight(.bold))
+                            }.font(Font.system(size: 18))
                             Spacer()
                             Text("\(taskVM.dateToString(date: setDateTime))").font(Font.system(size: 14)).foregroundColor(.gray)
                         }.padding(.vertical, 10)
@@ -48,7 +48,7 @@ struct AddTaskModalView: View {
                             Group{
                                 Image(systemName: "clock").foregroundColor(Color("AccentColor"))
                                 Text("Set Time")
-                            }.font(Font.system(size: 18).weight(.bold))
+                            }.font(Font.system(size: 18))
                             Spacer()
                             Text("\(taskVM.timeToString(date: setDateTime))").font(Font.system(size: 14)).foregroundColor(.gray)
                         }.padding(.vertical, 10)
@@ -81,7 +81,7 @@ struct AddTaskModalView: View {
                         Group{
                             Image(systemName: "repeat").foregroundColor(Color("AccentColor"))
                             Text("Repeat For")
-                        }.font(Font.system(size: 18).weight(.bold))
+                        }.font(Font.system(size: 18))
                         Spacer()
                         Text("\(setRepeat)").font(Font.system(size: 14)).foregroundColor(.gray)
                     }.padding(.vertical, 10)
