@@ -28,14 +28,18 @@ struct TaskListCell: View{
                 if(taskListItem.isDone){
                     if limitTask > 0{
                         userSettings.coin += 10
-                        userSettings.mood += 1
+                        if userSettings.mood <= 10{
+                            userSettings.mood += 1
+                        }
                     }
                     limitTask -= 1
                 }else{
                     limitTask += 1
                     if limitTask > 0{
                         userSettings.coin -= 10
-                        userSettings.mood -= 1
+                        if userSettings.mood <= 10{
+                            userSettings.mood -= 1
+                        }
                     }
                 }
             }label: {
