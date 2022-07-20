@@ -75,7 +75,6 @@ struct TaskListCell: View{
         }.swipeActions(edge: .trailing){
             Button {
                 taskVM.deleteTask(context: viewContext, id: taskListItem.id!)
-                //notificationManager.deleteLocalNotifications(identifiers: [taskVM.title])
             } label: {
                 Text("Delete")
             }.tint(Color("TertiaryColor"))
