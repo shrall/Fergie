@@ -23,7 +23,7 @@ struct FergieWidgetEntryView : View {
                 HStack{
                     Text("Today").fontWeight(.bold)
                     Spacer()
-                }.foregroundColor(.accentColor).font(Font.system(size: 18))
+                }.foregroundColor(Color("WidgetColor")).font(Font.system(size: 18))
                 Spacer()
                 VStack(alignment: .leading){
                     if(taskViewModel.tasks.count > 0){
@@ -46,7 +46,7 @@ struct FergieWidgetEntryView : View {
                 HStack{
                     Text("Today").fontWeight(.bold)
                     Spacer()
-                }.foregroundColor(.accentColor).font(Font.system(size: 18))
+                }.foregroundColor(Color("WidgetColor")).font(Font.system(size: 18))
                 HStack(spacing:20){
                     VStack(alignment:.leading){
                         VStack(alignment: .leading){
@@ -81,7 +81,7 @@ struct FergieWidgetEntryView : View {
                 HStack{
                     Text("Today").fontWeight(.bold)
                     Spacer()
-                }.foregroundColor(.accentColor).font(Font.system(size: 18))
+                }.foregroundColor(Color("WidgetColor")).font(Font.system(size: 18))
                 HStack(alignment:.center , spacing:20){
                     VStack(alignment:.leading){
                         Text("Remaining Task(s)").foregroundColor(Color.secondary).font(Font.system(size: 12))
