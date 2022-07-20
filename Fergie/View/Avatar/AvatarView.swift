@@ -34,6 +34,12 @@ struct AvatarView: View {
     // Gesture Detector
     @GestureState private var isDetectingPress = false
     
+    @Environment(\.colorScheme) var colorScheme
+    
+    init() {
+        checkNavBarTitleColor()
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -91,7 +97,7 @@ struct AvatarView: View {
                         } else {
                             AnimatedImage(imageName: "neutralFergieNone", imageFrames: 84)
                         }
-                    } else {
+                    } else if happiness >= 6 {
                         if isDetectingPress == true {
                             EmptyView().onAppear { print(isDetectingPress) }
                             Image("fergieTappedHappy")
@@ -113,6 +119,23 @@ struct AvatarView: View {
                                 AnimatedImage(imageName: "happyFergieNone", imageFrames: 160).onAppear {
                                     print(userSettings.accessory)
                                 }
+                            }
+                        }
+                    } else {
+                        if isDetectingPress == true {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            Image("fergieTappedSad")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        } else {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            if userSettings.accessory == "accessoriesGlasses" {
+                                AnimatedImage(imageName: "sadFergieGlasses", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSunglasses" {
+                                AnimatedImage(imageName: "sadFergieSunglasses", imageFrames: 160)
+                            } else {
+                                AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
                             }
                         }
                     }
@@ -262,7 +285,7 @@ struct AvatarView: View {
         .padding(20)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         
-        .navigationBarTitle("")
+        .navigationBarTitle("Back")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)
         .onAppear {
@@ -273,9 +296,18 @@ struct AvatarView: View {
     }
 
     func checkMood() {
+        happiness = userSettings.mood
         if hour == 0 || hour == 6 || hour == 12 || hour == 18 || hour == 24 {
             happiness = happiness - 1
-            happiness = userSettings.mood
+            userSettings.mood = happiness
+        }
+    }
+    
+    func checkNavBarTitleColor() {
+        if UITraitCollection.current.userInterfaceStyle == .dark {
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
+        } else if UITraitCollection.current.userInterfaceStyle == .light {
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         }
     }
 }
