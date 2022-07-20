@@ -34,6 +34,12 @@ struct AvatarView: View {
     // Gesture Detector
     @GestureState private var isDetectingPress = false
     
+    @Environment(\.colorScheme) var colorScheme
+    
+    init() {
+        checkNavBarTitleColor()
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -64,58 +70,124 @@ struct AvatarView: View {
                 HStack {
                     Spacer()
                     if happiness >= 0, happiness <= 3 {
-                        if userSettings.accessory == "accessoriesGlasses" {
-                            AnimatedImage(imageName: "sadFergieGlasses", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesSunglasses" {
-                            AnimatedImage(imageName: "sadFergieSunglasses", imageFrames: 160)
-                        
+                        if isDetectingPress == true {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            Image("fergieTappedSad")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
                         } else {
-                            AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            if userSettings.accessory == "accessoriesGlasses" {
+                                AnimatedImage(imageName: "sadFergieGlasses", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSunglasses" {
+                                AnimatedImage(imageName: "sadFergieSunglasses", imageFrames: 160)
+                            } else {
+                                AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
+                            }
                         }
-                    } else if happiness > 3 && happiness <= 6 {
-                        AnimatedImage(imageName: "neutralFergieNone", imageFrames: 84)
-                    } else {
-                        if userSettings.accessory == "accessoriesCap" {
-                            AnimatedImage(imageName: "happyFergieCap", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesGlasses" {
-                            AnimatedImage(imageName: "happyFergieGlasses", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesSun" {
-                            AnimatedImage(imageName: "happyFergieSun", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesSunhat" {
-                            AnimatedImage(imageName: "happyFergieSunhat", imageFrames: 160)
-                        } else if userSettings.accessory == "accessoriesSunglasses" {
-                            AnimatedImage(imageName: "happyFergieSunglasses", imageFrames: 160)
                         
+                    } else if happiness > 3, happiness <= 6 {
+                        if isDetectingPress == true {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            Image("fergieTappedNeutral")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
                         } else {
-                            AnimatedImage(imageName: "happyFergieNone", imageFrames: 160).onAppear {
-                                print(userSettings.accessory)
+                            AnimatedImage(imageName: "neutralFergieNone", imageFrames: 84)
+                        }
+                    } else if happiness >= 6 {
+                        if isDetectingPress == true {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            Image("fergieTappedHappy")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        } else {
+                            if userSettings.accessory == "accessoriesCap" {
+                                AnimatedImage(imageName: "happyFergieCap", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesGlasses" {
+                                AnimatedImage(imageName: "happyFergieGlasses", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSun" {
+                                AnimatedImage(imageName: "happyFergieSun", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSunhat" {
+                                AnimatedImage(imageName: "happyFergieSunhat", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSunglasses" {
+                                AnimatedImage(imageName: "happyFergieSunglasses", imageFrames: 160)
+                            } else {
+                                AnimatedImage(imageName: "happyFergieNone", imageFrames: 160).onAppear {
+                                    print(userSettings.accessory)
+                                }
+                            }
+                        }
+                    } else {
+                        if isDetectingPress == true {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            Image("fergieTappedSad")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                        } else {
+                            EmptyView().onAppear { print(isDetectingPress) }
+                            if userSettings.accessory == "accessoriesGlasses" {
+                                AnimatedImage(imageName: "sadFergieGlasses", imageFrames: 160)
+                            } else if userSettings.accessory == "accessoriesSunglasses" {
+                                AnimatedImage(imageName: "sadFergieSunglasses", imageFrames: 160)
+                            } else {
+                                AnimatedImage(imageName: "sadFergieNone", imageFrames: 160)
                             }
                         }
                     }
+                    
                     Spacer()
                 }
-                if happiness > 3 && happiness <= 6 {
-                    // Accessory
-                    HStack {
-                        Spacer()
-                        Image(userSettings.accessory)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 255)
-                            .padding(.top, 5)
-                        Spacer()
-                    }
-
-                } else if happiness >= 0, happiness <= 3 {
+                if happiness >= 0, happiness <= 3 {
                     if userSettings.accessory == "" || userSettings.accessory == "accessoriesSun" || userSettings.accessory == "accessoriesSunhat" || userSettings.accessory == "accessoriesCap" {
                         HStack {
                             Spacer()
                             Image(userSettings.accessory)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 255)
+                                .frame(width: 260)
                                 .padding(.top, 16)
-                                .padding(.leading, 4)
+                                .padding(.leading, 12)
+                            Spacer()
+                        }
+                    } else if userSettings.accessory == "accessoriesGlasses" || userSettings.accessory == "accessoriesSunglasses" {
+                        if isDetectingPress == true {
+                            HStack {
+                                Spacer()
+                                Image(userSettings.accessory)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 260)
+                                    .padding(.top, 12)
+                                Spacer()
+                            }
+                        }
+                    }
+                } else if happiness > 3, happiness <= 6 {
+                    // Accessory
+                    HStack {
+                        Spacer()
+                        Image(userSettings.accessory)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 260)
+                            .padding(.top, 12)
+                        Spacer()
+                    }
+                } else if happiness > 6, happiness <= 10 {
+                    // Accessory
+                    if isDetectingPress == true {
+                        HStack {
+                            Spacer()
+                            Image(userSettings.accessory)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 260)
+                                .padding(.top, 12)
                             Spacer()
                         }
                     }
@@ -213,7 +285,7 @@ struct AvatarView: View {
         .padding(20)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         
-        .navigationBarTitle("")
+        .navigationBarTitle("Back")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)
         .onAppear {
@@ -224,9 +296,18 @@ struct AvatarView: View {
     }
 
     func checkMood() {
+        happiness = userSettings.mood
         if hour == 0 || hour == 6 || hour == 12 || hour == 18 || hour == 24 {
             happiness = happiness - 1
-            happiness = userSettings.mood
+            userSettings.mood = happiness
+        }
+    }
+    
+    func checkNavBarTitleColor() {
+        if UITraitCollection.current.userInterfaceStyle == .dark {
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
+        } else if UITraitCollection.current.userInterfaceStyle == .light {
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         }
     }
 }
