@@ -23,10 +23,9 @@ struct FergieWidgetEntryView : View {
                 HStack{
                     Text("Today").fontWeight(.bold)
                     Spacer()
-//                    Image(systemName: "plus.circle")
-                }.foregroundColor(.accentColor).font(Font.system(size: 18))
+                }.foregroundColor(Color("WidgetColor")).font(Font.system(size: 18))
                 Spacer()
-                VStack{
+                VStack(alignment: .leading){
                     if(taskViewModel.tasks.count > 0){
                         Text(taskViewModel.tasks[0].title!).bold()
                         Text(taskViewModel.tasks[0].date!.showTime())
@@ -37,7 +36,6 @@ struct FergieWidgetEntryView : View {
                 Spacer()
                 HStack{
                     Image(systemName: "list.bullet.rectangle.portrait.fill")
-                    Spacer()
                     Text("\(taskViewModel.tasks.count) Remaining")
                 }.font(Font.system(size: 12))
             }.padding().onAppear{
@@ -48,11 +46,10 @@ struct FergieWidgetEntryView : View {
                 HStack{
                     Text("Today").fontWeight(.bold)
                     Spacer()
-//                    Image(systemName: "plus.circle")
-                }.foregroundColor(.accentColor).font(Font.system(size: 18))
+                }.foregroundColor(Color("WidgetColor")).font(Font.system(size: 18))
                 HStack(spacing:20){
                     VStack(alignment:.leading){
-                        VStack{
+                        VStack(alignment: .leading){
                             if(taskViewModel.tasks.count > 0){
                                 Text(taskViewModel.tasks[0].title!).bold()
                                 Text(taskViewModel.tasks[0].date!.showTime())
@@ -60,11 +57,6 @@ struct FergieWidgetEntryView : View {
                                 Text("No tasks left\nfor today.")
                             }
                         }
-                        Spacer()
-                        HStack{
-                            Image(systemName: "list.bullet.rectangle.portrait.fill")
-                            Text("\(taskViewModel.tasks.count) Remaining")
-                        }.font(Font.system(size: 12))
                     }
                     Spacer()
                     VStack(alignment:.center){
@@ -77,6 +69,10 @@ struct FergieWidgetEntryView : View {
                         }
                     }
                 }
+                HStack{
+                    Image(systemName: "list.bullet.rectangle.portrait.fill")
+                    Text("\(taskViewModel.tasks.count) Remaining")
+                }.font(Font.system(size: 12))
             }.padding().onAppear{
                 taskViewModel.getTodayTasks(context: viewContext)
             }
@@ -85,8 +81,7 @@ struct FergieWidgetEntryView : View {
                 HStack{
                     Text("Today").fontWeight(.bold)
                     Spacer()
-//                    Image(systemName: "plus.circle")
-                }.foregroundColor(.accentColor).font(Font.system(size: 18))
+                }.foregroundColor(Color("WidgetColor")).font(Font.system(size: 18))
                 HStack(alignment:.center , spacing:20){
                     VStack(alignment:.leading){
                         Text("Remaining Task(s)").foregroundColor(Color.secondary).font(Font.system(size: 12))

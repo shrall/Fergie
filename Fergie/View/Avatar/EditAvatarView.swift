@@ -87,17 +87,17 @@ struct EditAvatarView: View {
                         Image("fergieSad")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .frame(width: 300)
                     } else if userSettings.mood <= 6 {
                         Image("fergieNeutral")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .frame(width: 300)
                     } else {
                         Image("fergieHappy")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .frame(width: 300)
                     }
                     Spacer()
                 }
@@ -108,7 +108,8 @@ struct EditAvatarView: View {
                     Image(selectedStuff.selectedAccessoryImage)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 260)
+                        .frame(width: 255)
+                        .padding(.top, 10)
                     Spacer()
                 }
                 // Clothing and Pants
@@ -118,7 +119,9 @@ struct EditAvatarView: View {
                         Image(selectedStuff.selectedClothingImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .padding(.leading, 2)
+                            .frame(width: 255)
+                            .padding(.top, 2)
                         Spacer()
                     }
 
@@ -127,7 +130,8 @@ struct EditAvatarView: View {
                         Image(selectedStuff.selectedPantsImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .padding(.leading, 2)
+                            .frame(width: 255)
                         Spacer()
                     }
                 } else {
@@ -136,7 +140,8 @@ struct EditAvatarView: View {
                         Image(selectedStuff.selectedPantsImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .padding(.leading, 2)
+                            .frame(width: 255)
                         Spacer()
                     }
                     HStack {
@@ -144,7 +149,9 @@ struct EditAvatarView: View {
                         Image(selectedStuff.selectedClothingImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 260)
+                            .padding(.leading, 2)
+                            .frame(width: 255)
+                            .padding(.top, 2)
                         Spacer()
                     }
                 }

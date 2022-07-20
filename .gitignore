@@ -85,3 +85,5 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+Fergie.xcodeproj/xcuserdata/shrall.xcuserdatad/xcschemes/xcschememanagement.plist
+.DS_Store
