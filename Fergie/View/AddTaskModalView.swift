@@ -86,7 +86,15 @@ struct AddTaskModalView: View {
                         Text("\(setRepeat)").font(Font.system(size: 14)).foregroundColor(.gray)
                     }.padding(.vertical, 10)
                 }
-            }.navigationBarTitle("Add New Task").navigationBarTitleDisplayMode(.inline)
+            }.navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Text("Add new task")
+                                .font(.headline)
+                        }
+                    }
+                }
                 .navigationBarItems(
                     leading: Button(action: {
                         self.dismissModal.wrappedValue.dismiss()

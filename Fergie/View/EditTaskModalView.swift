@@ -93,7 +93,15 @@ struct EditTaskModalView: View {
                         Text("\(setRepeat)").font(Font.system(size: 14)).foregroundColor(.gray)
                     }.padding(.vertical, 10)
                 }
-            }.navigationBarTitle("Edit Task").navigationBarTitleDisplayMode(.inline)
+            }.navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Text("Edit task")
+                                .font(.headline)
+                        }
+                    }
+                }
                 .navigationBarItems(
                     leading: Button(action: {
                         self.dismissModal.wrappedValue.dismiss()
