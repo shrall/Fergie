@@ -250,7 +250,7 @@ class TaskViewModel: ObservableObject {
     
     func getTodayTasks(context:NSManagedObjectContext){
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "date >= %@ && date <= %@", Date() as CVarArg, Calendar.current.startOfDay(for: Date() + 86400) as CVarArg)
         do {
             let allTasks = try context.fetch(fetchRequest)

@@ -50,8 +50,8 @@ struct FergieWidget: Widget {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(taskViewModel)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Today Reminder")
+        .description("Shows you a list of today's reminder.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
@@ -61,12 +61,15 @@ struct FergieWidget_Previews: PreviewProvider {
         Group{
             FergieWidgetEntryView(entry: SimpleEntry(date: Date()))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
+                .environmentObject(TaskViewModel())
             
             FergieWidgetEntryView(entry: SimpleEntry(date: Date()))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
+                .environmentObject(TaskViewModel())
             
             FergieWidgetEntryView(entry: SimpleEntry(date: Date()))
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
+                .environmentObject(TaskViewModel())
         }
     }
 }

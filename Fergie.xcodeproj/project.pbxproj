@@ -135,6 +135,7 @@
 		103E50F22886998700057867 /* AnimatedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImage.swift; sourceTree = "<group>"; };
 		103E50F32886998700057867 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		103E50F6288699A300057867 /* coinSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinSFX.mp3; sourceTree = "<group>"; };
+		1044A2202992BDA40035F8C2 /* FergieWidgetExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FergieWidgetExtensionRelease.entitlements; sourceTree = "<group>"; };
 		1045BC042860855D005D50C1 /* Fergie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fergie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1045BC072860855D005D50C1 /* FergieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FergieApp.swift; sourceTree = "<group>"; };
 		1045BC092860855D005D50C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -238,8 +239,8 @@
 		1045BBFB2860855C005D50C1 = {
 			isa = PBXGroup;
 			children = (
-				10EED7C3287FF8C200027516 /* WatchConnectivity */,
 				10EED7B8287C1CAD00027516 /* FergieWidgetExtension.entitlements */,
+				10EED7C3287FF8C200027516 /* WatchConnectivity */,
 				106D5B8B286C3E580051D017 /* FergieWidget */,
 				1045BC062860855D005D50C1 /* Fergie */,
 				1045BC1628608560005D50C1 /* Fergie WatchKit App */,
@@ -425,6 +426,7 @@
 		10EED7C3287FF8C200027516 /* WatchConnectivity */ = {
 			isa = PBXGroup;
 			children = (
+				1044A2202992BDA40035F8C2 /* FergieWidgetExtensionRelease.entitlements */,
 				10EED7C4287FF98200027516 /* WatchConnectivityManager.swift */,
 			);
 			path = WatchConnectivity;
@@ -1035,7 +1037,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = FergieWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FergieWidgetExtensionRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X3D8UM28XD;
